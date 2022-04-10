@@ -13,12 +13,12 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
     "react-dom": "^17.0.2",
-    "react-fleepi-ui": "^0.2.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "sass": "^1.43.2",
     "web-vitals": "^1.0.1",
-    "webpack-dev-server": "3.11.1"
+    "webpack-dev-server": "3.11.1",
+    "yarn": "^1.22.18"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,8 +28,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -47,17 +46,5 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6"
-  },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "/src/components/updateProfile.js",
-      "/src/components/RefreshToken.js",
-      "/src/components/TripInfo.js",
-      "/src/pages/dataUser.js",
-      "/src/reportWebVitals.js",
-      "/src/pages/searchResults.js",
-      "/src/components/Navbar.js"
-
-    ]
   }
 }
