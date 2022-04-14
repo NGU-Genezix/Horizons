@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import "./Navbar.css"
 import logo from "../assets/logo_Horizon.png"
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -31,11 +32,11 @@ export default function Navbar() {
             {(toggleMenu || largeur > 500) && (
                 <ul className='liste'>
                     <img className="logo" src={logo}></img>
-                    <li className='items aide'>Aides</li>
-                    <li className='items budget'>Budget</li>
+                    <li className='items aide'><Link to="/">Aides</Link></li>
+                    <li className='items budget'><Link to="/aide">Budget</Link></li>
                     <li className='items'><input width="20%"></input></li>
-                    <li className='items btn_connexion'><button>Connexion</button></li>
-                    <li className='items'><button>Inscription</button></li>
+                    <li className='items btn_connexion'><button><Link to="/aide">Connexion</Link></button></li>
+                    <li className='items'><button><Link to="/aide">Inscription</Link></button></li>
                 </ul>
             )}
             <button onClick={toggleNavSmallScreen} className='btn'>BTN</button>

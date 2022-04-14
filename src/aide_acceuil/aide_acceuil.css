@@ -1,0 +1,44 @@
+.mainDiv {
+    background-color: #fff2cc;
+    width: 80%;
+    height: 50px;
+    margin-left: 4%;
+    padding-top: 1%;    
+    justify-content: left;
+    align-items: left;
+    margin-top: 3%;
+}
+
+.name {
+    float: left;
+    font-size: 175%;
+    width: 30%;
+    justify-content: left;
+    align-items: left;
+    font-weight: bold;
+    padding-left: 5%;
+
+}
+
+.status {
+    float: left;
+    background-color: #eeca60;
+    position:static;
+    width: 10%;
+    margin-left: 25%;
+    padding-top: 0.5%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.price {
+    float:left;
+    background-color: #c9e265;
+    width: 10%;
+    margin-left: 14%;
+    padding-top: 0.5%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-bottom: 0.5%;
+}

@@ -1,0 +1,55 @@
+.aide_financiere {
+    color: black;
+    margin-top: 200px;
+    justify-content: left;
+    align-items: left;
+    display: flex;
+    margin-left: 100px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 300%;
+}
+
+.Etudiant {
+    float: left;
+    background-color: #eeca60;
+    position:static;
+    width: 10%;
+    padding-top: 0.5%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.PersonneAgée {
+    float: left;
+    background-color: #eeca60;
+    position:static;
+    width: 13%;
+    margin-left: 5%;
+    padding-top: 0.5%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.Handicap {
+    float: left;
+    background-color: #eeca60;
+    position:static;
+    margin-left: 5%;
+    width: 10%;
+    padding-top: 0.5%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.checkBoxDiv {
+    width: 80%;
+    height: 50px;
+    margin-left: 6.5%;
+    padding-top: 1%;    
+    justify-content: left;
+    align-items: left;
+    margin-top: 3%;
+}
