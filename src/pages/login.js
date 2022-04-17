@@ -102,7 +102,7 @@ const Login = () => {
                         />
                         <div className="link-container">
                             <a href="#">Mot de passe oublié ?</a>
-                            <a href="/register">Je n'ai pas encore de compte</a>
+                            <a href="#" onClick={() => history.push('/register')}>Je n'ai pas encore de compte</a>
                         </div>
                     </div>
                 </div>
