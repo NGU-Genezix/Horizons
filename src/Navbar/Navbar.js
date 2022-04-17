@@ -35,8 +35,8 @@ export default function Navbar() {
                     <li className='items aide'><Link to="/">Aides</Link></li>
                     <li className='items budget'><Link to="/aide">Budget</Link></li>
                     <li className='items'><input width="20%"></input></li>
-                    <li className='items btn_connexion'><button><Link to="/aide">Connexion</Link></button></li>
-                    <li className='items'><button><Link to="/aide">Inscription</Link></button></li>
+                    <li className='items btn_connexion'><button><Link to="/login">Connexion</Link></button></li>
+                    <li className='items'><button><Link to="/register">Inscription</Link></button></li>
                 </ul>
             )}
             <button onClick={toggleNavSmallScreen} className='btn'>BTN</button>
