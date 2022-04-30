@@ -7,7 +7,7 @@ export default function Acceuil() {
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
     const [isCheckedAge, setIsCheckedAge] = useState(true);
     const [isCheckedHandi, setIsCheckedHandi] = useState(true);
-
+ 
     const handleOnChangeEtud = () => {
       setIsCheckedEtud(!isCheckedEtud);
     };

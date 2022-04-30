@@ -1,8 +1,8 @@
 nav {
     height: 50px;
     background: #eeca60;
-} 
-
+}
+ 
 .liste {
     list-style-type: none;
     background: #eeca60;
@@ -20,23 +20,6 @@ nav {
     margin-right: 10px;
     color: black;
     cursor: pointer;
-}
-
-.search {
-    background-color: #fff2cc;
-    width: 90%;
-    margin-left: 5%;
-}
-
-.search_list {
-    background: #eeca60;
-    width: 20%;
-    border-style: double;
-    border-width: 10%;
-    border-color: black;
-    margin-left: 42%;
-    bottom:25px;
-    position: relative;
 }
 
 .btn {

@@ -6,4 +6,4 @@ export default function Aide() {
     <div>
         <Navbar />
     </div>);
-}
+} 

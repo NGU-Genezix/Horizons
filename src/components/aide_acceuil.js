@@ -1,6 +1,6 @@
 import React from 'react'
 import "./../styles/aide_acceuil.css"
-
+ 
 const AideAcceuil = ({display, name, status, price}) => {
     return (
         <>

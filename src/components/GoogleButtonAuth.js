@@ -1,6 +1,6 @@
 import React from 'react';
 import GoogleLogo from '../assets/google-logo.png';
-
+ 
 const GoogleButtonAuth = (props) => {
     return (
         <div className="google-button-auth-container" onClick={props.onClick}>

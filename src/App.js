@@ -27,7 +27,7 @@ function App() {
           <Route path="/budget" exact>
             <Budget />
           </Route>
-        </Switch>
+        </Switch> 
       </BrowserRouter>
     </div>
   );

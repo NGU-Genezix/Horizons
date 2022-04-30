@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import GoogleButtonAuth from "../components/GoogleButtonAuth";
 import LockLogo from "../assets/login-lock-logo.png";
 import Navbar from '../components/Navbar';
-
+ 
 const Login = () => {
 
     const [email, setEmail] = useState("");

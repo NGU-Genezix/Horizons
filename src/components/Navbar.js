@@ -4,7 +4,7 @@ import logo from "../assets/logo_Horizon.png"
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import { wait } from '@testing-library/react';
-
+ 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
     const [largeur, setLargeur] = useState(window.innerWidth)

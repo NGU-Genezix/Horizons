@@ -10,7 +10,7 @@ export default function Budget() {
   const handleOnChangeEtud = () => {
     setIsCheckedEtud(!isCheckedEtud);
   };
-
+ 
   const handleOnChangeAge = () => {
     setIsCheckedAge(!isCheckedAge);
   };
