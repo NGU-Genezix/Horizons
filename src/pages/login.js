@@ -4,7 +4,7 @@ import ButtonAuth from "../components/ButtonAuth";
 import { useHistory } from "react-router-dom";
 import GoogleButtonAuth from "../components/GoogleButtonAuth";
 import LockLogo from "../assets/login-lock-logo.png";
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../components/Navbar';
 
 const Login = () => {
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextFieldAuth from "../components/TextFieldAuth";
 import ButtonAuth from "../components/ButtonAuth";
 import { useHistory } from "react-router-dom";
-import Navbar from "../Navbar/Navbar"
+import Navbar from "../components/Navbar"
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';

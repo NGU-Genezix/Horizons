@@ -4,6 +4,7 @@ import Acceuil from './pages/acceuil.js';
 import Aide from './pages/aide.js';
 import Login from './pages/login.js';
 import Register from './pages/register.js';
+import Budget from './pages/budget.js';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/register" exact>
             <Register />
+          </Route>
+          <Route path="/budget" exact>
+            <Budget />
           </Route>
         </Switch>
       </BrowserRouter>

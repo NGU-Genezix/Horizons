@@ -1,5 +1,5 @@
 import React from 'react'
-import "./aide_acceuil.css"
+import "./../styles/aide_acceuil.css"
 
 const AideAcceuil = ({display, name, status, price}) => {
     return (

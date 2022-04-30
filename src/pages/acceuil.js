@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../components/Navbar';
 import "../styles/page_acceuil.css";
-import AideAcceuil from '../aide_acceuil/aide_acceuil';
+import AideAcceuil from '../components/aide_acceuil';
 
 export default function Acceuil() {
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
