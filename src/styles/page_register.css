@@ -1,0 +1,52 @@
+.one-title{
+    text-align: left;
+    margin-left: 6%;
+    padding-top: 3%;
+}
+
+.two-title{
+    text-align: left;
+    margin-left: 6%;
+    padding-top: 3%;
+}
+.three-title{
+    text-align: left;
+    margin-left: 6%;
+    padding-top: 3%;
+}
+.four-title{
+    text-align: left;
+    margin-left: 6%;
+    padding-top: 3%;
+}
+.five-title{
+    text-align: left;
+    margin-left: 6%;
+    padding-top: 3%;
+}
+.six-title{
+    text-align: left;
+    margin-left: 6%;
+    padding-top: 3%;
+}
+.seven-title{
+    text-align: left;
+    margin-left: 6%;
+    padding-top: 3%;
+}
+
+[title~="username"] {
+    width: 400px;
+}
+
+[title~="firstname"] {
+    width: 400px;
+}
+
+[title~="lastname"] {
+    width: 400px;
+}
+
+[title~="c_password"] {
+    width: 400px;
+}
