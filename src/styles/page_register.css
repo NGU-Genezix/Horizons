@@ -36,17 +36,17 @@
 }
 
 [title~="username"] {
-    width: 400px;
+    width: 80%;
 }
 
 [title~="firstname"] {
-    width: 400px;
+    width: 80%;
 }
 
 [title~="lastname"] {
-    width: 400px;
+    width: 80%;
 }
 
 [title~="c_password"] {
-    width: 400px;
+    width: 80%;
 }

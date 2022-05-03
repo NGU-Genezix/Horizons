@@ -61,7 +61,7 @@ const Register = () => {
                 </div>
                 <div className="register-container">
                     <div className="big-square">
-                        <h1 className="main-title">Créer votre compte</h1>
+                        <h1 className="main-title">Inscription</h1>
 
                         <div className="input-container">
                             <div className="one-title">Nom d'utilisateur</div>
