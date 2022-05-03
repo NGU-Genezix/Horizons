@@ -46,6 +46,7 @@ const DataUser = () => {
                             Etudiant
                             </label>
                         </div>
+                        <button>Modifier</button>
                     </div>
                 </div>
             </div>
