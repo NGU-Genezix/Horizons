@@ -5,6 +5,7 @@ import Aide from './pages/aide.js';
 import Login from './pages/login.js';
 import Register from './pages/register.js';
 import Budget from './pages/budget.js';
+import DataUser from './pages/dataUser.js';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/budget" exact>
             <Budget />
+          </Route>
+          <Route path="/datauser" exact>
+            <DataUser/>
           </Route>
         </Switch> 
       </BrowserRouter>
