@@ -36,6 +36,7 @@ export default function Navbar() {
                     <li className='items'><input width="20%"></input></li>
                     <li className='items btn_connexion'><button>Connexion</button></li>
                     <li className='items'><button>Inscription</button></li>
+                    <li className='items datauser'><button>Mon compte</button></li>
                 </ul>
             )}
             <button onClick={toggleNavSmallScreen} className='btn'>BTN</button>

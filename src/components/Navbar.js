@@ -71,6 +71,7 @@ export default function Navbar() {
                     }}></input></li>
                     <li className='items btn_connexion'><button><Link to="/login">Connexion</Link></button></li>
                     <li className='items'><button><Link to="/register">Inscription</Link></button></li>
+                    <li className='items datauser'><button><Link to="/datauser">Mon compte</Link></button></li>
                 </ul>
             )}
             <button onClick={toggleNavSmallScreen} className='btn'>BTN</button>
