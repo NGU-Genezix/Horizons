@@ -1,0 +1,40 @@
+.big-square{
+    background-color: #fff2cc;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 5%;
+    border-radius: 10px;
+}
+
+.gras{
+    font-weight: bold;
+}
+
+.info-5{
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.info-1{
+    text-align: left;
+    margin-left: 10%;
+    padding-top: 5%;
+}
+
+.info-2{
+    text-align: left;
+    margin-left: 10%;
+    padding-top: 5%;
+}
+
+.info-3{
+    text-align: left;
+    margin-left: 10%;
+    padding-top: 5%;
+}
+
+.info-4{
+    text-align: left;
+    margin-left: 10%;
+    padding-top: 5%;
+}
