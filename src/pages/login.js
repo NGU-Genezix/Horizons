@@ -23,7 +23,7 @@ const Login = () => {
             password: password,
         }
 
-        let result = await fetch("https://fleepi-api.herokuapp.com/login", {
+        let result = await fetch("URL-Horizon-API", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

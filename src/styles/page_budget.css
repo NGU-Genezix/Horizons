@@ -145,3 +145,20 @@
     padding-right: 0.5%;
     padding-bottom: 0.5%;
 }
+
+.result {
+    background-color: #fff2cc;
+    width: 80%;
+    height: 250px;
+    margin-left: 10%;
+    padding-top: 1%;    
+    justify-content: left;
+    align-items: left;
+    margin-top: 3%;
+}
+
+.btn_budget {
+    margin-right: 9%;
+    margin-top: 1%;
+    position: relative;
+}

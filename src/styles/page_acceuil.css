@@ -1,6 +1,6 @@
 .aide_financiere {
     color: black;
-    margin-top: 200px;
+    margin-top: 100px;
     justify-content: left;
     align-items: left;
     display: flex;
@@ -8,7 +8,15 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 300%;
 }
- 
+
+.description {
+    position: inherit;
+    margin-left: 10%;
+    font-size: 120%;
+    width: 80%;
+    padding-top: 5%;
+}
+
 .Etudiant {
     float: left;
     background-color: #eeca60;
@@ -52,4 +60,26 @@
     justify-content: left;
     align-items: left;
     margin-top: 3%;
+}
+
+.search_criteria {
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 150%;
+    position: relative;
+    margin-top: -80px;
+    margin-left: 40%;
+}
+
+.revenus {
+    font-size: 60%;
+    position: relative;
+    margin-top: 3%;
+}
+
+.place {
+    margin-top: 2%;
+    font-size: 60%;
+    margin-right: 10%;
+    position: relative;
 }

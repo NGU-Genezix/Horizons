@@ -1,7 +1,10 @@
 import React from 'react'
 import "./../styles/aide_acceuil.css"
  
-const AideAcceuil = ({display, name, status, price}) => {
+const AideAcceuil = ({display, min_rev, place, set_rev, search_place, name, status, price}) => {
+    if (min_rev < set_rev && min_rev > 0) {
+        display = false;
+    }
     return (
         <>
             {(display) && (
