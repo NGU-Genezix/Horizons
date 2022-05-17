@@ -43,11 +43,11 @@
 }
 
 [title~="email"] {
-    width: 400px;
+    width: 80%;
 }
 
 [title~="password"] {
-    width: 400px;
+    width: 80%;
 }
 
 .google-btn {
