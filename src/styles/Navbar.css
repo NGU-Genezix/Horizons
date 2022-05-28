@@ -16,6 +16,12 @@ nav {
     padding: 0;
 }
 
+.beta {
+    position: relative;
+    margin-top: 3%;
+    color: rgb(171, 2, 2);
+}
+
 .items {
     margin-right: 10px;
     color: black;

@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import "../styles/page_acceuil.css";
 import AideAcceuil from '../components/aide_acceuil';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import JSONDATA from '../assets/Test_searchbar.json'
 
 export default function Acceuil() {
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
@@ -31,6 +32,26 @@ export default function Acceuil() {
     const handleOnChangeHandi = () => {
       setIsCheckedHandi(!isCheckedHandi);
     };
+
+    let list_aide;
+        list_aide =
+        <ul className='list'>
+          {JSONDATA.filter((val) => {
+                return val
+            }).map((val, key) => {
+                if (val.type == "Etudiant") {
+                  return <Link to={{ pathname: "/aide", state: val,}}><AideAcceuil className="aideEtudiant" display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
+                } else if (val.type == "Handicap") {
+                  return <Link to={{ pathname: "/aide", state: val}}><AideAcceuil className="aideHandicap" display={isCheckedHandi} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Handicap"} price={val.prix} /></Link>
+                } else if (val.type == "Personne Agée") {
+                  return <Link to={{ pathname: "/aide", state: val}}><AideAcceuil className="aideAge" display={isCheckedAge} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Personne Agée"} price={val.prix} /></Link>
+
+                } else {
+                  return <Link to={{ pathname: "/aide", state: val}}><AideAcceuil className="aideEtudiant" display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
+                }
+            })}
+        </ul>
+
     return (
     <div>
         <Navbar />
@@ -57,19 +78,12 @@ export default function Acceuil() {
               Vos Revenus :
               <input defaultValue={0} type='number' onChange={event => changeMaximumRevenu(event.target.value)}></input>
             </div>
-            <div className="place">
+            {/* <div className="place">
               Votre Région :
               <input onChange={event => changePlace(event.target.value)}></input>
-            </div>
+            </div> */}
           </div>
         </div>
-        <ul className='list'>
-            <Link to="/aide"><AideAcceuil className="aideEtudiant" display={isCheckedEtud} min_rev={-1} place={"Paris"} set_rev={maximumRevenu} search_place={place} name={"Aide à la mobilité Parcoursup"} status={"Etudiant"} price={"500"} /></Link>
-            <Link to="/aide2"><AideAcceuil className="aideEtudiant" display={isCheckedEtud} min_rev={1008} place={"Paris"} set_rev={maximumRevenu} search_place={place} name={"Prime d'activité : étudiant, stagiaire"} status={"Etudiant"} price={"246"} /></Link>
-            <Link to="/aide3"><AideAcceuil className="aideAge" display={isCheckedAge} min_rev={-1} place={"Paris"} set_rev={maximumRevenu} search_place={place} name={"Allocation personnalisée d'autonomie"} status={"Personne Agée"} price={"1807"} /></Link>
-            <Link to="/aide4"><AideAcceuil className="aideAge" display={isCheckedAge} min_rev={1423} place={"Paris"} set_rev={maximumRevenu} search_place={place} name={"Allocation de solidarité aux personnes âgées"} status={"Personne Agée"} price={"916"} /></Link>
-            <Link to="/aide5"><AideAcceuil className="aideHandicap" display={isCheckedHandi} min_rev={919} place={"Paris"} set_rev={maximumRevenu} search_place={place} name={"Allocation aux adultes handicapés"} status={"Handicap"} price={"919"} /></Link>
-            <Link to="/aide6"><AideAcceuil className="aideHandicap" display={isCheckedHandi} min_rev={-1} place={"Paris"} set_rev={maximumRevenu} search_place={place} name={"Pension d'invalidité de la Sécurité sociale"} status={"Handicap"} price={"2860"} /></Link>
-        </ul>
+        {list_aide}
     </div>);
 }

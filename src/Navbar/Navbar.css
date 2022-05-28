@@ -16,6 +16,15 @@ nav {
     padding: 0;
 }
 
+.beta {
+    height: 150%;
+    display: flex;
+    position: relative;
+    margin-top: 120%;
+    padding-top: 10%;
+    top: 600px;
+}
+
 .items {
     margin-right: 10px;
     color: black;

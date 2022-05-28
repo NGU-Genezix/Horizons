@@ -56,26 +56,32 @@ export default function Navbar() {
     }, [])
 
     return (
-        <nav>
-            {(toggleMenu || largeur > 500) && (
-                <ul className='liste'>
-                    <img className="logo" src={logo}></img>
-                    <li className='items aide'><Link to="/">Aides</Link></li>
-                    <li className='items budget'><Link to="/budget">Budget</Link></li>
-                    <li className='items'><input width="20%" type="text"
-                    placeholder='Rechercher ...'
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onChange={(event) => {
-                        setSearchTerm(event.target.value);
-                    }}></input></li>
-                    <li className='items btn_connexion'><button><Link to="/login">Connexion</Link></button></li>
-                    <li className='items'><button><Link to="/register">Inscription</Link></button></li>
-                    <li className='items datauser'><button><Link to="/datauser">Mon compte</Link></button></li>
-                </ul>
-            )}
-            <button onClick={toggleNavSmallScreen} className='btn'>BTN</button>
-            {search_list}
-        </nav>
+        
+        <div>
+            <nav>
+                {(toggleMenu || largeur > 500) && (
+                    <ul className='liste'>
+                        <img className="logo" src={logo}></img>
+                        <li className='items aide'><Link to="/">Aides</Link></li>
+                        <li className='items budget'><Link to="/budget">Budget</Link></li>
+                        <li className='items'><input width="20%" type="text"
+                        placeholder='Rechercher ...'
+                        onFocus={onFocus}
+                        onBlur={onBlur}
+                        onChange={(event) => {
+                            setSearchTerm(event.target.value);
+                        }}></input></li>
+                        <li className='items btn_connexion'><button><Link to="/login">Connexion</Link></button></li>
+                        <li className='items'><button><Link to="/register">Inscription</Link></button></li>
+                        <li className='items datauser'><button><Link to="/datauser">Mon compte</Link></button></li>
+                    </ul>
+                )}
+                <button onClick={toggleNavSmallScreen} className='btn'>BTN</button>
+                {search_list}
+            </nav>
+            <div className='beta'>
+                Ceci est une version bêta de notre application. Merci de nous faire des retours en remplissant <a  href='https://forms.gle/2bdpRBieGSnCYwSh6'>ce questionnaire !</a>
+            </div>
+        </div>
     )
 }

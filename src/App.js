@@ -24,21 +24,6 @@ function App() {
           <Route path="/aide" exact>
             <Aide />
           </Route>
-          <Route path="/aide2" exact>
-            <Aidetwo />
-          </Route>
-          <Route path="/aide3" exact>
-            <Aidethree />
-          </Route>
-          <Route path="/aide4" exact>
-            <Aidefour />
-          </Route>
-          <Route path="/aide5" exact>
-            <Aidefive />
-          </Route>
-          <Route path="/aide6" exact>
-            <Aidesix />
-          </Route>
           <Route path="/login" exact>
             <Login />
           </Route>
