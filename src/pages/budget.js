@@ -47,9 +47,9 @@ export default function Budget() {
 
     Parce que vous êtes étudiant, nous vous conseillons de répartir votre revenu restant de cette façon : <br/>
 
-    - Economiser 70 % – Prenez l’habitude de mettre de l’argent de côté, = {argent / 70} euros<br/>
+    - Economiser 70 % = {argent / 70} euros<br/>
 
-    - Plaisir 30 % - = {argent / 30} euros<br/>
+    - Plaisir 30 % = {argent / 30} euros<br/>
 
     Vous pouvez toujours consulter les aides qui pourrais correspondre à vos critères afin d’augmenter vos revenus en <Link to="/">cliquant ici !</Link>
   </div>);

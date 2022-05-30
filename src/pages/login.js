@@ -6,6 +6,8 @@ import GoogleButtonAuth from "../components/GoogleButtonAuth";
 import LockLogo from "../assets/login-lock-logo.png";
 import Navbar from '../components/Navbar';
 import "../styles/page_login.css";
+import API from '../components/APIManager';
+import AUTH from '../components/AuthManager'
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
  
 const Login = () => {
@@ -16,38 +18,43 @@ const Login = () => {
     let history = useHistory();
     const storage = localStorage;
 
-    async function login() {
+    // async function login() {
 
-        let body_content = {
-            mail: email,
-            password: password,
-        }
+    //     let body_content = {
+    //         mail: email,
+    //         password: password,
+    //     }
 
-        let result = await fetch("URL-Horizon-API", {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            },
-            body: JSON.stringify(body_content),
-        });
+    //     let result = await fetch("URL-Horizon-API", {
+    //         method: 'POST',
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Accept": "application/json",
+    //             "Access-Control-Allow-Origin": "*"
+    //         },
+    //         body: JSON.stringify(body_content),
+    //     });
 
-        let rq_response = await result.json();
+    //     let rq_response = await result.json();
 
-        console.log(rq_response);
+    //     console.log(rq_response);
         
-        if (rq_response.status.code == 200) {
-            console.log(rq_response.data.access_token);
-            storage.setItem("access_token", rq_response.data.access_token);
-            storage.setItem("refresh_token", rq_response.data.refresh_token);
-            storage.setItem("id", rq_response.data.user.id);
-            storage.setItem("firstname", rq_response.data.user.firstname);
-            storage.setItem("lastname", rq_response.data.user.lastname);
-            storage.setItem("address", rq_response.data.user.address);
-            storage.setItem("mail", rq_response.data.user.mail);
-            history.push("/me");
-        }
+    //     if (rq_response.status.code == 200) {
+    //         console.log(rq_response.data.access_token);
+    //         storage.setItem("access_token", rq_response.data.access_token);
+    //         storage.setItem("refresh_token", rq_response.data.refresh_token);
+    //         storage.setItem("id", rq_response.data.user.id);
+    //         storage.setItem("firstname", rq_response.data.user.firstname);
+    //         storage.setItem("lastname", rq_response.data.user.lastname);
+    //         storage.setItem("address", rq_response.data.user.address);
+    //         storage.setItem("mail", rq_response.data.user.mail);
+    //         history.push("/me");
+    //     }
+    // }
+
+    async function login() {
+        var res = new AUTH().connect(email, password)
+        console.log(res)
     }
 
     const handleChange = (event) => {

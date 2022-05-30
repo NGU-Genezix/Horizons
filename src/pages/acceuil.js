@@ -12,7 +12,7 @@ export default function Acceuil() {
     const [maximumRevenu, setMinimRev] = useState(0);
     const [place, setPlace] = useState("");
 
-
+ 
     const changeMaximumRevenu = (revenu) => {
       setMinimRev(parseInt(revenu, 10));
     }

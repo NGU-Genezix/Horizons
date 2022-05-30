@@ -4,7 +4,7 @@ import logo from "../assets/logo_Horizon.png"
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import { wait } from '@testing-library/react';
- 
+
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
     const [largeur, setLargeur] = useState(window.innerWidth)
@@ -71,6 +71,7 @@ export default function Navbar() {
                         onChange={(event) => {
                             setSearchTerm(event.target.value);
                         }}></input></li>
+                        {/* <li><Link to="../assets/google-logo.png" target="_blank" download>Download</Link></li> */}
                         <li className='items btn_connexion'><button><Link to="/login">Connexion</Link></button></li>
                         <li className='items'><button><Link to="/register">Inscription</Link></button></li>
                         <li className='items datauser'><button><Link to="/datauser">Mon compte</Link></button></li>

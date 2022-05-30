@@ -8,6 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import "../styles/page_register.css";
+import AUTH from '../components/AuthManager'
  
 const Register = () => {
 
@@ -16,8 +17,9 @@ const Register = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [statut, setStatus] = useState("");
     const [confPassword, setConfPassword] = useState("");
-    const sexe = ['Homme', 'Femme'];
+    const sex = ['Homme', 'Femme'];
     const profil = ['Etudiant', 'Personne agée', 'Handicap'];
     const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
     const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -29,9 +31,13 @@ const Register = () => {
             firstname: firstName,
             lastname: lastName,
             username: username,
-            mail: email,
+            email: email,
             password: password,
+            birthday: "00/00/0000",
+            statut: statut
         }
+        var res = new AUTH().register(body_content)
+        console.log(res)
     }
 
     const handleChange = (event) => {
@@ -47,6 +53,12 @@ const Register = () => {
             setPassword(event.target.value)
         else if (event.target.title == "c_password")
             setConfPassword(event.target.value)
+        else if (event.target.title == "etudiant")
+            setStatus("etudiant")
+        else if (event.target.title == "agee")
+            setStatus("agee")
+        else if (event.target.title == "handicap")
+            setStatus("handicap")
     }
 
     return (
@@ -102,12 +114,12 @@ const Register = () => {
                             </div>
                             <div className="five-title">Sexe</div>
                             <div className="input-7">
-                                <label><input 
+                                <label><input
                                     type="checkbox" 
                                 />
                                 Homme
                                 </label>
-                                <label><input 
+                                <label><input
                                     type="checkbox" 
                                 />
                                 Femme
@@ -115,17 +127,17 @@ const Register = () => {
                             </div>
                             <div className="six-title">Profil</div>
                             <div className="input-8">
-                                <label><input 
+                                <label><input onChange={handleChange} title="etudiant"
                                     type="checkbox" 
                                 />
                                 Etudiant
                                 </label>
-                                <label><input 
+                                <label><input onChange={handleChange} title="agee"
                                     type="checkbox" 
                                 />
                                 Personne agée
                                 </label>
-                                <label><input 
+                                <label><input onChange={handleChange} title="handicap"
                                     type="checkbox" 
                                 />
                                 Handicap

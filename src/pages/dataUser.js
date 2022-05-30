@@ -1,10 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/datauser.css";
+import API from '../components/APIManager';
  
 const DataUser = () => {
+    const [user, setUser] = useState(null);
+    const [isLoading, setLoading] = useState(true);
+    
+    useEffect(() => {
+        getUser()
+    }, [])
 
+    const getUser = () => {
+        let res = new API().get("get_user", true).then(function(result) {
+            setUser(result[1])
+            setLoading(false)
+        })
+    }
 
+    if (isLoading) {
+        return (<div> 
+                    <Navbar />
+                </div>)
+    }
+    console.log(user)
     return (
         <div> 
             <Navbar />
@@ -17,7 +36,7 @@ const DataUser = () => {
                 </div>
                 <div className="register-container">
                     <div className="big-square">
-                        <h1 className="main-title">PAYET DORIAN</h1>
+                        <h1 className="main-title">{user.firstName} {user.lastName}</h1>
 
                         <div className="info-container">
                             <div className="info-1">
@@ -28,7 +47,7 @@ const DataUser = () => {
                             <div className="info-2">
                                 <text className="gras">Adresse mail</text>
                                 <br></br>
-                                <text>dorian.payet@epitech.eu</text>
+                                <text>{user.email}</text>
                             </div>
                             <div className="info-3">
                                 <text className="gras">Sexe</text>
@@ -45,7 +64,7 @@ const DataUser = () => {
                                     type="checkbox"
                                     checked="checked" 
                                 />
-                                Etudiant
+                                {user.statut}
                                 </label>
                             </div>
                             <div className="info-5">

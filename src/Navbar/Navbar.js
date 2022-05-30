@@ -34,6 +34,7 @@ export default function Navbar() {
                     <li className='items aide'>Aides</li>
                     <li className='items budget'>Budget</li>
                     <li className='items'><input width="20%"></input></li>
+                    <li><Link to="../assets/google-logo.png" target="_blank" download>Télécharger l'app mobile !</Link></li>
                     <li className='items btn_connexion'><button>Connexion</button></li>
                     <li className='items'><button>Inscription</button></li>
                     <li className='items datauser'><button>Mon compte</button></li>
