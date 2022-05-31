@@ -6,6 +6,7 @@ import JSONDATA from '../assets/Test_searchbar.json'
 import { wait } from '@testing-library/react';
 import AUTH from '../components/AuthManager';
 import { useHistory } from "react-router-dom";
+import API from './APIManager';
 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -40,6 +41,10 @@ export default function Navbar() {
         </div>
     } else {
         search_list = ""
+    }
+    
+    const download = () => {
+        let res = new API().get("apk", true);
     }
 
     useEffect(() => {
@@ -78,7 +83,7 @@ export default function Navbar() {
                             setSearchTerm(event.target.value);
                         }}></input></li>
                         {/* <li><Link to="../assets/google-logo.png" target="_blank" download>Download</Link></li> */}
-                        
+                        {/* <li className='items budget'><button onClick={download()}>Budget</button></li> */}
                         {isconnect ?
                         <>
                         <li className='items datauser'><button><Link to="/datauser">Mon compte</Link></button></li>

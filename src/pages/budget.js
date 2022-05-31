@@ -47,9 +47,9 @@ export default function Budget() {
 
     Parce que vous êtes étudiant, nous vous conseillons de répartir votre revenu restant de cette façon : <br/>
 
-    - Economiser 70 % = {argent / 70} euros<br/>
+    - Economiser 70 % = {(argent * 0.7)|0} euros<br/>
 
-    - Plaisir 30 % = {argent / 30} euros<br/>
+    - Plaisir 30 % = {(argent * 0.3)|0} euros<br/>
 
     Vous pouvez toujours consulter les aides qui pourrais correspondre à vos critères afin d’augmenter vos revenus en <Link to="/">cliquant ici !</Link>
   </div>);
@@ -64,9 +64,9 @@ export default function Budget() {
     - Traitement / Confort  100% = {argent} euros<br/>
     OU <br/>
 
-    - Economiser entre 60 et 65% = {argent / 63} euros<br/>
+    - Economiser entre 60 et 65% = {(argent * 0.63)|0} euros<br/>
 
-    - Loisir entre 35 et 40% = {argent / 37} euros<br/>
+    - Loisir entre 35 et 40% = {(argent * 0.37)|0} euros<br/>
 
     Vous pouvez toujours consulter les aides qui pourrais correspondre à vos critères afin d’augmenter vos revenus en <Link to="/">cliquant ici !</Link>
   </div>);
@@ -78,9 +78,9 @@ export default function Budget() {
 
     Parce que vous êtes une personne âgée, nous vous conseillons de répartir votre revenu restant de cette façon : <br/>
 
-    - Economiser 60% = {argent / 60} euros<br/>
+    - Economiser 60% = {(argent * 0.60)|0} euros<br/>
 
-    - Plaisir / Confort 40% = {argent / 40} euros<br/>
+    - Plaisir / Confort 40% = {(argent * 0.40)|0} euros<br/>
 
     Vous pouvez toujours consulter les aides qui pourrais correspondre à vos critères afin d’augmenter vos revenus en <Link to="/">cliquant ici !</Link> 
   </div>);

@@ -60,6 +60,9 @@ export default function Acceuil() {
         <br/>
         <br/>
         Permettre aux utilisateurs de trouver toutes les aides auxquelles ils sont éligibles, quelles que soient leurs situations (étudiants, situation de handicap, personnes âgées). De pouvoir à long terme accompagner étape par étape l’utilisateur dans ses démarches.
+        <br/>
+        <br/>
+        Pour télécharger notre application mobile, <a href='http://89.234.183.150:8080/api/apk'>Cliquez ici !</a>
         </div>
         <div className='aide_financiere'>Aides Financières</div>
         <div className='checkBoxDiv'>
