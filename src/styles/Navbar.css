@@ -20,6 +20,7 @@ nav {
     position: relative;
     margin-top: 3%;
     color: rgb(171, 2, 2);
+    z-index: 1;
 }
 
 .items {
@@ -37,6 +38,7 @@ nav {
 .search_list {
     background: #eeca60;
     width: 20%;
+    z-index: 2;
     border-style: double;
     border-width: 10%;
     border-color: black;
@@ -65,7 +67,7 @@ nav {
     margin-right: 5%;
 }
 
-.btn_connexion {
+.btn_connexion, .datauser {
     margin-left: 25%;
 }
 

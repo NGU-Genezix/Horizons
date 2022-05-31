@@ -40,14 +40,14 @@ export default function Acceuil() {
                 return val
             }).map((val, key) => {
                 if (val.type == "Etudiant") {
-                  return <Link to={{ pathname: "/aide", state: val,}}><AideAcceuil className="aideEtudiant" display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
+                  return <Link to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
                 } else if (val.type == "Handicap") {
-                  return <Link to={{ pathname: "/aide", state: val}}><AideAcceuil className="aideHandicap" display={isCheckedHandi} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Handicap"} price={val.prix} /></Link>
+                  return <Link to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideHandicap" key={key} display={isCheckedHandi} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Handicap"} price={val.prix} /></Link>
                 } else if (val.type == "Personne Agée") {
-                  return <Link to={{ pathname: "/aide", state: val}}><AideAcceuil className="aideAge" display={isCheckedAge} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Personne Agée"} price={val.prix} /></Link>
+                  return <Link to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideAge" key={key} display={isCheckedAge} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Personne Agée"} price={val.prix} /></Link>
 
                 } else {
-                  return <Link to={{ pathname: "/aide", state: val}}><AideAcceuil className="aideEtudiant" display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
+                  return <Link to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
                 }
             })}
         </ul>

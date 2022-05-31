@@ -35,7 +35,7 @@ export default function Navbar() {
                     return val
                 }
             }).map((val, key) => {
-                return <div className='search' onFocus={onFocus}><p><Link to={val.link}>{val.first_name}</Link></p></div>
+                return <div className='search' onFocus={onFocus}><p><Link to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}>{val.first_name}</Link></p></div>
             })}
         </div>
     } else {
