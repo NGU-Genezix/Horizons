@@ -18,42 +18,11 @@ const Login = () => {
     let history = useHistory();
     const storage = localStorage;
 
-    // async function login() {
-
-    //     let body_content = {
-    //         mail: email,
-    //         password: password,
-    //     }
-
-    //     let result = await fetch("URL-Horizon-API", {
-    //         method: 'POST',
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Accept": "application/json",
-    //             "Access-Control-Allow-Origin": "*"
-    //         },
-    //         body: JSON.stringify(body_content),
-    //     });
-
-    //     let rq_response = await result.json();
-
-    //     console.log(rq_response);
-        
-    //     if (rq_response.status.code == 200) {
-    //         console.log(rq_response.data.access_token);
-    //         storage.setItem("access_token", rq_response.data.access_token);
-    //         storage.setItem("refresh_token", rq_response.data.refresh_token);
-    //         storage.setItem("id", rq_response.data.user.id);
-    //         storage.setItem("firstname", rq_response.data.user.firstname);
-    //         storage.setItem("lastname", rq_response.data.user.lastname);
-    //         storage.setItem("address", rq_response.data.user.address);
-    //         storage.setItem("mail", rq_response.data.user.mail);
-    //         history.push("/me");
-    //     }
-    // }
-
     async function login() {
-        var res = new AUTH().connect(email, password)
+        var res = new AUTH().connect(email, password).then(res=> {
+            if (res[0] == 200)
+                history.push('/')
+        })
         console.log(res)
     }
 

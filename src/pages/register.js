@@ -12,9 +12,9 @@ import AUTH from '../components/AuthManager'
  
 const Register = () => {
 
-    const [username, setUsername] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [birthday, setBirthday] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [statut, setStatus] = useState("");
@@ -30,20 +30,21 @@ const Register = () => {
         let body_content = {
             firstname: firstName,
             lastname: lastName,
-            username: username,
             email: email,
             password: password,
             birthday: "00/00/0000",
             statut: statut
         }
-        var res = new AUTH().register(body_content)
-        console.log(res)
+        var res = new AUTH().register(body_content).then(res=> {
+            if (res[0] == 200)
+                history.push('/login')
+            else
+                console.log("register failed", res)
+        })
     }
 
     const handleChange = (event) => {
-        if (event.target.title == "username")
-            setUsername(event.target.value)
-        else if (event.target.title == "firstname")
+        if (event.target.title == "firstname")
             setFirstName(event.target.value)
         else if (event.target.title == "lastname")
             setLastName(event.target.value)
@@ -59,6 +60,8 @@ const Register = () => {
             setStatus("agee")
         else if (event.target.title == "handicap")
             setStatus("handicap")
+        else if (event.target.title == "birthday")
+            setBirthday(event.target.value)
     }
 
     return (
@@ -76,16 +79,7 @@ const Register = () => {
                         <h1 className="main-title">Inscription</h1>
 
                         <div className="input-container">
-                            <div className="one-title">Nom d'utilisateur</div>
-                            <div className="input-1">
-                                <TextFieldAuth
-                                    title="username"
-                                    onChange={handleChange}
-                                    placeholder="Nom d'utilisateur"
-                                    type="text"
-                                />
-                            </div>
-                            <div className="two-title">Prénom</div>
+                            <div className="two-title">Prénom:</div>
                             <div className="input-2">
                                 <TextFieldAuth
                                     title="firstname"
@@ -101,6 +95,27 @@ const Register = () => {
                                     onChange={handleChange}
                                     placeholder="Nom"
                                     type="text"
+                                />
+                            </div>
+                            <div className="one-title">Date de naissance:</div>
+                            <div className="input-1">
+                                <TextFieldAuth
+                                    title="birthday"
+                                    onChange={handleChange}
+                                    placeholder="jj"
+                                    type="text"
+                                />
+                                <TextFieldAuth
+                                    title="birthday"
+                                    onChange={handleChange}
+                                    placeholder="mm"
+                                    type="text"
+                                />
+                                <TextFieldAuth
+                                title="birthday"
+                                onChange={handleChange}
+                                placeholder="yyyy"
+                                type="text"
                                 />
                             </div>
                             <div className="four-title">Adresse email</div>

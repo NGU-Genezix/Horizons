@@ -4,12 +4,15 @@ import logo from "../assets/logo_Horizon.png"
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import { wait } from '@testing-library/react';
+import AUTH from '../components/AuthManager';
+import { useHistory } from "react-router-dom";
 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
     const [largeur, setLargeur] = useState(window.innerWidth)
     const [searchTerm, setSearchTerm] = useState('')
     const [focused, setFocused] = useState(false)
+    let history = useHistory();
 
     const onFocus = () => setFocused(true)
     const onBlur = () => {
@@ -55,6 +58,9 @@ export default function Navbar() {
         }
     }, [])
 
+    const isconnect = new AUTH().isConnected();
+
+
     return (
         
         <div>
@@ -72,9 +78,18 @@ export default function Navbar() {
                             setSearchTerm(event.target.value);
                         }}></input></li>
                         {/* <li><Link to="../assets/google-logo.png" target="_blank" download>Download</Link></li> */}
+                        
+                        {isconnect ?
+                        <>
+                        <li className='items datauser'><button><Link to="/datauser">Mon compte</Link></button></li>
+                        <li className='items disconnect'><button onClick={() => {new AUTH().disconnect() ; history.push('/login')} }>Déconnexion</button></li>
+                        </>:
+                        <>
                         <li className='items btn_connexion'><button><Link to="/login">Connexion</Link></button></li>
                         <li className='items'><button><Link to="/register">Inscription</Link></button></li>
-                        <li className='items datauser'><button><Link to="/datauser">Mon compte</Link></button></li>
+                        </>
+                        }
+                        
                     </ul>
                 )}
                 <button onClick={toggleNavSmallScreen} className='btn'>BTN</button>
