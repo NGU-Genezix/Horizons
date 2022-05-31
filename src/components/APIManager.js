@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosRequestHeaders, AxiosResponse } from 'axios';
 
-const ip = "http://89.234.183.150:8080/api/";
+const ip = "https://cors-everywhere-me.herokuapp.com/http://89.234.183.150:8080/api/";
 
 export default class API
 {
@@ -13,6 +13,8 @@ export default class API
   {
     let headers = {
       'Content-Type': "application/json",
+      'Access-Control-Allow-Origin': "*",
+      'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept",
     };
     if (secured) {
       let token = localStorage.getItem("token");
