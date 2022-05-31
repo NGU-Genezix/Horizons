@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/datauser.css";
 import API from '../components/APIManager';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
  
 const DataUser = () => {
     const [user, setUser] = useState(null);
@@ -68,7 +69,7 @@ const DataUser = () => {
                                 </label>
                             </div>
                             <div className="info-5">
-                                <button>Modifier</button>
+                                <button><Link to="/updateuser">Modifier</Link></button>
                             </div>
                         </div>
                     </div>

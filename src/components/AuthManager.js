@@ -76,6 +76,24 @@ export default class AuthManager
         return [response[0], "Inscription erreur"];
     }
 
+    async updateuser(element)
+    {
+        let datas = new Map();
+        datas.set("firstName", element.firstname);
+        datas.set("lastName", element.lastname);
+        console.log("__" + datas)
+        let response = await new API().post("update_user", true, datas);
+        if (response[0] != 200 && response[1])
+        {
+            let error = response[1];
+            if (error && error.data && error.data.detail && error.data.detail.includes("Duplicate entry"))
+                return [501, "Email déjà utilisée"];
+        }
+        if (response[1] instanceof Array)
+            return [response[0], response[1][0]];
+        return [response[0], "Inscription erreur"];
+    }
+
     disconnect()
     {
         this.setConxion && this.setConxion(false);

@@ -17,7 +17,7 @@ export default class API
       'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept",
     };
     if (secured) {
-      let token = localStorage.getItem("token");
+      let token = localStorage.getItem("token");  
       headers['Authorization'] = 'Bearer ' + token;
     }
     return (headers);
