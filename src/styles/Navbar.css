@@ -1,5 +1,5 @@
 nav {
-    height: 50px;
+    height: 4vw;
     background: #eeca60;
 } 
 
@@ -7,6 +7,7 @@ nav {
     list-style-type: none;
     background: #eeca60;
     height: 150%;
+    font-size: 1.3vw;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -16,15 +17,20 @@ nav {
     padding: 0;
 }
 
+.recherche {
+    width: 450%;
+}
+
 .beta {
     position: relative;
     margin-top: 3%;
+    font-size: 1.3vw;
     color: rgb(171, 2, 2);
     z-index: 1;
 }
 
 .items {
-    margin-right: 10px;
+    margin-right: 3%;
     color: black;
     cursor: pointer;
 }
@@ -33,6 +39,7 @@ nav {
     background-color: #fff2cc;
     width: 90%;
     margin-left: 5%;
+    font-size: 1vw;
 }
 
 .search_list {
@@ -43,7 +50,7 @@ nav {
     border-width: 10%;
     border-color: black;
     margin-left: 42%;
-    bottom:25px;
+    bottom: 30%;
     position: relative;
 }
 
@@ -51,19 +58,24 @@ nav {
     display: none;
 }
 
+.btn_s {
+    font-size: 1vw;
+}
+
+
 .logo {
     /* margin-right: 50px; */
-    width: 10%;
-    height: 250%;
+    width: 50%;
+    height: 300%;
     cursor: pointer;
-    margin-right: 10%;
+    margin-right: 20%;
 }
 
 .budget {
-    margin-right: 10%;
+    margin-right: 15%;
 }
 
-.aide {
+.mobile {
     margin-right: 5%;
 }
 
@@ -72,6 +84,7 @@ nav {
 }
 
 .btn_inscription {
+    margin-right: 10%;
 }
 
 @media screen and (max-width: 500px){

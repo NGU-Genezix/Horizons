@@ -1,7 +1,7 @@
 .mainDiv {
     background-color: #fff2cc;
     width: 80%;
-    height: 50px;
+    height: 5vw;
     margin-left: 4%;
     padding-top: 1%;    
     justify-content: left;
@@ -11,7 +11,7 @@
 
 .name {
     float: left;
-    font-size: 125%;
+    font-size: 1.5vw;
     width: 40%;
     justify-content: left;
     align-items: left;
@@ -23,6 +23,7 @@
 .status {
     float: left;
     background-color: #eeca60;
+    font-size: 1vw;
     position:static;
     width: 10%;
     margin-left: 15%;
@@ -35,6 +36,7 @@
 .price {
     float:left;
     background-color: #c9e265;
+    font-size: 1vw;
     width: 10%;
     margin-left: 14%;
     padding-top: 0.5%;

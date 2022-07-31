@@ -143,29 +143,29 @@ export default function Budget() {
           <div className='first_line'>
               <div className='revenu'>
                 Revenu<br/>
-                <input defaultValue={"0"} type='number' onChange={event => setRevenu(event.target.value)}></input>
+                <input className='input' defaultValue={"0"} type='number' onChange={event => setRevenu(event.target.value)}></input>
               </div>
               <div className='loisirs'>
                 Loisirs<br/>
-                <input defaultValue={"0"} type='number' onChange={event => setLoisir(event.target.value)}></input>
+                <input className='input' defaultValue={"0"} type='number' onChange={event => setLoisir(event.target.value)}></input>
               </div>
               <div className='transports'>
                 Transports<br/>
-                <input defaultValue={"0"} type='number' onChange={event => setTransport(event.target.value)}></input>
+                <input className='input' defaultValue={"0"} type='number' onChange={event => setTransport(event.target.value)}></input>
               </div>
           </div>
           <div className='second_line'>
               <div className='logement'>
                 Logement<br/>
-                <input defaultValue={"0"} type='number' onChange={event => setLogement(event.target.value)}></input>
+                <input className='input' defaultValue={"0"} type='number' onChange={event => setLogement(event.target.value)}></input>
               </div>
               <div className='alimentation'>
                 Alimentation<br/>
-                <input defaultValue={"0"} type='number' onChange={event => setAlimentation(event.target.value)}></input>
+                <input className='input' defaultValue={"0"} type='number' onChange={event => setAlimentation(event.target.value)}></input>
               </div>
               <div className='epargne'>
                 Epargne<br/>
-                <input defaultValue={"0"} type='number' onChange={event => setEpargne(event.target.value)}></input>
+                <input className='input' defaultValue={"0"} type='number' onChange={event => setEpargne(event.target.value)}></input>
               </div>
           </div>
         <button className="btn_budget" onClick={event => handleResultDisplay()}>Calculer</button>

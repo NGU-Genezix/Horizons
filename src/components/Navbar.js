@@ -42,10 +42,6 @@ export default function Navbar() {
     } else {
         search_list = ""
     }
-    
-    const download = () => {
-        let res = new API().get("apk", true);
-    }
 
     useEffect(() => {
         const changeWidth = () => {
@@ -72,10 +68,10 @@ export default function Navbar() {
             <nav>
                 {(toggleMenu || largeur > 500) && (
                     <ul className='liste'>
-                        <img className="logo" src={logo}></img>
-                        <li className='items aide'><Link to="/">Aides</Link></li>
+                        <Link to="/"><img className="logo" src={logo}></img></Link>
+                        <li className='items mobile'><Link to="/mobile">Mobile</Link></li>
                         <li className='items budget'><Link to="/budget">Budget</Link></li>
-                        <li className='items'><input width="20%" type="text"
+                        <li className='items'><input className='recherche' type="text"
                         placeholder='Rechercher ...'
                         onFocus={onFocus}
                         onBlur={onBlur}
@@ -86,12 +82,12 @@ export default function Navbar() {
                         {/* <li className='items budget'><button onClick={download()}>Budget</button></li> */}
                         {isconnect ?
                         <>
-                        <li className='items datauser'><button><Link to="/datauser">Mon compte</Link></button></li>
-                        <li className='items disconnect'><button onClick={() => {new AUTH().disconnect() ; history.push('/login')} }>Déconnexion</button></li>
+                        <li className='items datauser'><button className='btn_s'><Link to="/datauser">Mon compte</Link></button></li>
+                        <li className='items disconnect'><button className='btn_s' onClick={() => {new AUTH().disconnect() ; history.push('/login')} }>Déconnexion</button></li>
                         </>:
                         <>
-                        <li className='items btn_connexion'><button><Link to="/login">Connexion</Link></button></li>
-                        <li className='items'><button><Link to="/register">Inscription</Link></button></li>
+                        <li className='items btn_connexion'><button className='btn_s'><Link to="/login">Connexion</Link></button></li>
+                        <li className='items btn_inscription'><button className='btn_s'><Link to="/register">Inscription</Link></button></li>
                         </>
                         }
                         

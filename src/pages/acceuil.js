@@ -4,6 +4,8 @@ import "../styles/page_acceuil.css";
 import AideAcceuil from '../components/aide_acceuil';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
+import axios from 'axios'
+import fileDownload from 'js-file-download'
 
 export default function Acceuil() {
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
@@ -13,6 +15,15 @@ export default function Acceuil() {
     const [place, setPlace] = useState("");
 
  
+    const handleDownload = (url, filename) => {
+      axios.get(url, {
+        responseType: 'blob',
+      })
+      .then((res) => {
+        fileDownload(res.data, filename)
+      })
+    }
+
     const changeMaximumRevenu = (revenu) => {
       setMinimRev(parseInt(revenu, 10));
     }
@@ -62,9 +73,8 @@ export default function Acceuil() {
         Permettre aux utilisateurs de trouver toutes les aides auxquelles ils sont éligibles, quelles que soient leurs situations (étudiants, situation de handicap, personnes âgées). De pouvoir à long terme accompagner étape par étape l’utilisateur dans ses démarches.
         <br/>
         <br/>
-        Pour télécharger notre application mobile, <a href='http://89.234.183.150:8080/api/apk'>Cliquez ici !</a>
         </div>
-        <div className='aide_financiere'>Aides Financières</div>
+        <div className='aide_financiere'>Aides Test Financières</div>
         <div className='checkBoxDiv'>
           <div className="Etudiant">
             <input type="checkbox" value="Etudiant" checked={isCheckedEtud} onChange={handleOnChangeEtud}/>Etudiant
@@ -79,7 +89,7 @@ export default function Acceuil() {
             Critères de recherche :<br/>
             <div className="revenus">
               Vos Revenus :
-              <input defaultValue={0} type='number' onChange={event => changeMaximumRevenu(event.target.value)}></input>
+              <input className="input_rev" defaultValue={0} type='number' onChange={event => changeMaximumRevenu(event.target.value)}></input>
             </div>
             {/* <div className="place">
               Votre Région :

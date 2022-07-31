@@ -76,11 +76,11 @@ const Login = () => {
                             <span>OU</span>
                             <hr></hr>
                         </div>
-                        <div class="google-btn">
-                            <div class="google-icon-wrapper">
-                                <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                        <div className="google-btn">
+                            <div className="google-icon-wrapper">
+                                <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
                             </div>
-                            <p class="btn-text"><b>Continuer avec Google</b></p>
+                            <p className="btn-text"><b>Continuer avec Google</b></p>
                         </div>
 
 

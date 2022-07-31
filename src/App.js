@@ -7,6 +7,7 @@ import Register from './pages/register.js';
 import Budget from './pages/budget.js';
 import DataUser from './pages/dataUser.js';
 import UpdateUser from './pages/updateUser.js';
+import Mobile from './pages/mobile.js';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/aide" exact>
             <Aide />
+          </Route>
+          <Route path="/mobile" exact>
+            <Mobile />
           </Route>
           <Route path="/login" exact>
             <Login />
