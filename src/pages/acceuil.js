@@ -6,6 +6,7 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import axios from 'axios'
 import fileDownload from 'js-file-download'
+import Tchatbot from '../components/Tchatbot';
 
 export default function Acceuil() {
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
@@ -66,6 +67,7 @@ export default function Acceuil() {
     return (
     <div>
         <Navbar />
+        <Tchatbot/>
         <div className='description'>
         Horizons a pour but d’être une plateforme d’aide aux personnes à la recherches d’aides financières et propose divers services comme la possibilité de se renseigner sur comment mieux gérer son budget mensuellement et trouver l’aide adaptée à sa situation.
         <br/>

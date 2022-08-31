@@ -33,6 +33,7 @@ export default function Aide() {
   const [addrs, setaddrs] = useState([]);
   const [place, setPlace] = useState(places[0]);
   const [location, setLocation] = useState("");
+  const [isDisplayed, setIsDisplayed] = useState(false);
 
   const regex = /<li [^>]*class="result-item"[^>]*><a href="([^"]*)" data-xiti-name="([^"]*)"[^>]*>/g
   const regexG = /<li [^>]*class="result-item"[^>]*><a href="([^"]*)" data-xiti-name="([^"]*)"[^>]*>/
@@ -51,6 +52,28 @@ export default function Aide() {
       <input type="text">Cette aide doit être completer en ligne</input>
     </div>
   )
+  
+  const searchAddr = (url) => {
+    // axios.get('https://lannuaire.service-public.fr/recherche?whoWhat=' + place + '&where=' + location)
+    axios.get(url, {'headers' : {'Content-Type': "application/json",
+    'Access-Control-Allow-Origin': "*",
+    'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept",}})
+    .then(res => {
+      const html = res.data;
+      const newList = html.match(regex)?.map((v) => {
+        const vv = v.match(regexG);
+        // console.log(vv);
+        // console.log(vv);
+        if (vv) {
+          return ({ name: he.decode(vv[2].replace("Recherche::Annuaire::", '')), link: vv[1] })
+        }
+      })
+      setaddrs(newList)
+      console.log(newList)
+      setIsDisplayed(true)
+    })
+  }
+
   // const searchForaddr = (place, location) => {
   //   axios({
   //     method: 'get',
@@ -59,13 +82,22 @@ export default function Aide() {
   //     const html = res.data;
   //     const newList = html.match(regex)?.map((v) => {
   //       const vv = v.match(regexG);
+  //       // console.log(vv);
+  //       console.log(newList);
   //       if (vv) {
   //         return ({ name: he.decode(vv[2].replace("Recherche::Annuaire::", '')), link: vv[1] })
   //       }
   //     })
-  //     newList && setaddrs(newList)
+  //     // newList && setaddrs(newList)
   //   })
   // }
+
+  const checkAddr = () => {
+    console.log("________")
+    console.log(addrs)
+    console.log("________")
+  }
+
   return (
     <div className="App">
         <Navbar />
@@ -105,7 +137,19 @@ export default function Aide() {
         >
           {places.map((v, k) => <option key={k} label={v} value={v} />)}
         </select></div>
-        <a href={'https://lannuaire.service-public.fr/recherche?whoWhat=' + place + '&where=' + location}><button>Chercher</button></a>
+        {/* <a href={'https://lannuaire.service-public.fr/recherche?whoWhat=' + place + '&where=' + location}> */}
+          <button onClick={() => {searchAddr("https://cors-everywhere-me.herokuapp.com/https://lannuaire.service-public.fr/recherche?whoWhat="+ place +"&where=" + location)}}>Chercher</button>
+        {/* </a> */}
+        {(isDisplayed) && (
+        <div>
+          {addrs.map((v, k) => {
+            return (<div>
+              {v.name}    |
+              <a href={v.link}>+ d'information</a>
+            </div>)
+          })}
+        </div>
+        )}
       </div>
     </div>
   )
