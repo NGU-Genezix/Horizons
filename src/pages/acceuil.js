@@ -7,6 +7,8 @@ import JSONDATA from '../assets/Test_searchbar.json'
 import axios from 'axios'
 import fileDownload from 'js-file-download'
 import Tchatbot from '../components/Tchatbot';
+import API from '../components/APIManager';
+import { getSuggestedQuery } from '@testing-library/react';
 
 export default function Acceuil() {
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
@@ -44,6 +46,34 @@ export default function Acceuil() {
     const handleOnChangeHandi = () => {
       setIsCheckedHandi(!isCheckedHandi);
     };
+    
+    const [user, setUser] = useState(null);
+    const [isLoading, setLoading] = useState(true);
+
+    useEffect(() => {
+      getUser()
+      Display_aide_user()
+    }, [])
+
+    const getUser = () => {
+      let res = new API().get("get_user", true).then(function(result) {
+        if (result[1] != null) {
+          if (result[1].statut == "etudiant") {
+            handleOnChangeAge();
+            handleOnChangeHandi(); }
+          else if (result[1].statut == "agee") {
+            handleOnChangeEtud();
+            handleOnChangeHandi(); }
+          else if (result[1].statut == "handicap") {
+            handleOnChangeEtud();
+            handleOnChangeAge(); }
+        }
+      })
+  }
+    const Display_aide_user = () => {
+      console.log(user)
+      
+    }
 
     let list_aide;
         list_aide =
@@ -63,6 +93,7 @@ export default function Acceuil() {
                 }
             })}
         </ul>
+
 
     return (
     <div>
