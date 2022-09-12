@@ -7,6 +7,7 @@ import JSONDATA from '../assets/Test_searchbar.json'
 import axios from 'axios'
 import fileDownload from 'js-file-download'
 import Tchatbot from '../components/Tchatbot';
+import API from '../components/APIManager';
 
 export default function Acceuil() {
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
@@ -45,6 +46,29 @@ export default function Acceuil() {
       setIsCheckedHandi(!isCheckedHandi);
     };
 
+    const [user, setUser] = useState(null);
+    
+    useEffect(() => {
+      getUser()
+    }, [])
+    
+    async function getUser () {
+      let res = await new API().get("get_user", true).then(function(result) {
+          setUser(result[1])
+          if (result[1].statut == "etudiant") {
+            handleOnChangeAge();
+            handleOnChangeHandi(); }
+          else if (result[1].statut == "agee") {
+            handleOnChangeEtud();
+            handleOnChangeHandi(); }
+          else if (result[1].statut == "handicap") {
+            handleOnChangeEtud();
+            handleOnChangeAge(); }
+      })
+
+    }
+    
+
     let list_aide;
         list_aide =
         <ul className='list'>
@@ -65,7 +89,7 @@ export default function Acceuil() {
         </ul>
 
     return (
-    <div>
+      <div>
         <Navbar />
         <Tchatbot/>
         <div className='description'>

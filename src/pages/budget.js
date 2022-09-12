@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import "../styles/page_budget.css";
 import {Link} from 'react-router-dom';
+import API from '../components/APIManager';
 
 export default function Budget() {
   const [isCheckedEtud, setIsCheckedEtud] = useState(false);
@@ -16,6 +17,24 @@ export default function Budget() {
   const [logement, setLogement] = useState("0");
   const [alimentation, setAlimentation] = useState("0");
   const [epargne, setEpargne] = useState("0");
+
+
+  const setBudget = () => {
+    let body_content = {
+      revenu: revenu,
+      alimentation: alimentation,
+      epargne: epargne,
+      logment: logement,
+      loisir: loisir,
+      transport: transport
+    }
+    let res = new API().post("/api/set_budget", true, body_content).then(function() {
+      let res2 = new API().get("/api/get_advice", true).then(function(result) {
+        console.log(result)
+      })
+    });
+  }
+
 
   const handleOnChangeEtud = () => {
     setIsCheckedEtud(!isCheckedEtud);
@@ -94,6 +113,8 @@ export default function Budget() {
     </div>)
   }
 
+
+
   const handleResultDisplay = () => {
     if (revenu == "" || loisir == "" || transport == "" || alimentation == "" || logement == "" || epargne == ""
     || (isCheckedEtud == false && isCheckedAge == false && isCheckedHandi == false)) {
@@ -168,7 +189,7 @@ export default function Budget() {
                 <input className='input' defaultValue={"0"} type='number' onChange={event => setEpargne(event.target.value)}></input>
               </div>
           </div>
-        <button className="btn_budget" onClick={event => handleResultDisplay()}>Calculer</button>
+        <button className="btn_budget" onClick={setBudget()}>Calculer</button>
         </div>
         {(isDisplayed) && (
           <div className="result">
