@@ -75,27 +75,6 @@ export default function Acceuil() {
       
     }
 
-    const [user, setUser] = useState(null);
-    
-    useEffect(() => {
-      getUser()
-    }, [])
-    
-    async function getUser () {
-      let res = await new API().get("get_user", true).then(function(result) {
-          setUser(result[1])
-          if (result[1].statut == "etudiant") {
-            handleOnChangeAge();
-            handleOnChangeHandi(); }
-          else if (result[1].statut == "agee") {
-            handleOnChangeEtud();
-            handleOnChangeHandi(); }
-          else if (result[1].statut == "handicap") {
-            handleOnChangeEtud();
-            handleOnChangeAge(); }
-      })
-
-    }
     
 
     let list_aide;

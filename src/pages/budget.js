@@ -189,7 +189,7 @@ export default function Budget() {
                 <input className='input' defaultValue={"0"} type='number' onChange={event => setEpargne(event.target.value)}></input>
               </div>
           </div>
-        <button className="btn_budget" onClick={setBudget()}>Calculer</button>
+        <button className="btn_budget" onClick={handleResultDisplay()}>Calculer</button>
         </div>
         {(isDisplayed) && (
           <div className="result">
