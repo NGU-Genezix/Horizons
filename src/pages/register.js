@@ -33,8 +33,10 @@ const Register = () => {
             email: email,
             password: password,
             birthday: "00/00/0000",
-            statut: statut
+            statut: statut,
+            sex: "homme"
         }
+        console.log(body_content)
         var res = new AUTH().register(body_content).then(res=> {
             if (res[0] == 200)
                 history.push('/login')
@@ -55,11 +57,11 @@ const Register = () => {
         else if (event.target.title == "c_password")
             setConfPassword(event.target.value)
         else if (event.target.title == "etudiant")
-            setStatus("etudiant")
+            setStatus("étudiant")
         else if (event.target.title == "agee")
-            setStatus("agee")
+            setStatus("âgé")
         else if (event.target.title == "handicap")
-            setStatus("handicap")
+            setStatus("handicapé")
         else if (event.target.title == "birthday")
             setBirthday(event.target.value)
     }

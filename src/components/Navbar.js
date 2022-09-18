@@ -7,6 +7,9 @@ import { wait } from '@testing-library/react';
 import AUTH from '../components/AuthManager';
 import { useHistory } from "react-router-dom";
 import API from './APIManager';
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
+import { Button } from '@mui/material';
 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);

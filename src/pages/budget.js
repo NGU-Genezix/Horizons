@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import "../styles/page_budget.css";
 import {Link} from 'react-router-dom';
 import API from '../components/APIManager';
+import renderHTML from 'react-render-html';
 
 export default function Budget() {
   const [isCheckedEtud, setIsCheckedEtud] = useState(false);
@@ -11,28 +12,66 @@ export default function Budget() {
   const [isCheckedHandi, setIsCheckedHandi] = useState(false);
   const [isDisplayed, setIsDisplayed] = useState(false);
   const [result, setResult] = useState("");
-  const [revenu, setRevenu] = useState("0");
-  const [loisir, setLoisir] = useState("0");
-  const [transport, setTransport] = useState("0");
-  const [logement, setLogement] = useState("0");
-  const [alimentation, setAlimentation] = useState("0");
-  const [epargne, setEpargne] = useState("0");
+  const [revenu, setRevenu] = useState(0);
+  const [loisir, setLoisir] = useState(0);
+  const [transport, setTransport] = useState(0);
+  const [logement, setLogement] = useState(0);
+  const [alimentation, setAlimentation] = useState(0);
+  const [epargne, setEpargne] = useState(0);
 
+
+  useEffect(() => {
+    start()
+  }, [])
+
+  const start = () => {
+    let res_budget = new API().get("get_budget", true).then(function(resu) {
+      if (resu[0] == 200) {
+        console.log(resu[1])
+        setRevenu(resu[1]["Revenu"])
+        setEpargne(resu[1]["Epargne"])
+        setLogement(resu[1]["Logement"])
+        setLoisir(resu[1]["Loisir"])
+        setAlimentation(resu[1]["Alimentation"])
+        setTransport(resu[1]["Transport"])
+        //resu[1]["Revenu"]
+        let res2 = new API().get("get_advice", true).then(function(result) {
+          console.log(result)
+          console.log(result[1][0])
+          setResult(result[1][0])
+          setIsDisplayed(true);
+        })
+      }
+    });
+  }
 
   const setBudget = () => {
     let body_content = {
       revenu: revenu,
       alimentation: alimentation,
       epargne: epargne,
-      logment: logement,
+      logement: logement,
       loisir: loisir,
       transport: transport
     }
-    let res = new API().post("/api/set_budget", true, body_content).then(function() {
-      let res2 = new API().get("/api/get_advice", true).then(function(result) {
-        console.log(result)
-      })
+    let pt_bdg = new API().post_budget("update_budget", true, body_content).then(function(resu) {
+      
+      console.log(resu)
     });
+    let set_bdg = new API().post_budget("set_budget", true, body_content).then(function(resu) {
+      
+      console.log(resu)
+    });
+    let res_budget = new API().post_budget("get_budget", true, body_content).then(function(resu) {
+      console.log(resu)
+    });
+    let res2 = new API().get("get_advice", true).then(function(result) {
+      console.log(result)
+      console.log(result[1][0])
+      setResult(result[1][0])
+      setIsDisplayed(true);
+    })
+ 
   }
 
 
@@ -60,91 +99,6 @@ export default function Budget() {
     }
   };
 
-  const setResultEtude = (argent) => {
-    setResult(<div>
-    Avec vos dépenses mensuelles actuelle, il vous reste {argent} euros restant par mois.<br/>
-
-    Parce que vous êtes étudiant, nous vous conseillons de répartir votre revenu restant de cette façon : <br/>
-
-    - Economiser 70 % = {(argent * 0.7)|0} euros<br/>
-
-    - Plaisir 30 % = {(argent * 0.3)|0} euros<br/>
-
-    Vous pouvez toujours consulter les aides qui pourrais correspondre à vos critères afin d’augmenter vos revenus en <Link to="/">cliquant ici !</Link>
-  </div>);
-  }
-
-  const setResultHandi = (argent) => {
-    setResult(<div>
-    Avec vos dépenses mensuelles actuelle, il vous reste {argent} euros restant par mois. <br/>
-
-    Parce que vous êtes une personne en situation d’handicap, nous vous conseillons de répartir votre revenu restant de cette façon : <br/>
-
-    - Traitement / Confort  100% = {argent} euros<br/>
-    OU <br/>
-
-    - Economiser entre 60 et 65% = {(argent * 0.63)|0} euros<br/>
-
-    - Loisir entre 35 et 40% = {(argent * 0.37)|0} euros<br/>
-
-    Vous pouvez toujours consulter les aides qui pourrais correspondre à vos critères afin d’augmenter vos revenus en <Link to="/">cliquant ici !</Link>
-  </div>);
-  }
-
-  const setResultAge = (argent) => {
-    setResult(<div>
-    Avec vos dépenses mensuelles actuelle, il vous reste {argent} euros restant par mois. <br/>
-
-    Parce que vous êtes une personne âgée, nous vous conseillons de répartir votre revenu restant de cette façon : <br/>
-
-    - Economiser 60% = {(argent * 0.60)|0} euros<br/>
-
-    - Plaisir / Confort 40% = {(argent * 0.40)|0} euros<br/>
-
-    Vous pouvez toujours consulter les aides qui pourrais correspondre à vos critères afin d’augmenter vos revenus en <Link to="/">cliquant ici !</Link> 
-  </div>);
-  }
-
-  const setResultNeg = (argent) => {
-    setResult(<div>
-      Avec vos dépenses mensuelles actuelle, vous perdez plus d’argent que vous n’en gagnez ({argent} euros).<br/> 
-
-      Pour remédier à cela, nous vous conseillons de consulter les aides qui pourrais correspondre à vos critères afin d’augmenter vos revenus en <Link to="/">cliquant ici !</Link> 
-    </div>)
-  }
-
-
-
-  const handleResultDisplay = () => {
-    if (revenu == "" || loisir == "" || transport == "" || alimentation == "" || logement == "" || epargne == ""
-    || (isCheckedEtud == false && isCheckedAge == false && isCheckedHandi == false)) {
-      setIsDisplayed(false);
-    }
-    else {
-      const rev = parseInt(revenu, 10);
-      const lois = parseInt(loisir, 10);
-      const trans = parseInt(transport, 10);
-      const alim = parseInt(alimentation, 10);
-      const loge = parseInt(logement, 10);
-      const epa = parseInt(epargne, 10);
-      const res = rev - (lois + trans + alim + loge + epa);
-      if (res < 0) {
-        setResultNeg(res);
-      } else {
-        if (isCheckedEtud == true) {
-          setResultEtude(res);
-        }
-        if (isCheckedAge == true) {
-          setResultAge(res);
-        }
-        if (isCheckedHandi == true) {
-          setResultHandi(res);
-        }
-      }
-      setIsDisplayed(true);
-    }
-  };
-
     return (
     <div>
         <Navbar />
@@ -164,36 +118,36 @@ export default function Budget() {
           <div className='first_line'>
               <div className='revenu'>
                 Revenu<br/>
-                <input className='input' defaultValue={"0"} type='number' onChange={event => setRevenu(event.target.value)}></input>
+                <input className='input' defaultValue={revenu} value={revenu} type='number' onChange={event => setRevenu(parseInt(event.target.value))}></input>
               </div>
               <div className='loisirs'>
                 Loisirs<br/>
-                <input className='input' defaultValue={"0"} type='number' onChange={event => setLoisir(event.target.value)}></input>
+                <input className='input' defaultValue={loisir} value={loisir} type='number' onChange={event => setLoisir(parseInt(event.target.value))}></input>
               </div>
               <div className='transports'>
                 Transports<br/>
-                <input className='input' defaultValue={"0"} type='number' onChange={event => setTransport(event.target.value)}></input>
+                <input className='input' defaultValue={transport} value={transport} type='number' onChange={event => setTransport(parseInt(event.target.value))}></input>
               </div>
           </div>
           <div className='second_line'>
               <div className='logement'>
                 Logement<br/>
-                <input className='input' defaultValue={"0"} type='number' onChange={event => setLogement(event.target.value)}></input>
+                <input className='input' defaultValue={logement} value={logement} type='number' onChange={event => setLogement(parseInt(event.target.value))}></input>
               </div>
               <div className='alimentation'>
                 Alimentation<br/>
-                <input className='input' defaultValue={"0"} type='number' onChange={event => setAlimentation(event.target.value)}></input>
+                <input className='input' defaultValue={alimentation} value={alimentation} type='number' onChange={event => setAlimentation(parseInt(event.target.value))}></input>
               </div>
               <div className='epargne'>
                 Epargne<br/>
-                <input className='input' defaultValue={"0"} type='number' onChange={event => setEpargne(event.target.value)}></input>
+                <input className='input' defaultValue={epargne} value={epargne} type='number' onChange={event => setEpargne(parseInt(event.target.value))}></input>
               </div>
           </div>
-        <button className="btn_budget" onClick={handleResultDisplay()}>Calculer</button>
+        <button className="btn_budget" onClick={event => setBudget()}>Calculer</button>
         </div>
         {(isDisplayed) && (
           <div className="result">
-            {result}
+            {renderHTML(result) }
           </div>
         )}
     </div>);
