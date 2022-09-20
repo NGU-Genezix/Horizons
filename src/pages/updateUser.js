@@ -30,6 +30,10 @@ const UpdateUser = () => {
         let body_content = {
             firstname: firstName,
             lastname: lastName,
+            password: password,
+            birthday: birthday,
+            statut: statut,
+            sex: "homme"
         }
         var res = new AUTH().updateuser(body_content).then(res=> {
             if (res[0] == 200)
@@ -44,6 +48,20 @@ const UpdateUser = () => {
             setFirstName(event.target.value)
         else if (event.target.title == "lastname")
             setLastName(event.target.value)
+        else if (event.target.title == "email")
+            setEmail(event.target.value)
+        else if (event.target.title == "password")
+            setPassword(event.target.value)
+        else if (event.target.title == "c_password")
+            setConfPassword(event.target.value)
+        else if (event.target.title == "etudiant")
+            setStatus("étudiant")
+        else if (event.target.title == "agee")
+            setStatus("âgé")
+        else if (event.target.title == "handicap")
+            setStatus("handicapé")
+        else if (event.target.title == "birthday")
+            setBirthday(event.target.value)
     }
 
     return (
@@ -77,6 +95,58 @@ const UpdateUser = () => {
                                     onChange={handleChange}
                                     placeholder="Nom"
                                     type="text"
+                                />
+                            </div>
+                            <div className="three-title">Date de naissance</div>
+                            <div className="input-4">
+                                <TextFieldAuth
+                                    title="birthday"
+                                    onChange={handleChange}
+                                    placeholder="jj"
+                                    type="text"
+                                />
+                                <TextFieldAuth
+                                    title="birthday"
+                                    onChange={handleChange}
+                                    placeholder="mm"
+                                    type="text"
+                                />
+                                <TextFieldAuth
+                                title="birthday"
+                                onChange={handleChange}
+                                placeholder="yyyy"
+                                type="text"
+                                />
+                            </div>
+                            <div className="three-title">Email</div>
+                            <div className="input-5">
+                                <TextFieldAuth
+                                    title="email"
+                                    onChange={handleChange}
+                                    placeholder="Email"
+                                    type="text"
+                                />
+                            </div>
+                            <div className="five-title">Sexe</div>
+                            <div className="input-6">
+                                <label><input
+                                    type="checkbox" 
+                                />
+                                Homme
+                                </label>
+                                <label><input
+                                    type="checkbox" 
+                                />
+                                Femme
+                                </label>
+                            </div>
+                            <div className="seven-title">Mot de passe</div>
+                            <div className="input-7">
+                                <TextFieldAuth
+                                    title="password"
+                                    onChange={handleChange}
+                                    placeholder="Mot de passe"
+                                    type="password"
                                 />
                             </div>
                         </div>
