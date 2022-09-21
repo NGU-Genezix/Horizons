@@ -63,6 +63,7 @@ export default class AuthManager
         datas.set("lastname", element.lastname);
         datas.set("statut", element.statut);
         datas.set("birthday", element.birthday);
+        datas.set("sex", element.sex);
         console.log(datas)
         let response = await new API().post("register", false, datas);
         if (response[0] != 200 && response[1])

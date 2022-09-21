@@ -68,12 +68,14 @@ export default class API
   
   async post(url, secured, data)
   {
-    console.log(JSON.stringify(data))
+    console.log(data)
     
     if (secured == true && localStorage.getItem("token") == null)
       return [400, "Vous n'êtes pas connecté"];
     try
     {
+      console.log("test")
+      //Enlever Data pour le budget
       let Data = {};
       data.forEach((value, key) => {
         Data[key] = value;
@@ -84,6 +86,30 @@ export default class API
         url: this.getURL(url, secured),
         headers: this.createHeaders(secured),
         data: JSON.stringify(Data),
+      });
+      console.log(response)
+      return [response.status, this.parse(response.data)];
+    }
+    catch (e)
+    {
+      return [400, e.response];
+    }
+  }
+
+  async post_budget(url, secured, data)
+  {
+    console.log(data)
+    
+    if (secured == true && localStorage.getItem("token") == null)
+      return [400, "Vous n'êtes pas connecté"];
+    try
+    {
+      console.log("test")
+      let response = await axios({
+        method: 'post',
+        url: this.getURL(url, secured),
+        headers: this.createHeaders(secured),
+        data: JSON.stringify(data),
       });
       console.log(response)
       return [response.status, this.parse(response.data)];
