@@ -119,14 +119,14 @@ export default function Aide() {
           <div className='box4'>
             Liens utiles: <a href={data.lien_aide}>{data.lien_aide}</a>
           </div>
-        <p>Chercher l'établissement le plus près de chez vous pour vos démarches:</p>
-        <div>
+        <p className='box5'>Chercher l'établissement le plus près de chez vous pour vos démarches:</p>
+        <div className='box6'>
         Ville / Commune :
         <input type="text" onChange={(e) => {
           setLocation(e.target.value)
           // searchForaddr(place, e.target.value)
         }} /></div>
-        <div>
+        <div className='box7'>
           Type d'établissement :
         <select
           selectedValue={place}
@@ -138,7 +138,7 @@ export default function Aide() {
           {places.map((v, k) => <option key={k} label={v} value={v} />)}
         </select></div>
         {/* <a href={'https://lannuaire.service-public.fr/recherche?whoWhat=' + place + '&where=' + location}> */}
-          <button onClick={() => {searchAddr("https://cors-everywhere-me.herokuapp.com/https://lannuaire.service-public.fr/recherche?whoWhat="+ place +"&where=" + location)}}>Chercher</button>
+          <button className='box8' onClick={() => {searchAddr("https://cors-everywhere-me.herokuapp.com/https://lannuaire.service-public.fr/recherche?whoWhat="+ place +"&where=" + location)}}>Chercher</button>
         {/* </a> */}
         {(isDisplayed) && (
         <div>

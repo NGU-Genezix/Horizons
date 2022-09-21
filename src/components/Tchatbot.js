@@ -34,11 +34,11 @@ export default function Tchatbot() {
         <div className='tchatbot'>
             {(isDisplayed) && (
             <div className='tchat_btn'>
-                <button onClick={toggleOn}>Tchatbot</button>
+                <button class="tchat_design" onClick={toggleOn}>Tchatbot</button>
             </div>)}
             {(!isDisplayed) && (
                 <div className='tchat_div'>
-                    <button className='btn_close' onClick={toggleOff}>Close</button>
+                    <button className='btn_close' onClick={toggleOff}>X</button>
                     <div className='main_tchat'>
                         {allTchat.length
                             ? allTchat.map(elem => {
@@ -54,10 +54,10 @@ export default function Tchatbot() {
                         }
                     </div>
                     <div className='input_tchat'>
-                        <input type="text" placeholder='Tapez pour écrire ...' onChange={(event) => {
+                        <input type="text" class="bar_design" placeholder='Tapez pour écrire ...' onChange={(event) => {
                             setTchatText(event.target.value);
                         }}></input>
-                        <button onClick={sendText}>Envoyer</button>
+                        <button class="send_design" onClick={sendText}>Envoyer</button>
                     </div>
                 </div>
             )}

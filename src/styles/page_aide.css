@@ -1,22 +1,28 @@
 .titles {
-    width: 300px ;
+    width: 45%;
     float: left;
-    margin-top: 70px;
-    margin-left: 140px;
+    margin-top: 5%;
+    margin-left: 10%;
+    font-size: 3vw;
   }
-  
+
   .box1 {
-    margin-left: 140px;
+    margin-left: 10%;
     float: left;
+    font-size: 1vw;
+    position: static;
     background-color: #eeca60;
     padding-top: 0.5%;
     padding-left: 0.5%;
     padding-right: 0.5%;
     padding-bottom: 0.5%;
   }
+
   
   .box2 {
-    margin-left: 100px;
+    margin-left: 10%;
+    font-size: 1vw;
+    position: static;
     background-color: #c9e265;
     padding-top: 0.5%;
     padding-left: 0.5%;
@@ -36,9 +42,11 @@
   }
   
   .box3 {
-    width: 1200px;
-    margin-top: 40px;
-    margin-left: 140px;
+    width: 80%;
+    margin-top: 2%;
+    margin-left: 10%;
+    font-size: 1vw;
+    position: static;
     background-color: #fff2cc;
     padding-top: 0.5%;
     padding-left: 0.5%;
@@ -47,12 +55,38 @@
   }
   
   .box4 {
-    width: 400px;
-    margin-top: 40px;
-    margin-left: 140px;
+    width: 20%;
+    margin-top: 2%;
+    margin-left: 10%;
+    font-size: 1vw;
+    position: static;
     background-color: #eeca60;
     padding-top: 0.5%;
     padding-left: 0.5%;
     padding-right: 0.5%;
     padding-bottom: 0.5%;
+  }
+
+  .box5 {
+    font-size: 1vw;
+    position: static;
+  }
+
+  .box6 {
+    font-size: 1vw;
+    position: static;
+  }
+
+  .box7 {
+    font-size: 1vw;
+    position: static;
+    margin-top: 1%;
+  }
+
+  .box8 {
+    font-size: 1vw;
+    position: static;
+    width: 10%;
+    margin-left: 48%;
+    margin-top: 1%;
   }

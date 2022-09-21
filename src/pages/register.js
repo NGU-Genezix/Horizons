@@ -129,12 +129,12 @@ const Register = () => {
                             </div>
                             <div className="five-title">Sexe</div>
                             <div className="input-7">
-                                <label><input
+                                <label><input title="sexe"
                                     type="checkbox" 
                                 />
                                 Homme
                                 </label>
-                                <label><input
+                                <label><input title="sexe"
                                     type="checkbox" 
                                 />
                                 Femme

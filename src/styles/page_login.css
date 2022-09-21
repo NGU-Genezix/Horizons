@@ -3,7 +3,7 @@
     margin-left: 35%;
     margin-right: 35%;
     margin-top: 5%;
-    border-radius: 10px;
+    border-radius: 1%;
 }
 
 .link-container{
@@ -13,78 +13,97 @@
 
 .main-title{
     padding-top: 3%;
+    font-size: 2vw;
+    position:static;
 }
 
 .email-title{
     text-align: left;
     margin-left: 6%;
+    font-size: 1vw;
+    position:static;
 }
 
 .password-title{
     text-align: left;
     margin-left: 6%;
     margin-top: 5%;
+    font-size: 1vw;
+    position:static;
 }
 
 .remember-container{
     margin-top: 3%;
+    font-size: 1vw;
+    position:static;
 }
 
 .separator-auth-methods-container{
     margin-top: 3%;
+    font-size: 1vw;
+    position:static;
 }
 
 .clicable-widgets-container{
     margin-top: 3%;
+    font-size: 1vw;
+    position:static;
 }
 
-.email-bar{
-    width: 400px;
+.buttonAuth{
+    font-size: 1vw;
+    position:static;
 }
 
 [title~="email"] {
     width: 80%;
+    font-size: 1vw;
+    position:static;
 }
 
 [title~="password"] {
     width: 80%;
+    font-size: 1vw;
+    position:static;
 }
 
 .google-btn {
     margin-top: 3%;
-    margin-left: 27%;
-  width: 210px;
-  height: 42px;
+    margin-left: 15%;
+  width: 70%;
+  height: 60px;
   background-color: #4285f4;
-  border-radius: 2px;
+  border-radius: 2%;
   box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+
 }
+
 .google-icon-wrapper {
     position: absolute;
-    margin-top: 1px;
-    margin-left: 1px;
-    width: 40px;
-    height: 40px;
-    border-radius: 2px;
+    margin-top: 0.1%;
+    margin-left: 0.1%;
+    width: 4%;
+    height: 6%;
+    border-radius: 2%;
     background-color: #fff;
 }
 
 .google-icon {
     position: absolute;
-    margin-top: 11px;
-    margin-left: 11px;
-    left:     0;
-    top:      0;
-    width: 18px;
-    height: 18px;  
+    margin-top: 25%;
+    margin-left: 25%;
+    left:     0%;
+    top:      0%;
+    width: 45%;
+    height: 45%;  
 }
 
 .btn-text {
     float: right;
-    margin: 11px 11px 0 0;
+    margin: 7% 6% 0 0;
     color: #fff;
-    font-size: 14px;
-    letter-spacing: 0.2px;
+    font-size: 1.4vw;
+    position:static;
     font-family: "Roboto";
 }
   

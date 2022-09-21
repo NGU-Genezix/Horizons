@@ -2,51 +2,88 @@
     text-align: left;
     margin-left: 6%;
     padding-top: 3%;
+    font-size: 1vw;
+    position:static;
 }
 
 .two-title{
     text-align: left;
     margin-left: 6%;
     padding-top: 3%;
+    font-size: 1vw;
+    position:static;
 }
 .three-title{
     text-align: left;
     margin-left: 6%;
     padding-top: 3%;
+    font-size: 1vw;
+    position:static;
 }
 .four-title{
     text-align: left;
     margin-left: 6%;
     padding-top: 3%;
+    font-size: 1vw;
+    position:static;
 }
 .five-title{
     text-align: left;
     margin-left: 6%;
     padding-top: 3%;
+    font-size: 1vw;
+    position:static;
 }
 .six-title{
     text-align: left;
     margin-left: 6%;
     padding-top: 3%;
+    font-size: 1vw;
+    position:static;
 }
 .seven-title{
     text-align: left;
     margin-left: 6%;
     padding-top: 3%;
+    font-size: 1vw;
+    position:static;
+}
+
+.input-7{
+    font-size: 1vw;
+    position:static;
+}
+
+.input-8{
+    font-size: 1vw;
+    position:static;
 }
 
 [title~="username"] {
     width: 80%;
+    font-size: 1vw;
+    position:static;
 }
 
 [title~="firstname"] {
     width: 80%;
+    font-size: 1vw;
+    position:static;
 }
 
 [title~="lastname"] {
     width: 80%;
+    font-size: 1vw;
+    position:static;
 }
 
 [title~="c_password"] {
     width: 80%;
+    font-size: 1vw;
+    position:static;
+}
+
+[title~="birthday"] {
+    font-size: 1vw;
+    position:static;
 }

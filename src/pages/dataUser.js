@@ -69,7 +69,7 @@ const DataUser = () => {
                                 </label>
                             </div>
                             <div className="info-5">
-                                <button><Link to="/updateuser">Modifier</Link></button>
+                                <button className="info-6"><Link to="/updateuser">Modifier</Link></button>
                             </div>
                         </div>
                     </div>
