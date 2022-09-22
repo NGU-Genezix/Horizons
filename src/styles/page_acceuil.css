@@ -57,6 +57,20 @@
     
 }
 
+.Fav {
+    float: left;
+    background-color: #eeca60;
+    position:static;
+    margin-left: 5%;
+    width: 10%;
+    padding-top: 0.5%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-bottom: 0.5%;
+    font-size: 1vw;
+    
+}
+
 /* .checkBoxDiv {
     width: 80%;
     height: 50px;

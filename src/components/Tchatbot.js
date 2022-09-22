@@ -14,6 +14,8 @@ export default function Tchatbot() {
     const [isDisplayed, setIsDisplayed] = useState(true);
     const [tchat, setTchatText] = useState("");
     const [allTchat, setAllTchat] = useState([]);
+    const [answers, setAnswers] = useState({});
+    const [dataSendBack, setDataSendBack] = useState([]);
     const [myMsg, setMyMsg] = useState(true);
 
     const toggleOn = () => {
@@ -25,10 +27,50 @@ export default function Tchatbot() {
     }
 
     const sendText = () => {
-        setAllTchat(allTchat => [...allTchat, tchat, "OK"])
+        setAllTchat(allTchat => [...allTchat, tchat, 'OK'])
+    };
+
+    const getAnswer = (elem) => {
+        setAnswers(answers => [...answers, elem])
     };
 
     let test = 0
+
+
+    // useEffect(() => {
+    //     test1()
+    //   }, [])
+
+    // const test1 = () => {
+    //     let res = new API().post("chatbot/send", false, null).then(function(result) {
+    //       console.log("OUI")
+    //       console.log(result[1]["data"])
+    //       setAllTchat([result[1]["data"]["botRess"][0]])
+    //       console.log(result[1]["data"]["autoRess"][0])
+    //       setAnswers(result[1]["data"]["autoRess"])
+    //       console.log(answers)
+    //     //   result[1]["data"]["autoRess"][0]
+    //     })
+    //   }
+
+    const reply = (elem) => {
+        // let body_content = {
+        //     type: "autoRes",
+        //     res: elem,
+        //     dataSendBack: dataSendBack,
+        //   }
+        //   setTchatText(elem.res)
+        //   sendText()
+        // let res = new API().post("chatbot/send", false, body_content).then(function(result) {
+        //   console.log(result[1]["data"])
+        //   setTchatText(result[1]["data"]["botRess"][0])
+        //   sendText()
+        //   console.log(result[1]["data"]["autoRess"][0])
+        //   setAnswers(result[1]["data"]["autoRess"])
+        //   console.log(answers)
+        // //   result[1]["data"]["autoRess"][0]
+        // })
+    }
 
     return (
         <div className='tchatbot'>
@@ -53,6 +95,11 @@ export default function Tchatbot() {
                             : null
                         }
                     </div>
+                    {/* {answers.length
+                    ? answers.map(elem => {
+                        return (<button key={elem.id} onClick={reply(elem)}>{elem.res}</button>)
+                    })
+                    : null} */}
                     <div className='input_tchat'>
                         <input type="text" class="bar_design" placeholder='Tapez pour écrire ...' onChange={(event) => {
                             setTchatText(event.target.value);

@@ -66,7 +66,7 @@ export default class API
     }
   }
   
-  async post(url, secured, data)
+  async tchat(url, secured, data)
   {
     console.log(data)
     
@@ -80,6 +80,38 @@ export default class API
       data.forEach((value, key) => {
         Data[key] = value;
       })
+      console.log(Data)
+      let response = await axios({
+        method: 'post',
+        url: this.getURL2(url, secured),
+        headers: this.createHeaders(secured),
+        data: JSON.stringify(Data),
+      });
+      console.log(response)
+      return [response.status, this.parse(response.data)];
+    }
+    catch (e)
+    {
+      return [400, e.response];
+    }
+  }
+
+  async post(url, secured, data)
+  {
+    console.log(data)
+    
+    if (secured == true && localStorage.getItem("token") == null)
+      return [400, "Vous n'êtes pas connecté"];
+    try
+    {
+      console.log("test")
+      //Enlever Data pour le budget
+      let Data = {};
+      if (data != null) {
+        data.forEach((value, key) => {
+          Data[key] = value;
+        })
+      }
       console.log(Data)
       let response = await axios({
         method: 'post',

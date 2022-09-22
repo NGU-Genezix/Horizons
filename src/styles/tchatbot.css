@@ -2,6 +2,7 @@
     position: fixed;
     left: 90%;
     top: 83%;
+    z-index: 1;
 } 
 
 .tchat_design {
@@ -31,6 +32,7 @@
 
 .tchatbot {
     width: 100%;
+    z-index: 1;
 }
 
 .tchat_div {
@@ -41,6 +43,7 @@
     border-radius: 15px;
     width: 19%;
     height: 40%;
+    z-index: 1;
 }
 
 .main_tchat {

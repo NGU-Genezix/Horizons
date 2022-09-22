@@ -5,6 +5,12 @@ import "../styles/page_aide.css";
 import JSONDATA from '../assets/code_postal.json'
 import Select from 'react-select'
 import axios from "axios";
+import { gsap } from "gsap"
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { FaRegHeart } from "react-icons/fa";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 // import { Linking, Pressable, Text, View } from "react-native";
 // import { useTailwind } from "tailwind-rn/dist";
 // import RNPickerSelect from 'react-native-picker-select';
@@ -16,6 +22,7 @@ export default function Aide() {
   const location_ = useLocation()
   const data = location_.state.val
   const places = location_.state.places
+  const [heartColor, setHeartColor] = useState("black")//A changer avec requete api
   // const handleChange = (event) => {
   //   setPlace(event.target.value)
   // }
@@ -38,8 +45,27 @@ export default function Aide() {
   const regex = /<li [^>]*class="result-item"[^>]*><a href="([^"]*)" data-xiti-name="([^"]*)"[^>]*>/g
   const regexG = /<li [^>]*class="result-item"[^>]*><a href="([^"]*)" data-xiti-name="([^"]*)"[^>]*>/
 
+  const slideInTop = (elem, delay, duration) => {
+    gsap.fromTo(elem, {
+      opacity: 0,
+      y: -200,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      delay: 0.4,
+      duration: 0.6,
+      scrollTrigger: {
+        trigger: elem,
+        start: "top center",
+        end: "bottom center"
+      }
+    })
+  }
 
-
+  useEffect(() => {
+    slideInTop("#conteneur")
+  }, [])
   // useEffect(() => {
   //   if (addrs.length === 0)
   //     searchForaddr(place, location)
@@ -97,7 +123,11 @@ export default function Aide() {
     console.log(addrs)
     console.log("________")
   }
-
+  
+  const heartClicked = () => {
+    heartColor === 'red' ? setHeartColor('black') : setHeartColor('red')
+  }
+  
   return (
     <div className="App">
         <Navbar />
@@ -112,6 +142,7 @@ export default function Aide() {
             <div className='box2'>
               Jusqu'à {data.prix}€
             </div>
+            <div><FaRegHeart onClick={() => heartClicked()} fontSize={40} color={heartColor} style={{marginLeft:'50%',}}/>Ajouter Aux Favoris</div>
           </div>
           <div className='box3'>
             {data.descriptif}
@@ -143,11 +174,17 @@ export default function Aide() {
         {(isDisplayed) && (
         <div>
           {addrs.map((v, k) => {
-            return (<div>
-              {v.name}    |
-              <a href={v.link}>+ d'information</a>
-            </div>)
-          })}
+            if (k < 5) {
+            return (
+              <div className='etablissement'>
+                    <div>
+                      {v.name}
+                    </div>
+                    <div>
+                      <a href={v.link}>Cliquez pour plus d'information</a>
+                    </div>
+              </div>
+          )}})}
         </div>
         )}
       </div>

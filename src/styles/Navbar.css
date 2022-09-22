@@ -39,10 +39,6 @@ nav {
     cursor: pointer;
 }
 
-.items:hover {
-    background-color: #fff2cc; /* On modifie la couleur du fond au passage de la souris */
-}
-
 .search {
     background-color: #fff2cc;
     width: 90%;

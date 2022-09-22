@@ -5,11 +5,13 @@ import "../styles/page_budget.css";
 import {Link} from 'react-router-dom';
 import API from '../components/APIManager';
 import renderHTML from 'react-render-html';
+import { gsap } from "gsap"
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 export default function Budget() {
-  const [isCheckedEtud, setIsCheckedEtud] = useState(false);
-  const [isCheckedAge, setIsCheckedAge] = useState(false);
-  const [isCheckedHandi, setIsCheckedHandi] = useState(false);
   const [isDisplayed, setIsDisplayed] = useState(false);
   const [result, setResult] = useState("");
   const [revenu, setRevenu] = useState(0);
@@ -19,9 +21,35 @@ export default function Budget() {
   const [alimentation, setAlimentation] = useState(0);
   const [epargne, setEpargne] = useState(0);
 
+  const slideInTop = (elem, delay, duration) => {
+    gsap.fromTo(elem, {
+      opacity: 0,
+      y: -200,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      delay: 0.4,
+      duration: 0.6,
+      scrollTrigger: {
+        trigger: elem,
+        start: "top center",
+        end: "bottom center"
+      }
+    })
+  }
+
+  const onEnter = ({ currentTarget }) => {
+    gsap.to(currentTarget, { backgroundColor: "#ffda6d"})
+  }
+
+  const onLeave = ({ currentTarget }) => {
+    gsap.to(currentTarget, { backgroundColor: "#fff2cc"})
+  }
 
   useEffect(() => {
     start()
+    slideInTop("#budget")
   }, [])
 
   const start = () => {
@@ -40,6 +68,7 @@ export default function Budget() {
           console.log(result[1][0])
           setResult(result[1][0])
           setIsDisplayed(true);
+          slideInTop("#result")
         })
       }
     });
@@ -55,66 +84,44 @@ export default function Budget() {
       transport: transport
     }
     let pt_bdg = new API().post_budget("update_budget", true, body_content).then(function(resu) {
-      
       console.log(resu)
+      if (resu[0] == 200) {
+        let res_budget = new API().post_budget("get_budget", true, body_content).then(function(resul) {
+          console.log(resul)
+          let res2 = new API().get("get_advice", true).then(function(result) {
+            console.log(result)
+            console.log(result[1][0])
+            setResult(result[1][0])
+            setIsDisplayed(true);
+          })
+        });
+      } else {
+        let set_bdg = new API().post_budget("set_budget", true, body_content).then(function(resu) {
+          let res_budget = new API().post_budget("get_budget", true, body_content).then(function(resul) {
+            console.log(resul)
+            let res2 = new API().get("get_advice", true).then(function(result) {
+              console.log(result)
+              console.log(result[1][0])
+              setResult(result[1][0])
+              setIsDisplayed(true);
+            })
+          });
+          console.log(resu)
+        });
+        slideInTop("#result")
+      }
     });
-    let set_bdg = new API().post_budget("set_budget", true, body_content).then(function(resu) {
-      
-      console.log(resu)
-    });
-    let res_budget = new API().post_budget("get_budget", true, body_content).then(function(resu) {
-      console.log(resu)
-    });
-    let res2 = new API().get("get_advice", true).then(function(result) {
-      console.log(result)
-      console.log(result[1][0])
-      setResult(result[1][0])
-      setIsDisplayed(true);
-    })
+    
+    
+    
  
   }
-
-
-  const handleOnChangeEtud = () => {
-    setIsCheckedEtud(!isCheckedEtud);
-    if (isCheckedEtud == false) {
-      setIsCheckedAge(false);
-      setIsCheckedHandi(false);
-    }
-  };
- 
-  const handleOnChangeAge = () => {
-    setIsCheckedAge(!isCheckedAge);
-    if (isCheckedAge == false) {
-      setIsCheckedEtud(false);
-      setIsCheckedHandi(false);
-    }
-  };
-
-  const handleOnChangeHandi = () => {
-    setIsCheckedHandi(!isCheckedHandi);
-    if (isCheckedHandi == false) {
-      setIsCheckedAge(false);
-      setIsCheckedEtud(false);
-    }
-  };
 
     return (
     <div>
         <Navbar />
         <div className='budget_title'>Budget</div>
-        <div className='checkBoxDiv'>
-          <div className="Etudiant">
-            <input type="checkbox" value="Etudiant" checked={isCheckedEtud} onChange={handleOnChangeEtud}/>Etudiant
-          </div>
-          <div className="PersonneAgée" >
-            <input type="checkbox" value="PersonneAgée" checked={isCheckedAge} onChange={handleOnChangeAge}/>Personne Agée
-          </div>
-          <div className="Handicap">
-            <input type="checkbox" value="Handicap" checked={isCheckedHandi} onChange={handleOnChangeHandi}/>Handicap
-          </div>
-        </div>
-        <div className='budget_calculator'>
+        <div id="budget" className='budget_calculator'>
           <div className='first_line'>
               <div className='revenu'>
                 Revenu<br/>
@@ -146,7 +153,7 @@ export default function Budget() {
         <button className="btn_budget" onClick={event => setBudget()}>Calculer</button>
         </div>
         {(isDisplayed) && (
-          <div className="result">
+          <div id="result" className="result">
             {renderHTML(result) }
           </div>
         )}

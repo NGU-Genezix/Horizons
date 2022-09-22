@@ -6,10 +6,10 @@ import JSONDATA from '../assets/Test_searchbar.json'
 import { wait } from '@testing-library/react';
 import AUTH from '../components/AuthManager';
 import { useHistory } from "react-router-dom";
-import API from './APIManager';
-import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/styles.css";
-import { Button } from '@mui/material';
+// import API from './APIManager';
+// import { AwesomeButton } from "react-awesome-button";
+// import "react-awesome-button/dist/styles.css";
+// import { Button } from '@mui/material';
 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -72,8 +72,8 @@ export default function Navbar() {
                 {(toggleMenu || largeur > 500) && (
                     <ul className='liste'>
                         <Link to="/"><img className="logo" src={logo}></img></Link>
-                        <li className='items mobile'><Link to="/mobile">Mobile</Link></li>
-                        <li className='items budget'><Link to="/budget">Budget</Link></li>
+                        <li className='items mobile'><button className='btn_s'><Link to="/mobile">Mobile</Link></button></li>
+                        <li className='items budget'><button className='btn_s'><Link to="/budget">Budget</Link></button></li>
                         <li className='items'><input className='recherche' type="text"
                         placeholder='Rechercher ...'
                         onFocus={onFocus}
