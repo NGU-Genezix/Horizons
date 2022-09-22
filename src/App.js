@@ -8,9 +8,24 @@ import Budget from './pages/budget.js';
 import DataUser from './pages/dataUser.js';
 import UpdateUser from './pages/updateUser.js';
 import Mobile from './pages/mobile.js';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import API from './components/APIManager';
+
 
 function App() {
+  const [isAuthenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
+  const getUser = () => {
+    let res = new API().get("get_user", true).then(function(result) {
+      if (result[1]!=null) {
+        setAuthenticated(true)
+      }
+
+    })}
   return (
     <div className="App">
       <BrowserRouter>
@@ -31,7 +46,7 @@ function App() {
             <Register />
           </Route>
           <Route path="/budget" exact>
-            <Budget />
+            <Budget/>
           </Route>
           <Route path="/datauser" exact>
             <DataUser/>
@@ -39,6 +54,10 @@ function App() {
           <Route path="/updateuser" exact>
             <UpdateUser/>
           </Route>
+          <Route render="/" exact>
+            <Acceuil />
+          </Route>
+          
         </Switch> 
       </BrowserRouter>
     </div>

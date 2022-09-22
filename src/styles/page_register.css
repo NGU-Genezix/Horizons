@@ -59,6 +59,11 @@
     position:static;
 }
 
+[title~="sexe"] {
+    font-size: 1vw;
+    position:static;
+}
+
 [title~="username"] {
     width: 80%;
     font-size: 1vw;

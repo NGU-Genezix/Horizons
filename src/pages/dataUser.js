@@ -43,7 +43,7 @@ const DataUser = () => {
                             <div className="info-1">
                                 <text className="gras">Date de naissance</text>
                                 <br></br>
-                                <text>16/05/2000</text>
+                                <text>{user.birthday}</text>
                             </div>
                             <div className="info-2">
                                 <text className="gras">Adresse mail</text>

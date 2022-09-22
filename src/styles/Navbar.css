@@ -68,6 +68,26 @@ nav {
 
 .btn_s {
     font-size: 1vw;
+    display: inline-block;
+    padding: 15% 20%;
+    cursor: pointer;
+    text-align: center;	
+    text-decoration: none;
+    outline: none;
+    color: black;
+    background-color: #fff2cc;
+    border: none;
+    border-radius: 5%;
+}
+
+.btn_s:hover {
+    background-color: #E1B124
+}
+
+.btn_s:active {
+    background-color: #E1B124;
+    transform: translateY(4px);
+    box-shadow: 0 5px #666;
 }
 
 
