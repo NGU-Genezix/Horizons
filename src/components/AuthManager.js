@@ -82,6 +82,11 @@ export default class AuthManager
         let datas = new Map();
         datas.set("firstName", element.firstname);
         datas.set("lastName", element.lastname);
+        datas.set("email", element.email);
+        datas.set("password", element.password);
+        datas.set("statut", element.statut);
+        datas.set("birthday", element.birthday);
+        datas.set("sex", element.sex);
         console.log("__" + datas)
         let response = await new API().post("update_user", true, datas);
         if (response[0] != 200 && response[1])

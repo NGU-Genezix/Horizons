@@ -56,7 +56,7 @@ const DataUser = () => {
                                     type="checkbox" 
                                     checked="checked"
                                 />
-                                Homme
+                                {user.sex}
                                 </label>
                             </div>
                             <div className="info-4">

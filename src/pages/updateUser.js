@@ -17,9 +17,9 @@ const UpdateUser = () => {
     const [birthday, setBirthday] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [statut, setStatus] = useState("");
+    const [statut, setStatut] = useState("");
     const [confPassword, setConfPassword] = useState("");
-    const sex = ['Homme', 'Femme'];
+    const [sex, setSex] = useState("");
     const profil = ['Etudiant', 'Personne agée', 'Handicap'];
     const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
     const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -33,7 +33,9 @@ const UpdateUser = () => {
             password: password,
             birthday: birthday,
             statut: statut,
-            sex: "homme"
+            email: email,
+            profil: profil,
+            sex: sex,
         }
         var res = new AUTH().updateuser(body_content).then(res=> {
             if (res[0] == 200)
@@ -48,18 +50,18 @@ const UpdateUser = () => {
             setFirstName(event.target.value)
         else if (event.target.title == "lastname")
             setLastName(event.target.value)
-        else if (event.target.title == "email")
+        else if (event.target.title == "email") {
             setEmail(event.target.value)
+            console.log(event.target.value)
+        }
         else if (event.target.title == "password")
             setPassword(event.target.value)
         else if (event.target.title == "c_password")
             setConfPassword(event.target.value)
-        else if (event.target.title == "etudiant")
-            setStatus("étudiant")
-        else if (event.target.title == "agee")
-            setStatus("âgé")
-        else if (event.target.title == "handicap")
-            setStatus("handicapé")
+        else if (event.target.title == "sex")
+            setSex(event.target.value)
+        else if (event.target.title == "statut")
+            setStatut(event.target.value)
         else if (event.target.title == "birthday")
             setBirthday(event.target.value)
     }
@@ -97,28 +99,16 @@ const UpdateUser = () => {
                                     type="text"
                                 />
                             </div>
-                            <div className="three-title">Date de naissance</div>
+                            <div className="four-title">Date de naissance</div>
                             <div className="input-4">
-                                <TextFieldAuth
-                                    title="birthday"
-                                    onChange={handleChange}
-                                    placeholder="jj"
-                                    type="text"
-                                />
-                                <TextFieldAuth
-                                    title="birthday"
-                                    onChange={handleChange}
-                                    placeholder="mm"
-                                    type="text"
-                                />
                                 <TextFieldAuth
                                 title="birthday"
                                 onChange={handleChange}
-                                placeholder="yyyy"
+                                placeholder="jj/mm/yyyy"
                                 type="text"
                                 />
                             </div>
-                            <div className="three-title">Email</div>
+                            <div className="five-title">Email</div>
                             <div className="input-5">
                                 <TextFieldAuth
                                     title="email"
@@ -127,21 +117,26 @@ const UpdateUser = () => {
                                     type="text"
                                 />
                             </div>
-                            <div className="five-title">Sexe</div>
+                            <div className="six-title">Sexe</div>
                             <div className="input-6">
-                                <label><input
-                                    type="checkbox" 
+                            <TextFieldAuth
+                                    title="sex"
+                                    onChange={handleChange}
+                                    placeholder="Sexe"
+                                    type="text"
                                 />
-                                Homme
-                                </label>
-                                <label><input
-                                    type="checkbox" 
-                                />
-                                Femme
-                                </label>
                             </div>
-                            <div className="seven-title">Mot de passe</div>
+                            <div className="seven-title">Profil</div>
                             <div className="input-7">
+                            <TextFieldAuth
+                                    title="statut"
+                                    onChange={handleChange}
+                                    placeholder="Profil"
+                                    type="text"
+                                />
+                            </div>
+                            <div className="eight-title">Mot de passe</div>
+                            <div className="input-8">
                                 <TextFieldAuth
                                     title="password"
                                     onChange={handleChange}
