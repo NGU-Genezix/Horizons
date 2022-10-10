@@ -1,5 +1,4 @@
 import React from 'react';
-import GoogleLogo from '../assets/google-logo.png';
  
 const GoogleButtonAuth = (props) => {
     return (
