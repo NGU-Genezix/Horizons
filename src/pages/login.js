@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextFieldAuth from "../components/TextFieldAuth";
 import ButtonAuth from "../components/ButtonAuth";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import GoogleButtonAuth from "../components/GoogleButtonAuth";
 import LockLogo from "../assets/login-lock-logo.png";
 import Navbar from '../components/Navbar';
@@ -15,13 +15,13 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    let history = useHistory();
     const storage = localStorage;
+    let navigate = useNavigate(); 
 
     async function login() {
         var res = new AUTH().connect(email, password).then(res=> {
             if (res[0] == 200)
-                history.push('/')
+                navigate('/')
         })
         console.log(res)
     }
@@ -78,6 +78,7 @@ const Login = () => {
                         </div>
                         <div className="google-btn">
                             <div className="google-icon-wrapper">
+                                <GoogleButtonAuth/>
                                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
                             </div>
                             <p className="btn-text"><b>Continuer avec Google</b></p>
@@ -92,7 +93,7 @@ const Login = () => {
                             />
                             <div className="link-container">
                                 <a href="#">Mot de passe oublié?</a>
-                                <a href="#" onClick={() => history.push('/register')}> Je n'ai pas encore de compte</a>
+                                <a href="#" onClick={() => navigate('/register')}> Je n'ai pas encore de compte</a>
                             </div>
                         </div>
                     </div>

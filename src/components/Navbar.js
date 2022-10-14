@@ -5,7 +5,7 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import { wait } from '@testing-library/react';
 import AUTH from '../components/AuthManager';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import API from './APIManager';
 // import { AwesomeButton } from "react-awesome-button";
 // import "react-awesome-button/dist/styles.css";
@@ -16,7 +16,7 @@ export default function Navbar() {
     const [largeur, setLargeur] = useState(window.innerWidth)
     const [searchTerm, setSearchTerm] = useState('')
     const [focused, setFocused] = useState(false)
-    let history = useHistory();
+    let navigate = useNavigate();
 
     const onFocus = () => setFocused(true)
     const onBlur = () => {
@@ -86,7 +86,7 @@ export default function Navbar() {
                         {isconnect ?
                         <>
                         <li className='items datauser'><button className='btn_s'><Link to="/datauser">Mon compte</Link></button></li>
-                        <li className='items disconnect'><button className='btn_s' onClick={() => {new AUTH().disconnect() ; history.push('/login')} }>Déconnexion</button></li>
+                        <li className='items disconnect'><button className='btn_s' onClick={() => {new AUTH().disconnect() ; navigate('/login')} }>Déconnexion</button></li>
                         </>:
                         <>
                         <li className='items btn_connexion'><button className='btn_s'><Link to="/login">Connexion</Link></button></li>

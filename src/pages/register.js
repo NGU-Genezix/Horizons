@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextFieldAuth from "../components/TextFieldAuth";
 import ButtonAuth from "../components/ButtonAuth";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar"
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -23,7 +23,7 @@ const Register = () => {
     const profil = ['Etudiant', 'Personne agée', 'Handicap'];
     const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
     const checkedIcon = <CheckBoxIcon fontSize="small" />;
-    let history = useHistory();
+    let navigate = useNavigate();
 
     async function register() {
 
@@ -39,7 +39,7 @@ const Register = () => {
         console.log(body_content)
         var res = new AUTH().register(body_content).then(res=> {
             if (res[0] == 200)
-                history.push('/login')
+                navigate('/login')
             else
                 console.log("register failed", res)
         })
@@ -182,7 +182,7 @@ const Register = () => {
                         <div className="clicable-widgets-container">
                             <ButtonAuth onClick={register} title="Créer mon compte" />
                             <div className="link-container">
-                                <a href="#" onClick={() => history.push('/login')}>Vous avez déjà un compte ? Se connecter</a>
+                                <a href="#" onClick={() => navigate('/login')}>Vous avez déjà un compte ? Se connecter</a>
                             </div>
                         </div>
                     </div>

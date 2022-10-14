@@ -8,7 +8,7 @@ import Budget from './pages/budget.js';
 import DataUser from './pages/dataUser.js';
 import UpdateUser from './pages/updateUser.js';
 import Mobile from './pages/mobile.js';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Routes } from 'react-router-dom';
 import API from './components/APIManager';
 
 
@@ -29,36 +29,19 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Switch>
-          <Route path="/" exact>
-            <Acceuil />
-          </Route>
-          <Route path="/aide" exact>
-            <Aide />
-          </Route>
-          <Route path="/mobile" exact>
-            <Mobile />
-          </Route>
-          <Route path="/login" exact>
-            <Login />
-          </Route>
-          <Route path="/register" exact>
-            <Register />
-          </Route>
-          <Route path="/budget" exact>
-            <Budget/>
-          </Route>
-          <Route path="/datauser" exact>
-            <DataUser/>
-          </Route>
-          <Route path="/updateuser" exact>
-            <UpdateUser/>
-          </Route>
-          <Route render="/" exact>
-            <Acceuil />
-          </Route>
+        <Routes>
+          <Route path="/" element={<Acceuil />}/>
+          <Route path="/aide" element={<Aide />}/>
+          <Route path="/mobile" element={<Mobile />}/>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/register" element={<Register />}/>
+          <Route path="/budget" element={<Budget />}/>
+          <Route path="/datauser" element={<DataUser />}/>
+          <Route path="/updateuser" element={<UpdateUser />}/>
+          <Route render="/" element={<Acceuil/>}/>
+
           
-        </Switch> 
+        </Routes> 
       </BrowserRouter>
     </div>
   );

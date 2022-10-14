@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import "../styles/page_acceuil.css";
 import AideAcceuil from '../components/aide_acceuil';
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import axios from 'axios'
 import fileDownload from 'js-file-download'

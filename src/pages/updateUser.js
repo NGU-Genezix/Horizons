@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextFieldAuth from "../components/TextFieldAuth";
 import ButtonAuth from "../components/ButtonAuth";
-import { useHistory} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import Navbar from "../components/Navbar"
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -23,7 +23,7 @@ const UpdateUser = () => {
     const profil = ['Etudiant', 'Personne agée', 'Handicap'];
     const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
     const checkedIcon = <CheckBoxIcon fontSize="small" />;
-    let history = useHistory();
+    let navigate = useNavigate();
 
     async function register() {
 
@@ -39,7 +39,7 @@ const UpdateUser = () => {
         }
         var res = new AUTH().updateuser(body_content).then(res=> {
             if (res[0] == 200)
-                history.push('/datauser')
+                navigate('/datauser')
             else
                 console.log("register failed", res)
         })

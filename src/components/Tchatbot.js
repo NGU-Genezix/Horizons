@@ -5,7 +5,6 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import { wait } from '@testing-library/react';
 import AUTH from './AuthManager';
-import { useHistory } from "react-router-dom";
 import API from './APIManager';
 
 export default function Tchatbot() {
