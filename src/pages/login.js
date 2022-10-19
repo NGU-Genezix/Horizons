@@ -79,13 +79,8 @@ const Login = () => {
                         <div className="google-btn">
                             <div className="google-icon-wrapper">
                                 <GoogleButtonAuth/>
-                                <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
                             </div>
-                            <p className="btn-text"><b>Continuer avec Google</b></p>
                         </div>
-
-
-
                         <div className="clicable-widgets-container">
                             <ButtonAuth
                                 onClick={login}

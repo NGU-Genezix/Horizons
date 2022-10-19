@@ -39,8 +39,6 @@ function App() {
           <Route path="/datauser" element={<DataUser />}/>
           <Route path="/updateuser" element={<UpdateUser />}/>
           <Route render="/" element={<Acceuil/>}/>
-
-          
         </Routes> 
       </BrowserRouter>
     </div>
