@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from '../components/Navbar';
-import "../styles/page_acceuil.css";
+import "../styles/rech_aide.css";
 import AideAcceuil from '../components/aide_acceuil';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import axios from 'axios'
 import fileDownload from 'js-file-download'
@@ -12,10 +12,12 @@ import { getSuggestedQuery } from '@testing-library/react';
 import { gsap } from "gsap"
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import Contact from '../components/contact'
+import N_Navbar from '../components/new_nav'
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
-export default function Acceuil() {
+export default function Rech_Aide() {
 
 
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
@@ -146,42 +148,23 @@ export default function Acceuil() {
 
     return (
       <div>
-        <Navbar />
-        <Tchatbot/>
-        <div id="description" className='description'>
-        Horizons a pour but d’être une plateforme d’aide aux personnes à la recherches d’aides financières et propose divers services comme la possibilité de se renseigner sur comment mieux gérer son budget mensuellement et trouver l’aide adaptée à sa situation.
-        <br/>
-        <br/>
-        Permettre aux utilisateurs de trouver toutes les aides auxquelles ils sont éligibles, quelles que soient leurs situations (étudiants, situation de handicap, personnes âgées). De pouvoir à long terme accompagner étape par étape l’utilisateur dans ses démarches.
-        <br/>
-        <br/>
-        </div>
-        <div className='aide_financiere'>Aides Financières</div>
-        <div className='checkBoxDiv'>
-          <div className="Etudiant">
-            <input type="checkbox" value="Etudiant" checked={isCheckedEtud} onChange={handleOnChangeEtud}/>Etudiant
+        <N_Navbar></N_Navbar>
+        <div className='rech_daide'>Recherches d'aide</div>
+        {/* <div className='checkBoxDiv'> */}
+          <div className="fst_block">
+            <span className='txt_block'><input type="checkbox" value="Etudiant" checked={isCheckedEtud} onChange={handleOnChangeEtud}/>Etudiant</span>
           </div>
-          <div className="PersonneAgée" >
-            <input type="checkbox" value="PersonneAgée" checked={isCheckedAge} onChange={handleOnChangeAge}/>Personne Agée
+          <div className="sec_block" >
+            <span className='txt_block'><input type="checkbox" value="PersonneAgée" checked={isCheckedAge} onChange={handleOnChangeAge}/>Personne Agée</span>
           </div>
-          <div className="Handicap">
-            <input type="checkbox" value="Handicap" checked={isCheckedHandi} onChange={handleOnChangeHandi}/>Handicap
+          <div className="third_block">
+            <span className='txt_block'><input type="checkbox" value="Handicap" checked={isCheckedHandi} onChange={handleOnChangeHandi}/>Handicap</span>
           </div>
-          <div className="Fav">
-            <input type="checkbox" value="Favoris" checked={isCheckedFav} onChange={handleOnChangeFav}/>Favoris
+          <div className="fourth_block">
+            <span className='txt_block'><input type="checkbox" value="Favoris" checked={isCheckedFav} onChange={handleOnChangeFav}/>Favoris</span>
           </div>
-          <div className="search_criteria">
-            Critères de recherche :<br/>
-            <div className="revenus">
-              Vos Revenus :
-              <input className="input_rev" defaultValue={0} type='number' onChange={event => changeMaximumRevenu(event.target.value)}></input>
-            </div>
-            {/* <div className="place">
-              Votre Région :
-              <input onChange={event => changePlace(event.target.value)}></input>
-            </div> */}
-          </div>
-        </div>
+        {/* </div> */}
         {list_aide}
+        <Contact></Contact>
     </div>);
 }

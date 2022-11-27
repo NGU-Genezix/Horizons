@@ -9,6 +9,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { FaRegHeart } from "react-icons/fa";
+import API from '../components/APIManager';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 // import { Linking, Pressable, Text, View } from "react-native";
@@ -45,6 +46,23 @@ export default function Aide() {
   const regex = /<li [^>]*class="result-item"[^>]*><a href="([^"]*)" data-xiti-name="([^"]*)"[^>]*>/g
   const regexG = /<li [^>]*class="result-item"[^>]*><a href="([^"]*)" data-xiti-name="([^"]*)"[^>]*>/
 
+  const getUser = () => {
+    let res = new API().get("get_user", true).then(function(result) {
+        console.log("ça passe1")
+        if (result[0] == 200) {
+          console.log("ça passe")
+          let body_content = {
+            id: location_.state.val.id
+          }
+          let res2 = new API().post_aide("add_historique", true, body_content).then(function(resu) {
+            console.log("___")
+            console.log(resu)
+            console.log("___")
+          })
+      }
+
+    })}
+
   const slideInTop = (elem, delay, duration) => {
     gsap.fromTo(elem, {
       opacity: 0,
@@ -64,6 +82,7 @@ export default function Aide() {
   }
 
   useEffect(() => {
+    getUser()
     slideInTop("#conteneur")
   }, [])
   // useEffect(() => {

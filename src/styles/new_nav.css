@@ -1,0 +1,161 @@
+.main_nav {
+    position: fixed;
+    width: 95%;
+    height: 12%;
+    left: 2.5%;
+    z-index: 3;
+    background: #EDEEC9;
+    border-radius: 0px 0px 50px 50px;
+}
+
+.n_logo {
+    position: absolute;
+    width: 12%;
+    height: 200%;
+    left: 3%;
+    bottom: -50%;
+}
+
+.acceuil {
+    position: absolute;
+    width: 11%;
+    height: 52%;
+    left: 19%;
+    top: 26%;
+
+    background: #BFD8BD;
+    border-radius: 30px;
+
+    font-family: 'Inter';
+font-style: italic;
+font-weight: 300%;
+font-size: 150%;
+line-height: 100%;
+}
+
+.aide {
+    position: absolute;
+    width: 11%;
+    height: 52%;
+    left: 30.7%;
+    top: 26%;
+
+    background: #BFD8BD;
+
+    border-radius: 30px;
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 300%;
+    font-size: 150%;
+    line-height: 100%;
+}
+
+.n_budget {
+    position: absolute;
+    width: 11%;
+    height: 52%;
+    left: 42.4%;
+    top: 26%;
+
+    background: #BFD8BD;
+
+    border-radius: 30px;
+
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 300%;
+    font-size: 150%;
+    line-height: 100%;
+}
+
+.connexion {
+    position: absolute;
+    width: 11%;
+    height: 52%;
+    left: 65%;
+    top: 26%;
+    
+    background: #BFD8BD;
+
+    border-radius: 15px;
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 300%;
+    font-size: 150%;
+    line-height: 100%;
+}
+
+.inscription {
+    position: absolute;
+    width: 11%;
+    height: 52%;
+    left: 78%;
+    top: 26%;
+
+    background: #0085FF;
+    border-radius: 15px;
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 300%;
+    font-size: 150%;
+    line-height: 100%;
+}
+
+.back {
+    background: #fd0000;
+}
+
+
+.acceuil:hover {
+    background-color: #d3d3d3;
+}
+
+.acceuil:active {
+    background-color: #a1a1a1;
+    transform: translateY(4px);
+    box-shadow: 0 5px #666;
+}
+
+.aide:hover {
+    background-color: #d3d3d3;
+}
+
+.aide:active {
+    background-color: #a1a1a1;
+    transform: translateY(4px);
+    box-shadow: 0 5px #666;
+}
+
+.n_budget:hover {
+    background-color: #d3d3d3;
+}
+
+.n_budget:active {
+    background-color: #a1a1a1;
+    transform: translateY(4px);
+    box-shadow: 0 5px #666;
+}
+
+.connexion:hover {
+    background-color: #d3d3d3;
+}
+
+.connexion:active {
+    background-color: #a1a1a1;
+    transform: translateY(4px);
+    box-shadow: 0 5px #666;
+}
+
+.inscription:hover {
+    background-color: #0068c9;
+}
+
+.inscription:active {
+    background-color: #004688;
+    transform: translateY(4px);
+    box-shadow: 0 5px #666;
+}

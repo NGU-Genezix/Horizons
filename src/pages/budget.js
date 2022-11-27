@@ -56,19 +56,23 @@ export default function Budget() {
     let res_budget = new API().get("get_budget", true).then(function(resu) {
       if (resu[0] == 200) {
         console.log(resu[1])
-        setRevenu(resu[1]["Revenu"])
-        setEpargne(resu[1]["Epargne"])
-        setLogement(resu[1]["Logement"])
-        setLoisir(resu[1]["Loisir"])
-        setAlimentation(resu[1]["Alimentation"])
-        setTransport(resu[1]["Transport"])
-        //resu[1]["Revenu"]
+        if (resu[1] != null) {
+          setRevenu(resu[1]["Revenu"])
+          setEpargne(resu[1]["Epargne"])
+          setLogement(resu[1]["Logement"])
+          setLoisir(resu[1]["Loisir"])
+          setAlimentation(resu[1]["Alimentation"])
+          setTransport(resu[1]["Transport"])
+          //resu[1]["Revenu"]
+        }
         let res2 = new API().get("get_advice", true).then(function(result) {
           console.log(result)
           console.log(result[1][0])
-          setResult(result[1][0])
-          setIsDisplayed(true);
-          slideInTop("#result")
+          if (result[1][0] != null) {
+            setResult(result[1][0])
+            setIsDisplayed(true);
+            slideInTop("#result")
+          }
         })
       }
     });

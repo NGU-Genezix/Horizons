@@ -1,0 +1,77 @@
+.rech_daide {
+    position: relative;
+    width: 30%;
+    /* left: 110px;
+    top: 222px; */
+    padding-top: 15%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 61px;
+    text-align: left;
+    padding-left: 6%;
+    color: #EDEEC9;
+    margin-bottom: 10%;
+}
+
+.fst_block {
+    position: absolute;
+    /* width: 144px; */
+    width: 8%;
+    height: 5.5%;
+    left: 6%;
+    top: 37.2%;
+    
+    background: #EDEEC9;
+    border-radius: 5px;
+}
+
+.txt_block {
+    position: relative;
+
+    right: 2.5%;
+    top: 23%;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: right;
+    
+    color: #000000;
+}
+
+.sec_block {
+    position: absolute;
+    width: 12%;
+    height: 5.5%;
+    left: 15%;
+    top: 37.2%;
+    
+    background: #EDEEC9;
+    border-radius: 5px;
+}
+
+.third_block {
+    position: absolute;
+    width: 9%;
+    height: 5.5%;
+    left: 6%;
+    top: 44.8%;
+    
+    background: #EDEEC9;
+    border-radius: 5px;
+}
+
+.fourth_block {
+    position: absolute;
+    width: 8%;
+    height: 5.5%;
+    left: 16.5%;
+    top: 44.8%;
+    
+    background: #EDEEC9;
+    border-radius: 5px;
+}

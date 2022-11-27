@@ -29,7 +29,6 @@
     "react-loading": "^2.0.3",
     "react-native-safe-area-context": "^4.2.5",
     "react-render-html": "^0.6.0",
-    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-select": "^5.3.2",
     "sass": "^1.43.2",
@@ -63,6 +62,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
-    "jest": "^26.6.0"
+    "jest": "^26.6.0",
+    "react-router-dom": "^6.4.3"
   }
 }

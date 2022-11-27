@@ -10,6 +10,8 @@ import UpdateUser from './pages/updateUser.js';
 import Mobile from './pages/mobile.js';
 import { BrowserRouter, Route, Redirect, Routes } from 'react-router-dom';
 import API from './components/APIManager';
+import N_Acceuil from './pages/new_acc.js';
+import Rech_Aide from './pages/rech_aide.js';
 
 
 function App() {
@@ -21,7 +23,9 @@ function App() {
 
   const getUser = () => {
     let res = new API().get("get_user", true).then(function(result) {
-      if (result[1]!=null) {
+        console.log("ça passe1")
+        if (result[0] == 200) {
+        console.log("ça passe")
         setAuthenticated(true)
       }
 
@@ -39,6 +43,8 @@ function App() {
           <Route path="/datauser" element={<DataUser />}/>
           <Route path="/updateuser" element={<UpdateUser />}/>
           <Route render="/" element={<Acceuil/>}/>
+          <Route path="/n" element={<N_Acceuil />}/>
+          <Route path="/rech_aide" element={<Rech_Aide />}/>
         </Routes> 
       </BrowserRouter>
     </div>

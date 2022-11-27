@@ -1,6 +1,10 @@
 import axios, { AxiosError, AxiosRequestHeaders, AxiosResponse } from 'axios';
 
-const ip = "https://cors-everywhere-me.herokuapp.com/http://89.234.183.150:8080/api/";
+// const ip = "https://cors-everywhere-me.herokuapp.com/https://gregoriex.fr/api/";
+// const ip = "https://gregoriex.fr/api/";
+
+const ip = "https://cors-everywhere-me.herokuapp.com/http://89.234.183.150/api/";
+// const ip = "http://89.234.183.150/api/";
 
 export default class API
 {
@@ -77,13 +81,21 @@ export default class API
       console.log("test")
       //Enlever Data pour le budget
       let Data = {};
-      data.forEach((value, key) => {
-        Data[key] = value;
-      })
+      
+      if (data != null) {
+        Data["type"] = data.type;
+        Data["res"] = data.res;
+        if (data.dataToSendBack != null) {
+          Data["dataToSendBack"] = data.dataToSendBack;
+        } else {
+          Data["dataToSendBack"] = [];
+        }
+      }
       console.log(Data)
+      console.log(JSON.stringify(Data))
       let response = await axios({
         method: 'post',
-        url: this.getURL2(url, secured),
+        url: this.getURL(url, secured),
         headers: this.createHeaders(secured),
         data: JSON.stringify(Data),
       });
@@ -107,12 +119,44 @@ export default class API
       console.log("test")
       //Enlever Data pour le budget
       let Data = {};
+      console.log(data)
       if (data != null) {
+        console.log(data)
         data.forEach((value, key) => {
+          console.log(key)
           Data[key] = value;
+          console.log(key)
         })
       }
       console.log(Data)
+      let response = await axios({
+        method: 'post',
+        url: this.getURL(url, secured),
+        headers: this.createHeaders(secured),
+        data: JSON.stringify(Data),
+      });
+      console.log(response)
+      return [response.status, this.parse(response.data)];
+    }
+    catch (e)
+    {
+      return [400, e.response];
+    }
+  }
+
+  async post_aide(url, secured, data)
+  {
+    console.log(data)
+    
+    if (secured == true && localStorage.getItem("token") == null)
+      return [400, "Vous n'êtes pas connecté"];
+    try
+    {
+      console.log("test")
+      //Enlever Data pour le budget
+      let Data = {};
+      console.log(data["id"])
+      Data["id"] = data["id"]
       let response = await axios({
         method: 'post',
         url: this.getURL(url, secured),

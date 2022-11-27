@@ -73,7 +73,7 @@ export default function Navbar() {
                     <ul className='liste'>
                         <Link to="/"><img className="logo" src={logo}></img></Link>
                         <li className='items mobile'><button className='btn_s'><Link to="/mobile">Mobile</Link></button></li>
-                        <li className='items budget'><button className='btn_s'><Link to="/budget">Budget</Link></button></li>
+                        <li className='items budget1'><button className='btn_s'><Link to="/budget">Budget</Link></button></li>
                         <li className='items'><input className='recherche' type="text"
                         placeholder='Rechercher ...'
                         onFocus={onFocus}
