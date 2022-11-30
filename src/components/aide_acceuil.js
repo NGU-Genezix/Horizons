@@ -22,8 +22,7 @@ const AideAcceuil = ({display, min_rev, place, set_rev, search_place, name, stat
             {(display) && (
                 <div className='mainDiv' onMouseEnter={onEnter} onMouseLeave={onLeave} >
                     <div className='name'>{name}</div>
-                    <div className='status'>{status}</div>
-                    <div className='price'>Jusqu'à {price}€</div>
+                    <div className='price'>Jusqu'à <span className='blue'>{price}€</span></div>
                 </div>
             )}
         </>

@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, createSearchParams, useSearchParams, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import "../styles/page_aide.css";
 import JSONDATA from '../assets/code_postal.json'
+import JSONDATA2 from '../assets/Test_searchbar.json'
 import Select from 'react-select'
 import axios from "axios";
 import { gsap } from "gsap"
@@ -21,8 +22,20 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 export default function Aide() {
   const location_ = useLocation()
-  const data = location_.state.val
-  const places = location_.state.places
+  const [params] = useSearchParams();
+
+  const data =
+  JSONDATA2.filter((val) => {
+    return val
+    }).map((val2, key) => {
+    if (val2.id == params.get("val")) {
+      return val2
+    }
+  })
+
+
+  const places = ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]
+  
   const [heartColor, setHeartColor] = useState("black")//A changer avec requete api
   // const handleChange = (event) => {
   //   setPlace(event.target.value)
@@ -52,7 +65,7 @@ export default function Aide() {
         if (result[0] == 200) {
           console.log("ça passe")
           let body_content = {
-            id: location_.state.val.id
+            id: params.get("val")
           }
           let res2 = new API().post_aide("add_historique", true, body_content).then(function(resu) {
             console.log("___")
@@ -152,22 +165,22 @@ export default function Aide() {
         <Navbar />
         <div id="conteneur">
           <h1 className="titles">
-            {data.first_name}
+            {data[0].first_name}
           </h1>
           <div id="conteneur1">
             <div className='box1'>
-              {data.type}
+              {data[0].type}
             </div>
             <div className='box2'>
-              Jusqu'à {data.prix}€
+              Jusqu'à {data[0].prix}€
             </div>
             <div><FaRegHeart onClick={() => heartClicked()} fontSize={40} color={heartColor} style={{marginLeft:'50%',}}/>Ajouter Aux Favoris</div>
           </div>
           <div className='box3'>
-            {data.descriptif}
+            {data[0].descriptif}
           </div>
           <div className='box4'>
-            Liens utiles: <a href={data.lien_aide}>{data.lien_aide}</a>
+            Liens utiles: <a href={data[0].lien_aide}>{data[0].lien_aide}</a>
           </div>
         <p className='box5'>Chercher l'établissement le plus près de chez vous pour vos démarches:</p>
         <div className='box6'>

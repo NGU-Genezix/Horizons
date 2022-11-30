@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import "../styles/rech_aide.css";
 import AideAcceuil from '../components/aide_acceuil';
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import axios from 'axios'
 import fileDownload from 'js-file-download'
@@ -14,11 +13,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import Contact from '../components/contact'
 import N_Navbar from '../components/new_nav'
+import { useNavigate, createSearchParams } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 export default function Rech_Aide() {
-
+  let history = useNavigate();
 
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
     const [isCheckedAge, setIsCheckedAge] = useState(true);
@@ -132,39 +132,56 @@ export default function Rech_Aide() {
           {JSONDATA.filter((val) => {
                 return val
             }).map((val, key) => {
+                let link = (valeurs, places) => {
+                  history({
+                    pathname: "/aide",
+                    search: createSearchParams({
+                      val: val.id,
+                    }).toString()
+                  });
+                }
                 if (val.type == "Etudiant") {
-                  return <Link id="aide_etud" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
+                  return <a onClick={link}><AideAcceuil onClick={link} className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></a>
                 } else if (val.type == "Handicap") {
-                  return <Link id="aide_handi" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideHandicap" key={key} display={isCheckedHandi} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Handicap"} price={val.prix} /></Link>
+                  return <a onClick={link}><AideAcceuil onClick={link} className="aideHandicap" key={key} display={isCheckedHandi} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Handicap"} price={val.prix} /></a>
                 } else if (val.type == "Personne Agée") {
-                  return <Link id="aide_age" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideAge" key={key} display={isCheckedAge} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Personne Agée"} price={val.prix} /></Link>
-
+                  return <a onClick={link}><AideAcceuil onClick={link} className="aideAge" key={key} display={isCheckedAge} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Personne Agée"} price={val.prix} /></a>
                 } else {
-                  return <Link id="aide" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
+                  return <a onClick={link}><AideAcceuil onClick={link} className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></a>
                 }
             })}
         </ul>
 
 
     return (
-      <div>
+      <div className='main'>
         <N_Navbar></N_Navbar>
         <div className='rech_daide'>Recherches d'aide</div>
         {/* <div className='checkBoxDiv'> */}
+        <div className='inline'>
           <div className="fst_block">
             <span className='txt_block'><input type="checkbox" value="Etudiant" checked={isCheckedEtud} onChange={handleOnChangeEtud}/>Etudiant</span>
           </div>
           <div className="sec_block" >
             <span className='txt_block'><input type="checkbox" value="PersonneAgée" checked={isCheckedAge} onChange={handleOnChangeAge}/>Personne Agée</span>
           </div>
+        </div>
+        <div className='inline'>
           <div className="third_block">
             <span className='txt_block'><input type="checkbox" value="Handicap" checked={isCheckedHandi} onChange={handleOnChangeHandi}/>Handicap</span>
           </div>
           <div className="fourth_block">
             <span className='txt_block'><input type="checkbox" value="Favoris" checked={isCheckedFav} onChange={handleOnChangeFav}/>Favoris</span>
           </div>
+        </div>
+        <div className='line'></div>
+        <span className='txt_bot'>Besoin d'aide dans la recherche d'aides</span>
+        <button className='decouvrez_assistant' onClick={() => history('/rech_aide')}><span className='dec_aide'>Découvrez votre assistant</span></button>
+        <span className='txt_ger_budg'>Gérer votre budget</span>
+        <button className='btn_ger_budg' onClick={() => history('/budget')}><span className='dec_aide'>Gérer votre budget</span></button>
         {/* </div> */}
         {list_aide}
+        <div className='space'></div>
         <Contact></Contact>
     </div>);
 }

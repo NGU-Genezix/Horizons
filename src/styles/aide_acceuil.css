@@ -1,26 +1,39 @@
 .mainDiv {
-    background-color: #fff2cc;
-    width: 80%;
+    background-color: #EDEEC9;
+    width: 50%;
     height: 5vw;
     margin-left: 4%;
     padding-top: 1%;    
-    justify-content: left;
-    align-items: left;
     margin-top: 3%;
+    border-radius: 10px;
 } 
 
 .name {
-    float: left;
+    /* float: left;
     font-size: 1.5vw;
     width: 40%;
     justify-content: left;
     align-items: left;
     font-weight: bold;
-    padding-left: 5%;
+    padding-left: 5%; */
 
+    text-align: left;
+    width: 70%;
+    margin-left: 5%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.3vw;
+    line-height: 30px;
+
+    color: #000000;
 }
 
-.status {
+.blue {
+    color: #0085FF;
+}
+
+/* .status {
     float: left;
     background-color: #eeca60;
     font-size: 1vw;
@@ -31,10 +44,10 @@
     padding-left: 0.5%;
     padding-right: 0.5%;
     padding-bottom: 0.5%;
-}
+} */
 
 .price {
-    float:left;
+    /* float:left;
     background-color: #c9e265;
     font-size: 1vw;
     width: 10%;
@@ -42,5 +55,16 @@
     padding-top: 0.5%;
     padding-left: 0.5%;
     padding-right: 0.5%;
-    padding-bottom: 0.5%;
+    padding-bottom: 0.5%; */
+
+    width: 95%;
+    text-align: right;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3vw;
+    line-height: 30px;
+    padding-bottom: 1%;
+    
+    color: #000000;
 }
