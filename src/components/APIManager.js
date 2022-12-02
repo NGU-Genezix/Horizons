@@ -3,7 +3,7 @@ import axios, { AxiosError, AxiosRequestHeaders, AxiosResponse } from 'axios';
 // const ip = "https://cors-everywhere-me.herokuapp.com/https://gregoriex.fr/api/";
 // const ip = "https://gregoriex.fr/api/";
 
-const ip = "https://cors-everywhere-me.herokuapp.com/http://89.234.183.150/api/";
+const ip = "https://horizons.page/api/";
 // const ip = "http://89.234.183.150/api/";
 
 export default class API

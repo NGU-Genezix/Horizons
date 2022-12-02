@@ -12,11 +12,13 @@ import { getSuggestedQuery } from '@testing-library/react';
 import { gsap } from "gsap"
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { useNavigate, createSearchParams } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 export default function Acceuil() {
 
+  let history = useNavigate();
 
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
     const [isCheckedAge, setIsCheckedAge] = useState(true);
@@ -130,16 +132,23 @@ export default function Acceuil() {
           {JSONDATA.filter((val) => {
                 return val
             }).map((val, key) => {
-                if (val.type == "Etudiant") {
-                  return <Link id="aide_etud" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
-                } else if (val.type == "Handicap") {
-                  return <Link id="aide_handi" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideHandicap" key={key} display={isCheckedHandi} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Handicap"} price={val.prix} /></Link>
-                } else if (val.type == "Personne Agée") {
-                  return <Link id="aide_age" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideAge" key={key} display={isCheckedAge} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Personne Agée"} price={val.prix} /></Link>
-
-                } else {
-                  return <Link id="aide" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}><AideAcceuil className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></Link>
-                }
+              let link = (valeurs, places) => {
+                history({
+                  pathname: "/aide",
+                  search: createSearchParams({
+                    val: val.id,
+                  }).toString()
+                });
+              }
+              if (val.type == "Etudiant") {
+                return <a onClick={link}><AideAcceuil onClick={link} className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></a>
+              } else if (val.type == "Handicap") {
+                return <a onClick={link}><AideAcceuil onClick={link} className="aideHandicap" key={key} display={isCheckedHandi} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Handicap"} price={val.prix} /></a>
+              } else if (val.type == "Personne Agée") {
+                return <a onClick={link}><AideAcceuil onClick={link} className="aideAge" key={key} display={isCheckedAge} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Personne Agée"} price={val.prix} /></a>
+              } else {
+                return <a onClick={link}><AideAcceuil onClick={link} className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></a>
+              }
             })}
         </ul>
 
