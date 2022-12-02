@@ -11,6 +11,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { FaRegHeart } from "react-icons/fa";
 import API from '../components/APIManager';
+import Contact from '../components/contact'
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 // import { Linking, Pressable, Text, View } from "react-native";
@@ -55,6 +56,7 @@ export default function Aide() {
   const [place, setPlace] = useState(places[0]);
   const [location, setLocation] = useState("");
   const [isDisplayed, setIsDisplayed] = useState(false);
+  const [isCheckedEtud, setIsCheckedEtud] = useState(true);
 
   const regex = /<li [^>]*class="result-item"[^>]*><a href="([^"]*)" data-xiti-name="([^"]*)"[^>]*>/g
   const regexG = /<li [^>]*class="result-item"[^>]*><a href="([^"]*)" data-xiti-name="([^"]*)"[^>]*>/
@@ -162,18 +164,22 @@ export default function Aide() {
   
   return (
     <div className="App">
+      <div className="main">
         <Navbar />
         <div id="conteneur">
           <h1 className="titles">
             {data[0].first_name}
           </h1>
+          <div className='inline'>
+            <div className="block1">
+              <span className='blockt'><input type="checkbox" value="Etudiant" checked={isCheckedEtud} />Etudiant</span>
+            </div>
+            <div className="block2" >
+              <span className='blockt'>Jusqu'à <span className='blue'>{data[0].prix}€</span></span>
+            </div>
+          </div>
+          <div className='trait'></div>
           <div id="conteneur1">
-            <div className='box1'>
-              {data[0].type}
-            </div>
-            <div className='box2'>
-              Jusqu'à {data[0].prix}€
-            </div>
             <div><FaRegHeart onClick={() => heartClicked()} fontSize={40} color={heartColor} style={{marginLeft:'50%',}}/>Ajouter Aux Favoris</div>
           </div>
           <div className='box3'>
@@ -182,7 +188,8 @@ export default function Aide() {
           <div className='box4'>
             Liens utiles: <a href={data[0].lien_aide}>{data[0].lien_aide}</a>
           </div>
-        <p className='box5'>Chercher l'établissement le plus près de chez vous pour vos démarches:</p>
+          <div className='trait'></div>
+        <p className="titles2">Chercher l'établissement le plus près de chez vous pour vos démarches:</p>
         <div className='box6'>
         Ville / Commune :
         <input type="text" onChange={(e) => {
@@ -220,6 +227,8 @@ export default function Aide() {
         </div>
         )}
       </div>
+      </div>
+      <Contact></Contact>
     </div>
   )
 }

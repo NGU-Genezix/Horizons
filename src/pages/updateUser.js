@@ -67,7 +67,7 @@ const UpdateUser = () => {
     }
 
     return (
-        <div> 
+        <div className='main'> 
             <Navbar />
             <div className="auth">
                 <div className="background-design">
