@@ -12,6 +12,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { FaRegHeart } from "react-icons/fa";
 import API from '../components/APIManager';
 import Contact from '../components/contact'
+import N_Navbar from '../components/new_nav'
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 // import { Linking, Pressable, Text, View } from "react-native";
@@ -24,16 +25,19 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 export default function Aide() {
   const location_ = useLocation()
   const [params] = useSearchParams();
+  const [tmp, setTmp] = useState(0);
 
   const data =
   JSONDATA2.filter((val) => {
     return val
     }).map((val2, key) => {
     if (val2.id == params.get("val")) {
+      console.log(params.get("val") - 1)
       return val2
     }
   })
 
+  console.log(data)
 
   const places = ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]
   
@@ -99,6 +103,7 @@ export default function Aide() {
   useEffect(() => {
     getUser()
     slideInTop("#conteneur")
+
   }, [])
   // useEffect(() => {
   //   if (addrs.length === 0)
@@ -165,17 +170,17 @@ export default function Aide() {
   return (
     <div className="App">
       <div className="main">
-        <Navbar />
+        <N_Navbar></N_Navbar>
         <div id="conteneur">
           <h1 className="titles">
-            {data[0].first_name}
+            {data[params.get("val") - 1].first_name}
           </h1>
           <div className='inline'>
             <div className="block1">
-              <span className='blockt'><input type="checkbox" value="Etudiant" checked={isCheckedEtud} />Etudiant</span>
+              <span className='blockt'><input type="checkbox" value="Etudiant" checked={isCheckedEtud} />{data[params.get("val") - 1].type}</span>
             </div>
             <div className="block2" >
-              <span className='blockt'>Jusqu'à <span className='blue'>{data[0].prix}€</span></span>
+              <span className='blockt'>Jusqu'à <span className='blue'>{data[params.get("val") - 1].prix}€</span></span>
             </div>
           </div>
           <div className='trait'></div>
@@ -183,10 +188,10 @@ export default function Aide() {
             <div><FaRegHeart onClick={() => heartClicked()} fontSize={40} color={heartColor} style={{marginLeft:'50%',}}/>Ajouter Aux Favoris</div>
           </div>
           <div className='box3'>
-            {data[0].descriptif}
+            {data[params.get("val") - 1].descriptif}
           </div>
           <div className='box4'>
-            Liens utiles: <a href={data[0].lien_aide}>{data[0].lien_aide}</a>
+            Liens utiles: <a href={data[params.get("val") - 1].lien_aide}>{data[params.get("val") - 1].lien_aide}</a>
           </div>
           <div className='trait'></div>
         <p className="titles2">Chercher l'établissement le plus près de chez vous pour vos démarches:</p>

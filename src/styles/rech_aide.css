@@ -94,7 +94,8 @@
     width: 21%;
     height: 10%;
     left: 70%;
-    top: 20%;
+    /* top: 20%; */
+    top: 10vw;
     
     font-family: 'Inter';
     font-style: normal;
@@ -110,11 +111,13 @@
     width: 20%;
     height: 5.7%;
     left: 70.5%;
-    top: 32%;
+    top: 16vw;
     
     background: #BFD8BD;
     border-radius: 10px;
 }
+
+
 
 .decouvrez_assistant:hover {
     background-color: #d3d3d3;
@@ -131,7 +134,8 @@
     width: 21%;
     height: 10%;
     left: 70%;
-    top: 50%;
+    /* top: 50%; */
+    top: 26vw;
     
     font-family: 'Inter';
     font-style: normal;
@@ -147,7 +151,8 @@
     width: 20%;
     height: 5.7%;
     left: 70.5%;
-    top: 60%;
+    /* top: 60%; */
+    top: 29vw;
     background: #BFD8BD;
     border-radius: 10px;
 }
@@ -164,4 +169,51 @@
 
 .space {
     padding-top: 3%;
+}
+
+.recherche_2 {
+    align-items: left;
+    text-align: left;
+    align-items: flex-start;
+    margin-right: 43%;
+    width: 43%;
+}
+
+.search2 {
+    background-color: #77BFA3;
+    width: 90%;
+    margin-left: 5%;
+    font-size: 1vw;
+    color: #EDEEC9;
+}
+
+.search_list2 {
+    background: #EDEEC9;
+    width: 43%;
+    z-index: 2;
+    border-style: double;
+    border-width: 10%;
+    border-color: black;
+    margin-left: 6.8%;
+    bottom: 30%;
+    position: relative;
+}
+
+.search_criteria_2 {
+    color: #EDEEC9;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.5vw;
+    position: relative;
+    text-align: left;
+    margin-left: 6%;
+}
+
+.revenus {
+    font-size: 1vw;
+    position: relative;
+    margin-top: 3%;
+}
+
+.input_rev {
+    width: 25%;
 }

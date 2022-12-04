@@ -9,7 +9,9 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import "../styles/page_register.css";
 import AUTH from '../components/AuthManager'
- 
+import Contact from '../components/contact'
+import N_Navbar from '../components/new_nav'
+
 const Register = () => {
 
     const [firstName, setFirstName] = useState("");
@@ -67,15 +69,15 @@ const Register = () => {
     }
 
     return (
-        <div> 
-            <Navbar />
-            <div className="auth">
-                <div className="background-design">
+        <div className='main'> 
+            <N_Navbar></N_Navbar>
+            <div className="space1">
+                {/* <div className="background-design">
                     <div className="big-circle-1"></div>
                     <div className="big-circle-2"></div>
                     <div className="little-circle-1"></div>
                     <div className="little-circle-2"></div>
-                </div>
+                </div> */}
                 <div className="register-container">
                     <div className="big-square">
                         <h1 className="main-title">Inscription</h1>
@@ -188,6 +190,8 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+        <Contact></Contact>
+
         </div>
     );
 

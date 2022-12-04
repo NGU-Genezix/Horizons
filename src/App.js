@@ -34,16 +34,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Acceuil />}/>
+          <Route path="/" element={<N_Acceuil />}/>
           <Route path="/aide" element={<Aide />}/>
-          <Route path="/mobile" element={<Mobile />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/budget" element={<Budget />}/>
           <Route path="/datauser" element={<DataUser />}/>
           <Route path="/updateuser" element={<UpdateUser />}/>
-          <Route render="/" element={<Acceuil/>}/>
-          <Route path="/n" element={<N_Acceuil />}/>
+          <Route render="/" element={<N_Acceuil/>}/>
           <Route path="/rech_aide" element={<Rech_Aide />}/>
         </Routes> 
       </BrowserRouter>

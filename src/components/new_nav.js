@@ -14,17 +14,25 @@ import { useNavigate } from "react-router-dom";
 export default function N_Navbar() {
     let history = useNavigate();
 
+    const isconnect = new AUTH().isConnected();
+
     return (
         
-        <div>
             <div className='main_nav'>
                 <img className="n_logo" src={logo}></img>
                 <button className='acceuil' onClick={() => history('/')}>Acceuil</button>
                 <button className='aide' onClick={() => history('/rech_aide')}>Aides Sociales</button>
                 <button className='n_budget' onClick={() => history('/budget')}>Budget</button>
-                <button className='connexion' onClick={() => history('/login')}>Connexion</button>
-                <button className='inscription' onClick={() => history('/register')}>Inscription</button>
+                {isconnect ?
+                <>
+                    <button className='connexion' onClick={() => history('/datauser')}>Mon compte</button>
+                    <button className='inscription' onClick={() => {new AUTH().disconnect() ; history('/login')}}>Déconnexion</button>
+                </>
+                :
+                <>
+                    <button className='connexion' onClick={() => history('/login')}>Connexion</button>
+                    <button className='inscription' onClick={() => history('/register')}>Inscription</button>
+                </>}
             </div>
-        </div>
     )
 }

@@ -4,6 +4,8 @@ import "../styles/datauser.css";
 import API from '../components/APIManager';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
+import Contact from '../components/contact'
+import N_Navbar from '../components/new_nav'
  
 const DataUser = () => {
     const [user, setUser] = useState(null);
@@ -52,15 +54,16 @@ const DataUser = () => {
     }
     console.log(list_aide)
     return (
-        <div> 
-            <Navbar />
-            <div className="auth">
-                <div className="background-design">
+        <div className="main"> 
+            <N_Navbar></N_Navbar>
+            <div className="space1">
+            {/* <div className="auth"> */}
+                {/* <div className="background-design">
                     <div className="big-circle-1"></div>
                     <div className="big-circle-2"></div>
                     <div className="little-circle-1"></div>
                     <div className="little-circle-2"></div>
-                </div>
+                </div> */}
                 <div className="register-container">
                     <div className="big-square">
                         <h1 className="main-title">{user.firstName} {user.lastName}</h1>
@@ -100,13 +103,15 @@ const DataUser = () => {
                         </div>
                     </div>
                 </div>
-                <div>
-                    Historique
+                <div className="histo">
+                    <h1>Historique</h1>
                     <div>
                         {list_aide}
                     </div>
                 </div>
             </div>
+        <Contact></Contact>
+
         </div>
     );
 

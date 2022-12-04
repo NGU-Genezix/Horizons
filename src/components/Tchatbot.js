@@ -6,7 +6,7 @@ import JSONDATA from '../assets/Test_searchbar.json'
 import { wait } from '@testing-library/react';
 import AUTH from './AuthManager';
 import API from './APIManager';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, createSearchParams } from "react-router-dom";
 
 export default function Tchatbot() {
     
@@ -18,6 +18,9 @@ export default function Tchatbot() {
     const [answers, setAnswers] = useState({});
     const [dataSendBack, setDataSendBack] = useState([]);
     const [myMsg, setMyMsg] = useState(true);
+    const [etu, setEtu] = useState(false);
+    const [age, setAge] = useState(false);
+    const [handi, setHandi] = useState(false);
 
     const toggleOn = () => {
         setIsDisplayed(false);
@@ -65,6 +68,25 @@ export default function Tchatbot() {
           console.log(elem.res)
           console.log("_________")
           setTchatText(elem.res)
+          if (elem.id == 8) {
+            setEtu(true)
+          }
+          if (elem.id == 9) {
+            setHandi(true)
+          }
+          if (elem.id == 10) {
+            setAge(true)
+          }
+          if (elem.id == 11) {
+            setEtu(false)
+            setHandi(false)
+            setAge(false)
+          }
+          if (elem.id == 16) {
+            setEtu(true)
+            setHandi(true)
+            setAge(true)
+          }
           sendText(elem.res)
         let res = new API().tchat("chatbot/send", false, body_content).then(function(result) {
             if ( result[1]["data"] ) {
@@ -78,7 +100,14 @@ export default function Tchatbot() {
                 console.log(answers)
             } else {
                 console.log("_____-------------------____")
-                history("/rech_aide")
+                history({
+                    pathname: "/rech_aide",
+                    search: createSearchParams({
+                        etud: etu,
+                        handic: handi,
+                        agee: age,
+                      }).toString()
+                })
                 window.location.reload(false);
             }
         //   result[1]["data"]["autoRess"][0]

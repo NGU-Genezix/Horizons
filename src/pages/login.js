@@ -8,6 +8,8 @@ import Navbar from '../components/Navbar';
 import "../styles/page_login.css";
 import API from '../components/APIManager';
 import AUTH from '../components/AuthManager'
+import Contact from '../components/contact'
+import N_Navbar from '../components/new_nav'
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
  
 const Login = () => {
@@ -34,15 +36,15 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <Navbar />
-            <div className="auth">
-                <div className="background-design">
+        <div className="main">
+            <N_Navbar></N_Navbar>
+            <div className="space1">
+                {/* <div className="background-design">
                     <div className="big-circle-1"></div>
                     <div className="big-circle-2"></div>
                     <div className="little-circle-1"></div>
                     <div className="little-circle-2"></div>
-                </div>
+                </div> */}
                 <div className="login-container">
                     <div className="big-square">
                         <h1 className="main-title">Connexion</h1>
@@ -94,6 +96,8 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+        <Contact></Contact>
+
         </div>
     );
 

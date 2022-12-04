@@ -1,7 +1,8 @@
 .main_nav {
     position: fixed;
     width: 95%;
-    height: 12%;
+    /* height: 12%; */
+    height: 6vw;
     left: 2.5%;
     z-index: 3;
     background: #EDEEC9;

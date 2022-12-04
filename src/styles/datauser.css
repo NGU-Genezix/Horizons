@@ -2,7 +2,6 @@
     background-color: #fff2cc;
     margin-left: 35%;
     margin-right: 35%;
-    margin-top: 5%;
     border-radius: 1%;
 }
 
@@ -50,4 +49,13 @@
     padding-top: 5%;
     font-size: 1vw;
     position:static;
+}
+
+.histo {
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 5%;
+    border-radius: 1%;
+    font-size: 1vw;
+    background-color: #EDEEC9;
 }

@@ -13,12 +13,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import Contact from '../components/contact'
 import N_Navbar from '../components/new_nav'
-import { useNavigate, createSearchParams } from "react-router-dom";
+import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 export default function Rech_Aide() {
   let history = useNavigate();
+  const [params] = useSearchParams();
 
     const [isCheckedEtud, setIsCheckedEtud] = useState(true);
     const [isCheckedAge, setIsCheckedAge] = useState(true);
@@ -26,6 +27,8 @@ export default function Rech_Aide() {
     const [maximumRevenu, setMinimRev] = useState(0);
     const [place, setPlace] = useState("");
     const [isCheckedFav, setIsCheckedFav] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('')
+    const [focused, setFocused] = useState(false)
 
  
     const slideInTop = (elem, delay, duration) => {
@@ -96,13 +99,63 @@ export default function Rech_Aide() {
     const [user, setUser] = useState(null);
     const [isLoading, setLoading] = useState(true);
 
+    const onFocus = () => setFocused(true)
+    const onBlur = () => {
+        setTimeout(() => {
+            setFocused(false)
+         }, 100);
+    }
+
+    let search_list;
+    if (focused) {
+        search_list =
+        <div className='search_list2' onFocus={onFocus}>
+            {JSONDATA.filter((val) => {
+                if (searchTerm == "") {
+                    return val
+                } else if (val.first_name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    return val
+                }
+            }).map((val, key) => {
+                let link = (valeurs, places) => {
+                  history({
+                    pathname: "/aide",
+                    search: createSearchParams({
+                      val: val.id,
+                    }).toString()
+                  });
+                }
+
+                return <div className='search2' onFocus={onFocus}><p><a onClick={link}>{val.first_name}</a></p></div>
+            })}
+        </div>
+    } else {
+        search_list = ""
+    }
 
 
     useEffect(() => {
       getUser()
       slideLeft("#aide")
       slideInTop("#description")
-
+      if (params.get("etud")) {
+        console.log(params.get("agee"))
+        if (params.get("etud") == "true") {
+          setIsCheckedEtud(true);
+        } else if (params.get("etud") == "false") {
+          setIsCheckedEtud(false);
+        }
+        if (params.get("agee") == "true") {
+          setIsCheckedAge(true);
+        } else if (params.get("agee") == "false") {
+          setIsCheckedAge(false);
+        }
+        if (params.get("handic") == "true") {
+          setIsCheckedHandi(true);
+        } else if (params.get("handic") == "false") {
+          setIsCheckedHandi(false);
+        }
+      }
     }, [])
 
     const getUser = () => {
@@ -157,6 +210,14 @@ export default function Rech_Aide() {
       <div className='main'>
         <N_Navbar></N_Navbar>
         <div className='rech_daide'>Recherches d'aide</div>
+        <input className='recherche_2' type="text"
+                        placeholder='Rechercher ...'
+                        onFocus={onFocus}
+                        onBlur={onBlur}
+                        onChange={(event) => {
+                            setSearchTerm(event.target.value);
+                        }}></input>
+        {search_list}
         {/* <div className='checkBoxDiv'> */}
         <div className='inline'>
           <div className="fst_block">
@@ -175,6 +236,12 @@ export default function Rech_Aide() {
           </div>
         </div>
         <div className='line'></div>
+        <div className="search_criteria_2">
+          <div className="revenus">
+            Spécifier vos revenus mensuels :
+            <input className="input_rev" defaultValue={0} type='number' onChange={event => changeMaximumRevenu(event.target.value)}></input>
+          </div>
+        </div>
         <span className='txt_bot'>Besoin d'aide dans la recherche d'aides</span>
         <button className='decouvrez_assistant' onClick={() => history('/rech_aide')}><span className='dec_aide'>Découvrez votre assistant</span></button>
         <span className='txt_ger_budg'>Gérer votre budget</span>

@@ -8,6 +8,8 @@ import renderHTML from 'react-render-html';
 import { gsap } from "gsap"
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import Contact from '../components/contact'
+import N_Navbar from '../components/new_nav'
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -122,8 +124,9 @@ export default function Budget() {
   }
 
     return (
-    <div>
-        <Navbar />
+      <div className="App">
+      <div className='main'>
+        <N_Navbar></N_Navbar>
         <div className='budget_title'>Budget</div>
         <div id="budget" className='budget_calculator'>
           <div className='first_line'>
@@ -161,5 +164,8 @@ export default function Budget() {
             {renderHTML(result) }
           </div>
         )}
+        <Contact></Contact>
+        </div>
+
     </div>);
 }
