@@ -1,5 +1,5 @@
 .budget_title {
-    color: black;
+    color: #EDEEC9;
     padding-top: 7%;
     justify-content: left;
     align-items: left;
@@ -55,7 +55,7 @@
 }
 
 .budget_calculator {
-    background-color: #eeca60;
+    background-color: #EDEEC9;
     width: 80%;
     height: 17vw;
     margin-left: 10%;
@@ -63,6 +63,7 @@
     justify-content: left;
     align-items: left;
     margin-top: 3%;
+    margin-bottom: 5%;
 }
 
 .first_line {
@@ -151,7 +152,7 @@
 }
 
 .result {
-    background-color: #fff2cc;
+    background-color: #EDEEC9;
     width: 80%;
     height: 20vw;
     font-size: 2vw;

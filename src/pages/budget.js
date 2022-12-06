@@ -10,6 +10,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import Contact from '../components/contact'
 import N_Navbar from '../components/new_nav'
+import Tchatbot from '../components/Tchatbot';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -127,6 +128,7 @@ export default function Budget() {
       <div className="App">
       <div className='main'>
         <N_Navbar></N_Navbar>
+        <Tchatbot/>
         <div className='budget_title'>Budget</div>
         <div id="budget" className='budget_calculator'>
           <div className='first_line'>

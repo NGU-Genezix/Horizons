@@ -34,15 +34,28 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<N_Acceuil />}/>
-          <Route path="/aide" element={<Aide />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/register" element={<Register />}/>
-          <Route path="/budget" element={<Budget />}/>
-          <Route path="/datauser" element={<DataUser />}/>
-          <Route path="/updateuser" element={<UpdateUser />}/>
-          <Route render="/" element={<N_Acceuil/>}/>
-          <Route path="/rech_aide" element={<Rech_Aide />}/>
+          {isAuthenticated ?
+            <>
+              <Route path="/" element={<N_Acceuil />}/>
+              <Route path="/aide" element={<Aide />}/>
+              <Route path="/budget" element={<Budget />}/>
+              <Route path="/datauser" element={<DataUser />}/>
+              <Route path="/updateuser" element={<UpdateUser />}/>
+              <Route path="/rech_aide" element={<Rech_Aide />}/>
+              <Route render="/" element={<N_Acceuil/>}/>
+            </>
+            :
+            <>
+              <Route path="/" element={<N_Acceuil />}/>
+              <Route path="/aide" element={<Aide />}/>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/register" element={<Register />}/>
+              <Route path="/budget" element={<Login />}/>
+              <Route path="/rech_aide" element={<Rech_Aide />}/>
+              <Route render="/" element={<N_Acceuil/>}/>
+            </>
+          }
+          
         </Routes> 
       </BrowserRouter>
     </div>

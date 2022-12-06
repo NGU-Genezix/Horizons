@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/datauser.css";
 import API from '../components/APIManager';
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch, useNavigate, createSearchParams } from 'react-router-dom';
 import JSONDATA from '../assets/Test_searchbar.json'
 import Contact from '../components/contact'
 import N_Navbar from '../components/new_nav'
@@ -12,11 +12,23 @@ const DataUser = () => {
     const [isLoading, setLoading] = useState(true);
     const [histo, setHisto] = useState([]);
     const [list_aide, setList] = useState([]);
+    const [data, setData] = useState(null);
+    let history = useNavigate();
     
     useEffect(() => {
         getUser()  
     }, [])
 
+
+    const test = () => {
+        const txt = new API().get("aide/get_aide", false).then(function(result) {
+          const tmp = result[1].map((val, key) => {
+            // console.log(val)
+            return val
+          })
+          setData(tmp);
+        }
+      )}
 
     const getUser = () => {
         let res = new API().get("get_user", true).then(function(result) {
@@ -31,15 +43,30 @@ const DataUser = () => {
             console.log("___")
             console.log(n_res)
             n_res.forEach(element => {
-                    JSONDATA.filter((val) => {
-                        return val
-                    }).map((val, key2) => {
-                        if (val.id == element) {
-                            console.log("OOOOOOOOOOOOOO" + key2)
-                            setList(liste => [...liste, <div><Link id="aide_etud" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}>{val.first_name}</Link></div>])
-                        }
-                    })
-            })}
+                    const txt = new API().get("aide/get_aide", false).then(function(result) {
+                        const tmp = result[1].map((val, key) => {
+                            if (val.id == element) {
+                                let link = (valeurs, places) => {
+                                    history({
+                                      pathname: "/aide",
+                                      search: createSearchParams({
+                                        val: val.id,
+                                      }).toString()
+                                    });
+                                }
+                                setList(liste => [...liste, <div><p><a onClick={link}>{val.name}</a></p></div>])
+                            }
+                        })
+                    }
+                    // JSONDATA.filter((val) => {
+                    //     return val
+                    // }).map((val, key2) => {
+                    //     if (val.id == element) {
+                    //         console.log("OOOOOOOOOOOOOO" + key2)
+                    //         setList(liste => [...liste, <div><Link id="aide_etud" to={{ pathname: "/aide", state: {val: val, places: ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]}}}>{val.first_name}</Link></div>])
+                    //     }
+                    // })
+         )})}
             // setList("Test")
         )
         console.log(res2)

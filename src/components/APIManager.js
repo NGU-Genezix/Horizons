@@ -36,6 +36,7 @@ export default class API
     }
     catch (e)
     {
+      console.log("PAS BON")
       return data;
     }
   }

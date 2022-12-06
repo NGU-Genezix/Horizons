@@ -13,6 +13,7 @@ import { FaRegHeart } from "react-icons/fa";
 import API from '../components/APIManager';
 import Contact from '../components/contact'
 import N_Navbar from '../components/new_nav'
+import Tchatbot from '../components/Tchatbot';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 // import { Linking, Pressable, Text, View } from "react-native";
@@ -26,18 +27,18 @@ export default function Aide() {
   const location_ = useLocation()
   const [params] = useSearchParams();
   const [tmp, setTmp] = useState(0);
+  const [data, setData] = useState(null);
 
-  const data =
-  JSONDATA2.filter((val) => {
-    return val
-    }).map((val2, key) => {
-    if (val2.id == params.get("val")) {
-      console.log(params.get("val") - 1)
-      return val2
-    }
-  })
+    const test = () => {
+      const txt = new API().get("aide/get_aide", false).then(function(result) {
+        const tmp = result[1].map((val, key) => {
+          // console.log(val)
+          return val
+        })
+        setData(tmp);
+      }
+    )}
 
-  console.log(data)
 
   const places = ["mairie", "point d'information local dédié aux personnes âgées", "Services du département"]
   
@@ -100,10 +101,58 @@ export default function Aide() {
     })
   }
 
+  const getFavoris = () => {
+    const token = localStorage.getItem("token");
+    // console.log(token);
+
+    fetch("https://horizons.page/api/get_fav", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        console.log("respoooooooooooonse", responseData);
+        const favArray = Object.entries(responseData);
+        for (var i = 0; i < favArray.length; i++) {
+          if (favArray[i][0] == data[0].id && favArray[i][1] == true) {
+            setHeartColor("red");
+            break;
+          } else setHeartColor("black");
+        }
+        console.log(favArray);
+      });
+  };
+
+  const heartClicked = () => {
+    const token = localStorage.getItem("token");
+
+    fetch("https://horizons.page/api/update_fav", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify({
+        id: parseInt(data[0].id),
+        value: heartColor === "red" ? false : true,
+      }),
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        getFavoris();
+      });
+  };
+
   useEffect(() => {
     getUser()
     slideInTop("#conteneur")
-
+    test()
   }, [])
   // useEffect(() => {
   //   if (addrs.length === 0)
@@ -163,35 +212,36 @@ export default function Aide() {
     console.log("________")
   }
   
-  const heartClicked = () => {
-    heartColor === 'red' ? setHeartColor('black') : setHeartColor('red')
-  }
+  // const heartClicked = () => {
+  //   heartColor === 'red' ? setHeartColor('black') : setHeartColor('red')
+  // }
   
   return (
     <div className="App">
       <div className="main">
         <N_Navbar></N_Navbar>
+        <Tchatbot/>
         <div id="conteneur">
           <h1 className="titles">
-            {data[params.get("val") - 1].first_name}
+            {data ? data[params.get("val") - 1].name : ""}
           </h1>
           <div className='inline'>
             <div className="block1">
-              <span className='blockt'><input type="checkbox" value="Etudiant" checked={isCheckedEtud} />{data[params.get("val") - 1].type}</span>
+              <span className='blockt'><input type="checkbox" value="Etudiant" checked={isCheckedEtud} />{data ? data[params.get("val") - 1].type : ""}</span>
             </div>
             <div className="block2" >
-              <span className='blockt'>Jusqu'à <span className='blue'>{data[params.get("val") - 1].prix}€</span></span>
+              <span className='blockt'>Jusqu'à <span className='blue'>{data ? data[params.get("val") - 1].maxIncome : ""}€</span></span>
             </div>
           </div>
           <div className='trait'></div>
           <div id="conteneur1">
-            <div><FaRegHeart onClick={() => heartClicked()} fontSize={40} color={heartColor} style={{marginLeft:'50%',}}/>Ajouter Aux Favoris</div>
+            <div><FaRegHeart onClick={() => heartClicked()} fontSize={40} color={heartColor} style={{marginLeft:'50%'}}/>Ajouter Aux Favoris</div>
           </div>
           <div className='box3'>
-            {data[params.get("val") - 1].descriptif}
+            {data ? data[params.get("val") - 1].description: ""}
           </div>
           <div className='box4'>
-            Liens utiles: <a href={data[params.get("val") - 1].lien_aide}>{data[params.get("val") - 1].lien_aide}</a>
+            Liens utiles: <a href={data ? data[params.get("val") - 1].link : ""}>{data ? data[params.get("val") - 1].link : ""}</a>
           </div>
           <div className='trait'></div>
         <p className="titles2">Chercher l'établissement le plus près de chez vous pour vos démarches:</p>

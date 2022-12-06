@@ -2,7 +2,7 @@
     position: fixed;
     left: 90%;
     top: 83%;
-    z-index: 1;
+    z-index: 2;
 } 
 
 .tchat_design {
@@ -14,36 +14,36 @@
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #eeca60;
+    background-color: #BFD8BD;
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
 }
 
 .tchat_design:hover {
-    background-color: #E1B124
+    background-color: #d3d3d3
 }
 
 .tchat_design:active {
-    background-color: #E1B124;
+    background-color: #a1a1a1;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
 
 .tchatbot {
     width: 100%;
-    z-index: 1;
+    z-index: 3;
 }
 
 .tchat_div {
     position: fixed;
     left: 80%;
     top: 55%;
-    background-color: #eeca60;
+    background-color: #BFD8BD;
     border-radius: 15px;
     width: 19%;
     height: 40%;
-    z-index: 1;
+    z-index: 3;
 }
 
 .main_tchat {
@@ -65,7 +65,7 @@
 .answer {
     width: 70%;
     margin-top: 10%;
-    background-color: #fff2cc;
+    background-color: #EDEEC9;
     margin-left: 3%;
     border-radius: 15px;
 }
@@ -85,7 +85,7 @@
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #eeca60;
+    background-color: #BFD8BD;
     border: none;
 }
 

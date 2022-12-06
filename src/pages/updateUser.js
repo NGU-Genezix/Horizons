@@ -71,13 +71,13 @@ const UpdateUser = () => {
     return (
         <div className='main'> 
             <N_Navbar></N_Navbar>
-            <div className="auth">
-                <div className="background-design">
+            <div className="space1">
+                {/* <div className="background-design">
                     <div className="big-circle-1"></div>
                     <div className="big-circle-2"></div>
                     <div className="little-circle-1"></div>
                     <div className="little-circle-2"></div>
-                </div>
+                </div> */}
                 <div className="register-container">
                     <div className="big-square">
                         <h1 className="main-title">Modification</h1>

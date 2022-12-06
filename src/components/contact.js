@@ -20,10 +20,10 @@ export default function Contact() {
             <div className='main_div'>
                 <img className="logo_2" src={logo}></img>
                 <div className='faq'>
-                    <a href='https://www.youtube.com/'>- F.A.Q</a>
+                    <a href='https://eip.epitech.eu/2023/horizons/'>- F.A.Q</a>
                 </div>
                 <div className='a_propos'>
-                    <a  href='https://www.youtube.com/'>- À Propos</a>
+                    <a  href='https://eip.epitech.eu/2023/horizons/'>- À Propos</a>
                 </div>
             </div>
         </div>

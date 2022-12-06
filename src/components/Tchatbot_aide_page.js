@@ -8,7 +8,7 @@ import AUTH from './AuthManager';
 import API from './APIManager';
 import { useNavigate, createSearchParams } from "react-router-dom";
 
-export default function Tchatbot() {
+export default function Tchatbot_aide_page() {
     
     const history = useNavigate()
     const isconnect = new AUTH().isConnected();
@@ -129,10 +129,7 @@ export default function Tchatbot() {
 
     return (
         <div className='tchatbot'>
-            {(isDisplayed) && (
-            <div className='tchat_btn'>
-                <button className="tchat_design" onClick={toggleOn}>Tchatbot</button>
-            </div>)}
+            <button className='decouvrez_assistant' onClick={toggleOn}><span className='dec_aide'>Découvrez votre assistant</span></button>
             {(!isDisplayed) && (
                 <div className='tchat_div'>
                     <button className='btn_close' onClick={toggleOff}>X</button>

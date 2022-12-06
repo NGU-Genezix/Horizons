@@ -9,6 +9,7 @@ import img_budget from "../assets/budget.jpg"
 import N_Navbar from '../components/new_nav'
 import { useNavigate } from "react-router-dom";
 import Contact from '../components/contact'
+import Tchatbot from '../components/Tchatbot';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -21,6 +22,7 @@ export default function N_Acceuil() {
     return (
       <div className='main'>
         <N_Navbar></N_Navbar>
+        <Tchatbot/>
         <div className='main'>
           <div className='top_div'>
             <img className="img_horizon" src={img_horizon}></img>
@@ -85,7 +87,7 @@ export default function N_Acceuil() {
           <div className='txt_obt'>
             <span>Obtenez des conseils pour économiser de l'argent</span>
           </div>
-          <button className='gerer_budget' onClick={() => history('/budget')}><span className='dec_aide'>Découvrez vos aides sociales</span></button>
+          <button className='gerer_budget' onClick={() => history('/budget')}><span className='dec_aide'>Gérer mon budget</span></button>
         </div>
         <Contact></Contact>
     </div>);

@@ -14,6 +14,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import Contact from '../components/contact'
 import N_Navbar from '../components/new_nav'
 import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
+import Tchatbot_aide_page from "../components/Tchatbot_aide_page"
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -29,7 +30,8 @@ export default function Rech_Aide() {
     const [isCheckedFav, setIsCheckedFav] = useState(true);
     const [searchTerm, setSearchTerm] = useState('')
     const [focused, setFocused] = useState(false)
-
+    const [list_aide, setListAide] = useState([])
+    const [search_list, setSearchList] = useState('')
  
     const slideInTop = (elem, delay, duration) => {
       gsap.fromTo(elem, {
@@ -78,16 +80,19 @@ export default function Rech_Aide() {
     }
 
     const handleOnChangeEtud = () => {
+      get_list(!isCheckedEtud, isCheckedHandi, isCheckedAge)
       setIsCheckedEtud(!isCheckedEtud);
       slideLeft("#aide_etud")
     };
 
     const handleOnChangeAge = () => {
+      get_list(isCheckedEtud, isCheckedHandi, !isCheckedAge)
       setIsCheckedAge(!isCheckedAge);
       slideLeft("#aide_age")
     };
 
     const handleOnChangeHandi = () => {
+      get_list(isCheckedEtud, !isCheckedHandi, isCheckedAge)
       setIsCheckedHandi(!isCheckedHandi);
       slideLeft("#aide_handi")
     };
@@ -105,57 +110,107 @@ export default function Rech_Aide() {
             setFocused(false)
          }, 100);
     }
+    // 'Etudiants'
+    // 'Personnes en situation de handicap'
+    // 'Personnes âgées'
 
-    let search_list;
-    if (focused) {
-        search_list =
-        <div className='search_list2' onFocus={onFocus}>
-            {JSONDATA.filter((val) => {
-                if (searchTerm == "") {
-                    return val
-                } else if (val.first_name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                    return val
-                }
-            }).map((val, key) => {
-                let link = (valeurs, places) => {
-                  history({
-                    pathname: "/aide",
-                    search: createSearchParams({
-                      val: val.id,
-                    }).toString()
-                  });
-                }
+    const get_search = (val1) => {
+        let tmp = new API().get("aide/get_aide", false).then(function(result) {
 
-                return <div className='search2' onFocus={onFocus}><p><a onClick={link}>{val.first_name}</a></p></div>
-            })}
-        </div>
-    } else {
-        search_list = ""
+                  let tmp = result[1].map((val, key) => {
+                    if (val.name.toLowerCase().includes(val1.toLowerCase())) {
+                      console.log(val)
+                      let link = (valeurs, places) => {
+                        history({
+                          pathname: "/aide",
+                          search: createSearchParams({
+                            val: val.id,
+                          }).toString()
+                        });
+                      }
+                    
+                      return <div className='search2' onFocus={onFocus}><p><a onClick={link}>{val.name}</a></p></div>
+                    }
+                })
+                  setSearchList(
+                    <div className='search_list2' onFocus={onFocus}>
+                      <button className='btn_close2' onClick={close}>X</button>
+                      {tmp}
+                    </div>
+                  )
+              }
+           )}
+        
+
+
+    const get_list = (etud, handi, age) => {
+      const test = new API().get("aide/get_aide", false).then(function(result) {
+        console.log(result[1][2])
+        let tmp = result[1].map((val, key) => {
+          // console.log(val)
+          let link = (valeurs, places) => {
+            history({
+              pathname: "/aide",
+              search: createSearchParams({
+                val: val.id,
+              }).toString()
+            });
+          }
+          if (val.type == 'Etudiants') {
+            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_etud" key={key} display={etud} min_rev={val.incomeLimit} set_rev={maximumRevenu} name={val.name} status={"Etudiants"} price={val.maxIncome} /></a>
+          } else if (val.type == "Personnes en situation de handicap") {
+            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_handi" key={key} display={handi} min_rev={val.incomeLimit} set_rev={maximumRevenu} name={val.name} status={"Personnes en situation de handicap"} price={val.maxIncome} /></a>
+          } else if (val.type == "Personnes âgées") {
+            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_age" key={key} display={age} min_rev={val.incomeLimit} set_rev={maximumRevenu} name={val.name} status={"Personnes âgées"} price={val.maxIncome} /></a>
+          } else {
+            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_etud" key={key} display={etud} min_rev={val.incomeLimit} set_rev={maximumRevenu} name={val.name} status={"Etudiant"} price={val.maxIncome} /></a>
+          }
+          })
+          setListAide(
+            <ul id="aide" className='list'>
+              {tmp}
+            </ul>)
+        }
+      )
+      
     }
 
+    const close = () => {
+      setSearchList("")
+    }
 
     useEffect(() => {
       getUser()
       slideLeft("#aide")
       slideInTop("#description")
+      let etud = false;
+      let age = false;
+      let handi = false;
       if (params.get("etud")) {
         console.log(params.get("agee"))
         if (params.get("etud") == "true") {
+          etud = true;
           setIsCheckedEtud(true);
         } else if (params.get("etud") == "false") {
           setIsCheckedEtud(false);
         }
         if (params.get("agee") == "true") {
+          let age = true;
           setIsCheckedAge(true);
         } else if (params.get("agee") == "false") {
           setIsCheckedAge(false);
         }
         if (params.get("handic") == "true") {
+          handi = true;
           setIsCheckedHandi(true);
         } else if (params.get("handic") == "false") {
           setIsCheckedHandi(false);
         }
+        get_list(etud, handi, age)
+      } else {
+        get_list(isCheckedEtud, isCheckedHandi, isCheckedAge)
       }
+
     }, [])
 
     const getUser = () => {
@@ -163,13 +218,19 @@ export default function Rech_Aide() {
         if (result[1] != null) {
           if (result[1].statut == "étudiant") {
             handleOnChangeAge();
-            handleOnChangeHandi(); }
+            handleOnChangeHandi();
+            get_list(isCheckedEtud, false, false)
+          }
           else if (result[1].statut == "âgé") {
             handleOnChangeEtud();
-            handleOnChangeHandi(); }
+            handleOnChangeHandi();
+            get_list(false, false, isCheckedAge)
+          }
           else if (result[1].statut == "handicapé") {
             handleOnChangeEtud();
-            handleOnChangeAge(); }
+            handleOnChangeAge();
+            get_list(false, isCheckedHandi, false)
+          }
           else if (result[1].statut == "fav") {
               handleOnChangeFav();
             }
@@ -177,45 +238,22 @@ export default function Rech_Aide() {
       })
     }
 
-    
-
-    let list_aide;
-        list_aide =
-        <ul id="aide" className='list'>
-          {JSONDATA.filter((val) => {
-                return val
-            }).map((val, key) => {
-                let link = (valeurs, places) => {
-                  history({
-                    pathname: "/aide",
-                    search: createSearchParams({
-                      val: val.id,
-                    }).toString()
-                  });
-                }
-                if (val.type == "Etudiant") {
-                  return <a onClick={link}><AideAcceuil onClick={link} className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></a>
-                } else if (val.type == "Handicap") {
-                  return <a onClick={link}><AideAcceuil onClick={link} className="aideHandicap" key={key} display={isCheckedHandi} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Handicap"} price={val.prix} /></a>
-                } else if (val.type == "Personne Agée") {
-                  return <a onClick={link}><AideAcceuil onClick={link} className="aideAge" key={key} display={isCheckedAge} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Personne Agée"} price={val.prix} /></a>
-                } else {
-                  return <a onClick={link}><AideAcceuil onClick={link} className="aideEtudiant" key={key} display={isCheckedEtud} min_rev={val.rev_max} set_rev={maximumRevenu} name={val.first_name} status={"Etudiant"} price={val.prix} /></a>
-                }
-            })}
-        </ul>
-
+    const handleSearchTerm = (val) => {
+      setSearchTerm(val)
+      get_search(val)
+    }
 
     return (
       <div className='main'>
         <N_Navbar></N_Navbar>
+        <Tchatbot_aide_page/>
         <div className='rech_daide'>Recherches d'aide</div>
         <input className='recherche_2' type="text"
                         placeholder='Rechercher ...'
                         onFocus={onFocus}
                         onBlur={onBlur}
                         onChange={(event) => {
-                            setSearchTerm(event.target.value);
+                          handleSearchTerm(event.target.value);
                         }}></input>
         {search_list}
         {/* <div className='checkBoxDiv'> */}
@@ -243,7 +281,6 @@ export default function Rech_Aide() {
           </div>
         </div>
         <span className='txt_bot'>Besoin d'aide dans la recherche d'aides</span>
-        <button className='decouvrez_assistant' onClick={() => history('/rech_aide')}><span className='dec_aide'>Découvrez votre assistant</span></button>
         <span className='txt_ger_budg'>Gérer votre budget</span>
         <button className='btn_ger_budg' onClick={() => history('/budget')}><span className='dec_aide'>Gérer votre budget</span></button>
         {/* </div> */}
