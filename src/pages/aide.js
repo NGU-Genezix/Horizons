@@ -263,7 +263,7 @@ export default function Aide() {
           {places.map((v, k) => <option key={k} label={v} value={v} />)}
         </select></div>
         {/* <a href={'https://lannuaire.service-public.fr/recherche?whoWhat=' + place + '&where=' + location}> */}
-          <button className='box8' onClick={() => {searchAddr("https://cors-everywhere-me.herokuapp.com/https://lannuaire.service-public.fr/recherche?whoWhat="+ place +"&where=" + location)}}>Chercher</button>
+          <button className='box8' onClick={() => {searchAddr("https://lannuaire.service-public.fr/recherche?whoWhat="+ place +"&where=" + location)}}>Chercher</button>
         {/* </a> */}
         {(isDisplayed) && (
         <div>
