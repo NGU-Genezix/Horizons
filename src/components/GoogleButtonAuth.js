@@ -7,7 +7,10 @@ const GoogleButtonAuth = (props) => {
     return (
         <div className="google-button-auth-container">
             <div className="google-button-auth-sub-container">
-                <a href="https://horizons.page/api/connect/google" > <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/> <p className="btn-text"><b>Continuer avec Google</b></p> </a>
+                <a href="https://horizons.page/api/connect/google" >
+                    <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                </a>
+
             </div>
         </div>
     );

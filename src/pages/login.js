@@ -79,6 +79,7 @@ const Login = () => {
                             <div className="google-icon-wrapper">
                                 <GoogleButtonAuth/>
                             </div>
+                                <a href="https://horizons.page/api/connect/google" ><p className="btn-text"><b>Continuer avec Google</b></p> </a>
                         </div>
                         <div className="clicable-widgets-container">
                             <ButtonAuth

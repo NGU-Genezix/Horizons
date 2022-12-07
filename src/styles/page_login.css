@@ -79,6 +79,9 @@
 }
 
 .google-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-top: 3%;
     margin-left: 15%;
   width: 70%;
@@ -90,28 +93,20 @@
 }
 
 .google-icon-wrapper {
-    position: absolute;
-    margin-top: 0.1%;
-    margin-left: 0.1%;
-    width: 4%;
-    height: 6%;
     border-radius: 2%;
+    object-fit: contain;
+    width: 9%;
     background-color: #fff;
 }
 
 .google-icon {
-    position: absolute;
-    margin-top: 25%;
+    margin-top: 40%;
     margin-left: 25%;
-    left:     0%;
-    top:      0%;
-    width: 45%;
-    height: 45%;  
+    width: 80%;
 }
 
 .btn-text {
-    float: right;
-    margin: 7% 6% 0 0;
+    display: inline;
     color: #fff;
     font-size: 1.4vw;
     position:static;

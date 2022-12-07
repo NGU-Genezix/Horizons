@@ -145,6 +145,7 @@ export default function Rech_Aide() {
 
 
     const get_list = (etud, handi, age, rev) => {
+      console.log(etud, handi, age)
       const test = new API().get("aide/get_aide", false).then(function(result) {
         console.log(result[1][2])
         let tmp = result[1].map((val, key) => {
@@ -187,8 +188,7 @@ export default function Rech_Aide() {
       let etud = false;
       let age = false;
       let handi = false;
-      if (params.get("etud")) {
-        console.log(params.get("etud"))
+      if (params.get("etud") != null) {
         if (params.get("etud") == "true") {
           etud = true;
           console.log("OK---")
@@ -211,6 +211,7 @@ export default function Rech_Aide() {
         }
         get_list(etud, handi, age, maximumRevenu)
       } else {
+        console.log("ok" + isCheckedEtud + isCheckedAge + isCheckedHandi)
         get_list(isCheckedEtud, isCheckedHandi, isCheckedAge, maximumRevenu)
       }
 
@@ -218,11 +219,13 @@ export default function Rech_Aide() {
 
     const getUser = () => {
       let res = new API().get("get_user", true).then(function(result) {
-        if (!params.get("etud")) {
+        console.log(params.get("etud"))
+      if (params.get("etud") == null) {
           if (result[1] != null) {
             if (result[1].statut == "étudiant") {
               handleOnChangeAge();
               handleOnChangeHandi();
+              console.log("ETUDIANT")
               get_list(isCheckedEtud, false, false)
             }
             else if (result[1].statut == "âgé") {
