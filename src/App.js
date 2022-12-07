@@ -40,6 +40,8 @@ function App() {
               <Route path="/aide" element={<Aide />}/>
               <Route path="/budget" element={<Budget />}/>
               <Route path="/datauser" element={<DataUser />}/>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/register" element={<Register />}/>
               <Route path="/updateuser" element={<UpdateUser />}/>
               <Route path="/rech_aide" element={<Rech_Aide />}/>
               <Route render="/" element={<N_Acceuil/>}/>

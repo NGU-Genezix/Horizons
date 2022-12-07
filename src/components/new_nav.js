@@ -20,7 +20,7 @@ export default function N_Navbar() {
         
             <div className='main_nav'>
                 <img className="n_logo" src={logo}></img>
-                <button className='acceuil' onClick={() => history('/')}>Acceuil</button>
+                <button className='acceuil' onClick={() => history('/')}>Accueil</button>
                 <button className='aide' onClick={() => history('/rech_aide')}>Aides Sociales</button>
                 <button className='n_budget' onClick={() => history('/budget')}>Budget</button>
                 {isconnect ?

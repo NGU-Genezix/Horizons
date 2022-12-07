@@ -241,7 +241,7 @@ export default function Aide() {
             {data ? data[params.get("val") - 1].description: ""}
           </div>
           <div className='box4'>
-            Liens utiles: <a href={data ? data[params.get("val") - 1].link : ""}>{data ? data[params.get("val") - 1].link : ""}</a>
+            Liens utiles: <a className='link' href={data ? data[params.get("val") - 1].link : ""}>{data ? data[params.get("val") - 1].link : ""}</a>
           </div>
           <div className='trait'></div>
         <p className="titles2">Chercher l'établissement le plus près de chez vous pour vos démarches:</p>
