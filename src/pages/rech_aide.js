@@ -188,12 +188,14 @@ export default function Rech_Aide() {
       let age = false;
       let handi = false;
       if (params.get("etud")) {
-        console.log(params.get("agee"))
+        console.log(params.get("etud"))
         if (params.get("etud") == "true") {
           etud = true;
+          console.log("OK---")
           setIsCheckedEtud(true);
         } else if (params.get("etud") == "false") {
           setIsCheckedEtud(false);
+          console.log("OK---")
         }
         if (params.get("agee") == "true") {
           let age = true;
@@ -216,25 +218,27 @@ export default function Rech_Aide() {
 
     const getUser = () => {
       let res = new API().get("get_user", true).then(function(result) {
-        if (result[1] != null) {
-          if (result[1].statut == "étudiant") {
-            handleOnChangeAge();
-            handleOnChangeHandi();
-            get_list(isCheckedEtud, false, false)
-          }
-          else if (result[1].statut == "âgé") {
-            handleOnChangeEtud();
-            handleOnChangeHandi();
-            get_list(false, false, isCheckedAge)
-          }
-          else if (result[1].statut == "handicapé") {
-            handleOnChangeEtud();
-            handleOnChangeAge();
-            get_list(false, isCheckedHandi, false)
-          }
-          else if (result[1].statut == "fav") {
-              handleOnChangeFav();
+        if (!params.get("etud")) {
+          if (result[1] != null) {
+            if (result[1].statut == "étudiant") {
+              handleOnChangeAge();
+              handleOnChangeHandi();
+              get_list(isCheckedEtud, false, false)
             }
+            else if (result[1].statut == "âgé") {
+              handleOnChangeEtud();
+              handleOnChangeHandi();
+              get_list(false, false, isCheckedAge)
+            }
+            else if (result[1].statut == "handicapé") {
+              handleOnChangeEtud();
+              handleOnChangeAge();
+              get_list(false, isCheckedHandi, false)
+            }
+            else if (result[1].statut == "fav") {
+                handleOnChangeFav();
+              }
+          }
         }
       })
     }

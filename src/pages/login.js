@@ -24,6 +24,7 @@ const Login = () => {
         var res = new AUTH().connect(email, password).then(res=> {
             if (res[0] == 200)
                 navigate('/')
+                window.location.reload(false);
         })
         console.log(res)
     }

@@ -51,7 +51,7 @@ export default function Tchatbot() {
           console.log(result[1]["data"])
           setAllTchat([result[1]["data"]["botRess"][0]])
           console.log(result[1]["data"]["autoRess"][0])
-          setAnswers(result[1]["data"]["autoRess"])
+          setAnswers(result[1]["data"]["autoRess"].filter(elem => elem.id !== 55 && elem.id !== 59))
           setDataSendBack(result[1]["data"]["dataToSendBack"])
           console.log(answers)
         //   result[1]["data"]["autoRess"][0]
@@ -109,7 +109,7 @@ export default function Tchatbot() {
                 setTchatText(result[1]["data"]["botRess"][0])
                 sendText(result[1]["data"]["botRess"][0])
                 console.log(result[1]["data"]["autoRess"][0])
-                setAnswers(result[1]["data"]["autoRess"])
+                setAnswers(result[1]["data"]["autoRess"].filter(elem => elem.id !== 1 && elem.id !== 55 && elem.id !== 59))
                 console.log(answers)
             } else {
                 console.log("_____-------------------____")
