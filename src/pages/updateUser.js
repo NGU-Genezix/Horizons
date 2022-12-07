@@ -19,10 +19,9 @@ const UpdateUser = () => {
     const [birthday, setBirthday] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [statut, setStatut] = useState("");
     const [confPassword, setConfPassword] = useState("");
     const [sex, setSex] = useState("");
-    const profil = ['Etudiant', 'Personne agée', 'Handicap'];
+    const [statut, setStatus] = useState("");
     const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
     const checkedIcon = <CheckBoxIcon fontSize="small" />;
     let navigate = useNavigate();
@@ -36,7 +35,6 @@ const UpdateUser = () => {
             birthday: birthday,
             statut: statut,
             email: email,
-            profil: profil,
             sex: sex,
         }
         var res = new AUTH().updateuser(body_content).then(res=> {
@@ -60,10 +58,16 @@ const UpdateUser = () => {
             setPassword(event.target.value)
         else if (event.target.title == "c_password")
             setConfPassword(event.target.value)
-        else if (event.target.title == "sex")
-            setSex(event.target.value)
-        else if (event.target.title == "statut")
-            setStatut(event.target.value)
+        else if (event.target.title == "homme")
+            setSex("Homme")
+        else if (event.target.title == "femme")
+            setSex("Femme")
+        else if (event.target.title == "etudiant")
+            setStatus("Etudiant")
+        else if (event.target.title == "agee")
+            setStatus("Personne agée")
+        else if (event.target.title == "handicap")
+            setStatus("Handicapé")
         else if (event.target.title == "birthday")
             setBirthday(event.target.value)
     }
@@ -115,21 +119,34 @@ const UpdateUser = () => {
                             </div>
                             <div className="six-title">Sexe</div>
                             <div className="input-6">
-                            <TextFieldAuth
-                                    title="sex"
-                                    onChange={handleChange}
-                                    placeholder="Sexe"
-                                    type="text"
+                                <label><input onChange={handleChange} title="homme"
+                                    type="checkbox" 
                                 />
+                                Homme
+                                </label>
+                                <label><input onChange={handleChange} title="femme"
+                                    type="checkbox" 
+                                />
+                                Femme
+                                </label>
                             </div>
                             <div className="seven-title">Profil</div>
                             <div className="input-7">
-                            <TextFieldAuth
-                                    title="statut"
-                                    onChange={handleChange}
-                                    placeholder="Profil"
-                                    type="text"
+                                <label><input onChange={handleChange} title="etudiant"
+                                    type="checkbox" 
                                 />
+                                Etudiant
+                                </label>
+                                <label><input onChange={handleChange} title="agee"
+                                    type="checkbox" 
+                                />
+                                Personne agée
+                                </label>
+                                <label><input onChange={handleChange} title="handicap"
+                                    type="checkbox" 
+                                />
+                                Handicap
+                                </label>
                             </div>
                             <div className="eight-title">Mot de passe</div>
                             <div className="input-8">

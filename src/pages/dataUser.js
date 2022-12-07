@@ -34,6 +34,7 @@ const DataUser = () => {
         let res = new API().get("get_user", true).then(function(result) {
             setUser(result[1])
             setLoading(false)
+            console.log(result[1])
         })
         let res2 = new API().get("get_historique", true).then(function(result) {
             console.log("___")

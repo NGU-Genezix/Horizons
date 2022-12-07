@@ -20,8 +20,8 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [statut, setStatus] = useState("");
+    const [sex, setSex] = useState("");
     const [confPassword, setConfPassword] = useState("");
-    const sex = ['Homme', 'Femme'];
     const profil = ['Etudiant', 'Personne agée', 'Handicap'];
     const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
     const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -36,7 +36,7 @@ const Register = () => {
             password: password,
             birthday: birthday,
             statut: statut,
-            sex: "Homme"
+            sex: sex
         }
         console.log(body_content)
         var res = new AUTH().register(body_content).then(res=> {
@@ -59,13 +59,17 @@ const Register = () => {
         else if (event.target.title == "c_password")
             setConfPassword(event.target.value)
         else if (event.target.title == "etudiant")
-            setStatus("étudiant")
+            setStatus("Etudiant")
         else if (event.target.title == "agee")
-            setStatus("âgé")
+            setStatus("Agé")
         else if (event.target.title == "handicap")
-            setStatus("handicapé")
+            setStatus("Handicapé")
         else if (event.target.title == "birthday")
             setBirthday(event.target.value)
+        else if (event.target.title == "homme")
+            setSex("Homme")
+        else if (event.target.title == "femme")
+            setSex("Femme")
     }
 
     return (
@@ -114,13 +118,13 @@ const Register = () => {
                                 />
                             </div>
                             <div className="five-title">Sexe</div>
-                            <div className="input-7">
-                                <label><input title="sexe"
+                            <div className="input-5">
+                                <label><input onChange={handleChange} title="homme"
                                     type="checkbox" 
                                 />
                                 Homme
                                 </label>
-                                <label><input title="sexe"
+                                <label><input onChange={handleChange} title="femme"
                                     type="checkbox" 
                                 />
                                 Femme
