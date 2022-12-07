@@ -169,9 +169,7 @@ export default function Aide() {
   
   const searchAddr = (url) => {
     // axios.get('https://lannuaire.service-public.fr/recherche?whoWhat=' + place + '&where=' + location)
-    axios.get(url, {'headers' : {'Content-Type': "application/json",
-    'Access-Control-Allow-Origin': "*",
-    'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept",}})
+    axios.get(url)
     .then(res => {
       const html = res.data;
       const newList = html.match(regex)?.map((v) => {
@@ -262,9 +260,9 @@ export default function Aide() {
         >
           {places.map((v, k) => <option key={k} label={v} value={v} />)}
         </select></div>
-        {/* <a href={'https://lannuaire.service-public.fr/recherche?whoWhat=' + place + '&where=' + location}> */}
-          <button className='box8' onClick={() => {searchAddr("https://lannuaire.service-public.fr/recherche?whoWhat="+ place +"&where=" + location)}}>Chercher</button>
-        {/* </a> */}
+        <a  className='box8' href={'https://lannuaire.service-public.fr/recherche?whoWhat=' + place + '&where=' + location}>
+          <button>Chercher</button>
+        </a>
         {(isDisplayed) && (
         <div>
           {addrs.map((v, k) => {
