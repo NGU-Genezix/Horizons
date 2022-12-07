@@ -157,13 +157,13 @@ export default function Rech_Aide() {
             });
           }
           if (val.type == 'Etudiants') {
-            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_etud" key={key} display={etud} min_rev={val.incomeLimit} set_rev={maximumRevenu} name={val.name} status={"Etudiants"} price={val.maxIncome} /></a>
+            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_etud" key={key} display={etud} min_rev={val.maxIncome} set_rev={maximumRevenu} name={val.name} status={"Etudiants"} price={val.incomeLimit} /></a>
           } else if (val.type == "Personnes en situation de handicap") {
-            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_handi" key={key} display={handi} min_rev={val.incomeLimit} set_rev={maximumRevenu} name={val.name} status={"Personnes en situation de handicap"} price={val.maxIncome} /></a>
+            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_handi" key={key} display={handi} min_rev={val.maxIncome} set_rev={maximumRevenu} name={val.name} status={"Personnes en situation de handicap"} price={val.incomeLimit} /></a>
           } else if (val.type == "Personnes âgées") {
-            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_age" key={key} display={age} min_rev={val.incomeLimit} set_rev={maximumRevenu} name={val.name} status={"Personnes âgées"} price={val.maxIncome} /></a>
+            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_age" key={key} display={age} min_rev={val.maxIncome} set_rev={maximumRevenu} name={val.name} status={"Personnes âgées"} price={val.incomeLimit} /></a>
           } else {
-            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_etud" key={key} display={etud} min_rev={val.incomeLimit} set_rev={maximumRevenu} name={val.name} status={"Etudiant"} price={val.maxIncome} /></a>
+            return <a onClick={link} className="link_aide"><AideAcceuil onClick={link} className="aide_l aide_etud" key={key} display={etud} min_rev={val.maxIncome} set_rev={maximumRevenu} name={val.name} status={"Etudiant"} price={val.incomeLimit} /></a>
           }
           })
           setListAide(
