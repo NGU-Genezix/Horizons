@@ -34,9 +34,9 @@ const Register = () => {
             lastname: lastName,
             email: email,
             password: password,
-            birthday: "00/00/0000",
+            birthday: birthday,
             statut: statut,
-            sex: "homme"
+            sex: "Homme"
         }
         console.log(body_content)
         var res = new AUTH().register(body_content).then(res=> {
@@ -72,12 +72,6 @@ const Register = () => {
         <div className='main'> 
             <N_Navbar></N_Navbar>
             <div className="space1">
-                {/* <div className="background-design">
-                    <div className="big-circle-1"></div>
-                    <div className="big-circle-2"></div>
-                    <div className="little-circle-1"></div>
-                    <div className="little-circle-2"></div>
-                </div> */}
                 <div className="register-container">
                     <div className="big-square">
                         <h1 className="main-title">Inscription</h1>
@@ -106,20 +100,8 @@ const Register = () => {
                                 <TextFieldAuth
                                     title="birthday"
                                     onChange={handleChange}
-                                    placeholder="jj"
+                                    placeholder="jj/mm/yyyy"
                                     type="text"
-                                />
-                                <TextFieldAuth
-                                    title="birthday"
-                                    onChange={handleChange}
-                                    placeholder="mm"
-                                    type="text"
-                                />
-                                <TextFieldAuth
-                                title="birthday"
-                                onChange={handleChange}
-                                placeholder="yyyy"
-                                type="text"
                                 />
                             </div>
                             <div className="four-title">Adresse email</div>

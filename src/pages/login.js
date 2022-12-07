@@ -28,6 +28,14 @@ const Login = () => {
         console.log(res)
     }
 
+    async function loginGoogle(){
+        var res = new AUTH().connectGoogle().then(res=> {
+            console.log(res[0]);
+            navigate('/')
+        })
+        console.log(res)
+    }
+
     const handleChange = (event) => {
         if (event.target.title == "email")
             setEmail(event.target.value);
@@ -35,16 +43,12 @@ const Login = () => {
             setPassword(event.target.value);
     }
 
+
+
     return (
         <div className="main">
             <N_Navbar></N_Navbar>
             <div className="space1">
-                {/* <div className="background-design">
-                    <div className="big-circle-1"></div>
-                    <div className="big-circle-2"></div>
-                    <div className="little-circle-1"></div>
-                    <div className="little-circle-2"></div>
-                </div> */}
                 <div className="login-container">
                     <div className="big-square">
                         <h1 className="main-title">Connexion</h1>
@@ -80,7 +84,9 @@ const Login = () => {
                         </div>
                         <div className="google-btn">
                             <div className="google-icon-wrapper">
-                                <GoogleButtonAuth/>
+                                <GoogleButtonAuth
+                                onClick={loginGoogle}
+                            />
                             </div>
                         </div>
                         <div className="clicable-widgets-container">
