@@ -54,22 +54,6 @@ export default class AuthManager
         return [response[0], "Connection erreur"];
     }
 
-    async connectGoogle()
-    {
-        let response = await new API().post("connect/google", false);
-        if (response[0] != null)
-        {
-            localStorage.setItem("token", response[0]);
-            if (this.isConnected()){
-              this.setConxion && this.setConxion(true);
-              return [200, ""];
-            }
-            else
-                return [400, "Token erreur"];
-        }
-        return [response[0], "Connection erreur"];
-    }
-
     async register(element)
     {
         let datas = new Map();

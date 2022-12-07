@@ -28,14 +28,6 @@ const Login = () => {
         console.log(res)
     }
 
-    async function loginGoogle(){
-        var res = new AUTH().connectGoogle().then(res=> {
-            console.log(res[0]);
-            navigate('/')
-        })
-        console.log(res)
-    }
-
     const handleChange = (event) => {
         if (event.target.title == "email")
             setEmail(event.target.value);
@@ -84,9 +76,7 @@ const Login = () => {
                         </div>
                         <div className="google-btn">
                             <div className="google-icon-wrapper">
-                                <GoogleButtonAuth
-                                onClick={loginGoogle}
-                            />
+                                <GoogleButtonAuth/>
                             </div>
                         </div>
                         <div className="clicable-widgets-container">

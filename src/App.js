@@ -12,6 +12,7 @@ import { BrowserRouter, Route, Redirect, Routes } from 'react-router-dom';
 import API from './components/APIManager';
 import N_Acceuil from './pages/new_acc.js';
 import Rech_Aide from './pages/rech_aide.js';
+import Test from './pages/googleToken.js';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
               <Route path="/budget" element={<Login />}/>
               <Route path="/rech_aide" element={<Rech_Aide />}/>
               <Route render="/" element={<N_Acceuil/>}/>
+              <Route render="/connect/google/:token" element={<Test/>}/>
             </>
           }
           
