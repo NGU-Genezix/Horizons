@@ -45,6 +45,7 @@ function App() {
               <Route path="/register" element={<Register />}/>
               <Route path="/updateuser" element={<UpdateUser />}/>
               <Route path="/rech_aide" element={<Rech_Aide />}/>
+              <Route path="/connect/google/:token" element={<Test/>}/>
               <Route render="/" element={<N_Acceuil/>}/>
             </>
             :
@@ -55,8 +56,8 @@ function App() {
               <Route path="/register" element={<Register />}/>
               <Route path="/budget" element={<Login />}/>
               <Route path="/rech_aide" element={<Rech_Aide />}/>
+              <Route path="/connect/google/:token" element={<Test/>}/>
               <Route render="/" element={<N_Acceuil/>}/>
-              <Route render="/connect/google/:token" element={<Test/>}/>
             </>
           }
           
